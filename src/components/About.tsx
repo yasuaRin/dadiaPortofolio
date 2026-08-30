@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import { personalityData } from '../data/personality';
-import { languagesData } from '../data/skills';
-import { Globe, Sparkles, TrendingUp, Code2, Award, BookOpen } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 
 export const About: React.FC = () => {
   const [activeCuriosityId, setActiveCuriosityId] = useState<string>('data');
-
-  const stats = [
-    { label: 'GPA Equivalent', value: '3.9+', detail: 'President University' },
-    { label: 'Documented Systems', value: '07', detail: 'Analytics & Fullstack' },
-    { label: 'Verified Badges', value: '10+', detail: 'Data & Automation' },
-    { label: 'Languages', value: '03', detail: 'ID · EN · JP' }
-  ];
 
   return (
     <section
@@ -45,33 +36,9 @@ export const About: React.FC = () => {
 
             <div className="w-16 h-[2px] bg-[#0284C7] dark:bg-gradient-to-r dark:from-[#F472B6] dark:to-[#FDA4AF] my-8" />
 
-            <p className="text-xs sm:text-sm font-mono text-[#475569] dark:text-[#AAA] leading-relaxed max-w-sm">
+            <p className="text-sm font-mono text-[#475569] dark:text-[#AAA] leading-relaxed max-w-sm">
               Information Systems undergraduate at President University focusing on Data Science, intelligent automation, and human-centered design.
             </p>
-
-            {/* Scroll Telemetry Stat Capsules */}
-            <div className="grid grid-cols-2 gap-3 mt-10">
-              {stats.map((s, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.15 + idx * 0.08 }}
-                  className="p-3.5 rounded-2xl bg-white/85 dark:bg-[#141414]/80 border border-[#BFDBFE]/70 dark:border-[#242424] shadow-xs"
-                >
-                  <div className="text-xl sm:text-2xl font-bold font-mono tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
-                    {s.value}
-                  </div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] mt-0.5 font-bold truncate">
-                    {s.label}
-                  </div>
-                  <div className="text-[10px] text-[#475569] dark:text-[#AAA] truncate">
-                    {s.detail}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
           {/* Right Column: Progressive Text Narrative & Deep Explorations */}
@@ -178,43 +145,6 @@ export const About: React.FC = () => {
                 })}
               </div>
             </div>
-
-            {/* TRILINGUAL PROFICIENCY ROW */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="pt-10 border-t border-[#BFDBFE]/60 dark:border-[#222]"
-            >
-              <div className="flex items-center gap-2 mb-6">
-                <Globe className="w-4 h-4 text-[#0284C7] dark:text-[#888]" />
-                <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#64748B] dark:text-[#777] font-bold">
-                  01.2 // LANGUAGE PROFICIENCY
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {languagesData.map((lang, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -3 }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-                    className="p-4 rounded-xl bg-white/85 dark:bg-[#141414]/80 border border-[#BFDBFE]/70 dark:border-[#242424] shadow-xs"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-sm text-[#0F1E36] dark:text-[#F3F3F2]">
-                        {lang.name}
-                      </span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    </div>
-                    <div className="text-xs text-[#64748B] dark:text-[#AAA] font-mono">
-                      {lang.level} &middot; {lang.detail}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AbstractDataNodes } from './AbstractDataNodes';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import avatarImg from '../assets/images/profile_avatar_1788084076128.jpg';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
@@ -30,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-[92vh] sm:min-h-screen pt-24 sm:pt-36 pb-12 sm:pb-20 px-4 sm:px-8 md:px-12 flex flex-col justify-between overflow-hidden bg-transparent"
+      className="relative min-h-[85vh] sm:min-h-[90vh] pt-4 sm:pt-8 pb-12 sm:pb-16 px-4 sm:px-8 md:px-12 flex flex-col justify-between overflow-hidden bg-transparent"
     >
       {/* Background Editorial Watermark */}
       <div className="absolute top-1/3 -right-20 pointer-events-none select-none text-[18vw] sm:text-[16vw] font-bold text-[#0F1E36]/[0.03] dark:text-white/[0.02] tracking-tighter uppercase font-sans">
@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       {/* Top Editorial Eyebrow Bar */}
-      <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-6 sm:pb-8 border-b border-[#BFDBFE]/60 dark:border-[#222]">
+      <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-[#BFDBFE]/60 dark:border-[#222]">
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
           <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#64748B] dark:text-[#999]">
@@ -51,126 +51,97 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Main Editorial Grid: Asymmetrical Layout */}
-      <div className="max-w-7xl mx-auto w-full my-auto py-8 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Column: Oversized Typography with Mouse Parallax */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Greeting Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xs sm:text-sm font-mono tracking-[0.3em] uppercase text-[#64748B] dark:text-[#777] mb-2 sm:mb-3"
-          >
-            HELLO, I'M
-          </motion.div>
+      {/* Main Editorial Layout */}
+      <div className="max-w-4xl mx-auto w-full my-auto py-6 sm:py-10 flex flex-col items-center text-center">
+        {/* High Quality Portrait Avatar */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mb-5 sm:mb-6 group"
+        >
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#0284C7]/20 via-[#38BDF8]/20 to-[#F472B6]/25 dark:from-[#38BDF8]/20 dark:to-[#F472B6]/30 blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-          {/* Giant Typographic Title with Parallax */}
-          <motion.div
-            style={{
-              transform: `translate3d(${-mouseOffset.x * 0.8}px, ${-mouseOffset.y * 0.8}px, 0)`
-            }}
-            className="transition-transform duration-150 ease-out"
-          >
-            <h1 className="text-[clamp(3rem,8vw,7.8rem)] font-bold tracking-tighter leading-[0.92] text-[#0F1E36] dark:text-[#F3F3F2]">
-              DADIA<span className="pastel-gradient-text">.</span>
-            </h1>
-            <div className="text-lg sm:text-2xl md:text-3xl text-[#475569] dark:text-[#AAA] font-serif italic mt-2 sm:mt-4 tracking-tight">
-              Ni Putu Dadia Yasuarini
-            </div>
-          </motion.div>
-
-          {/* Editorial Philosophy Statement */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-sm sm:text-lg md:text-xl text-[#334155] dark:text-[#AAA] font-normal leading-relaxed mt-4 sm:mt-6 max-w-xl"
-          >
-            I turn data, technology, and ideas into useful solutions. Bridging business context with modern computing to build clean, purposeful systems.
-          </motion.p>
-
-          {/* Actions Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-6 sm:mt-8 pt-6 border-t border-[#BFDBFE]/60 dark:border-[#222]">
-            <motion.button
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              onClick={() => onNavigate('work')}
-              id="hero-explore-work-btn"
-              className="group inline-flex items-center justify-center gap-3 px-6 py-3.5 sm:py-3 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-sm"
-            >
-              <span>Explore Selected Work</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              onClick={() => onNavigate('contact')}
-              id="hero-contact-btn"
-              className="group inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-3 border border-[#BAE6FD] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] bg-white/85 dark:bg-[#161616]/80 backdrop-blur-sm rounded-full text-xs font-semibold text-[#0F1E36] dark:text-[#F3F3F2] tracking-wider transition-colors cursor-pointer"
-            >
-              <span>Let's talk</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </motion.button>
-          </div>
-        </div>
-
-        {/* Right Column: Interactive Spatial Status & Disciplines */}
-        <div className="lg:col-span-5 flex flex-col gap-4 mt-4 lg:mt-0">
-          {/* Asymmetric Core Disciplines Statement */}
-          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-md border border-[#BFDBFE]/70 dark:border-[#262626] shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#64748B] dark:text-[#777] font-bold">
-                CORE DISCIPLINES
-              </span>
-              <span className="text-[10px] font-mono font-bold pastel-gradient-text">
-                SYSTEMS ARCHITECTURE
-              </span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold text-[#0F1E36] dark:text-[#F3F3F2] font-mono">
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#E0F2FE]/50 dark:bg-white/[0.03]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0284C7] dark:bg-[#F472B6] shrink-0" />
-                <span>Information Systems</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#E0F2FE]/50 dark:bg-white/[0.03]">
-                <span className="w-1.5 h-1.5 rounded-full pastel-gradient-bg shrink-0" />
-                <span>Data &amp; Analytics</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#E0F2FE]/50 dark:bg-white/[0.03]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#64748B] dark:bg-[#888] shrink-0" />
-                <span>Applied AI / ML</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#E0F2FE]/50 dark:bg-white/[0.03]">
-                <span className="w-1.5 h-1.5 rounded-full pastel-gradient-bg shrink-0" />
-                <span>Digital Products</span>
-              </div>
-            </div>
+          {/* Avatar Container with Sleek Dual Border */}
+          <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full p-1 bg-white/90 dark:bg-[#1A1A1A] border-2 border-[#BAE6FD] dark:border-[#F472B6]/40 shadow-lg overflow-hidden">
+            <img
+              src={avatarImg}
+              alt="Ni Putu Dadia Yasuarini"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-105"
+            />
           </div>
 
-          {/* Interactive Physics Ambient Feedback Card */}
-          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-md border border-[#BFDBFE]/70 dark:border-[#262626] shadow-sm">
-            <div className="flex items-center justify-between pb-3 border-b border-[#BFDBFE]/60 dark:border-[#262626] text-[10px] font-mono text-[#64748B] dark:text-[#777]">
-              <span className="font-bold text-[#0F1E36] dark:text-[#F3F3F2] tracking-wider uppercase">
-                SPATIAL PHYSICS ENGINE
-              </span>
-              <span className="pastel-gradient-text font-bold flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full pastel-gradient-bg animate-ping" />
-                CANVAS ACTIVE
-              </span>
-            </div>
-
-            <p className="text-xs font-mono text-[#475569] dark:text-[#AAA] mt-4 leading-relaxed">
-              The constellation particles span the full background. Move your cursor or tap anywhere across the viewport to generate interactive impulse shockwaves.
-            </p>
-
-            <div className="mt-4 pt-3 border-t border-[#BFDBFE]/60 dark:border-[#262626] flex items-center justify-between text-[10px] font-mono text-[#64748B] dark:text-[#777]">
-              <span>IMPULSE REPULSION</span>
-              <span className="text-[#0F1E36] dark:text-[#F3F3F2] font-bold">TOUCH / MOVE ANYWHERE</span>
-            </div>
+          {/* Active Status Beacon Badge */}
+          <div
+            className="absolute bottom-1 right-1 flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white dark:bg-[#111] border-2 border-white dark:border-[#111] shadow-sm"
+            title="Available for initiatives"
+          >
+            <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500 animate-pulse" />
           </div>
+        </motion.div>
+
+        {/* Greeting Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-xs sm:text-sm font-mono tracking-[0.3em] uppercase text-[#64748B] dark:text-[#777] mb-2"
+        >
+          HELLO, I'M
+        </motion.div>
+
+        {/* Giant Typographic Title with Parallax */}
+        <motion.div
+          style={{
+            transform: `translate3d(${-mouseOffset.x * 0.8}px, ${-mouseOffset.y * 0.8}px, 0)`
+          }}
+          className="transition-transform duration-150 ease-out"
+        >
+          <h1 className="text-[clamp(3.2rem,9vw,8rem)] font-bold tracking-tighter leading-[0.92] text-[#0F1E36] dark:text-[#F3F3F2]">
+            DADIA<span className="pastel-gradient-text">.</span>
+          </h1>
+          <div className="text-xl sm:text-3xl md:text-4xl text-[#475569] dark:text-[#AAA] font-serif italic mt-3 sm:mt-4 tracking-tight">
+            Ni Putu Dadia Yasuarini
+          </div>
+        </motion.div>
+
+        {/* Editorial Philosophy Statement */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-base sm:text-xl text-[#334155] dark:text-[#AAA] font-normal leading-relaxed mt-6 max-w-2xl"
+        >
+          Information Systems &middot; Data Analytics &middot; AI Solutions. Bridging business context with modern computing to build clean, purposeful systems.
+        </motion.p>
+
+        {/* Actions Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-[#BFDBFE]/60 dark:border-[#222] w-full max-w-md">
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            onClick={() => onNavigate('work')}
+            id="hero-explore-work-btn"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-sm"
+          >
+            <span>Explore Work</span>
+            <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            onClick={() => onNavigate('contact')}
+            id="hero-contact-btn"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-[#BAE6FD] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] bg-white/85 dark:bg-[#161616]/80 backdrop-blur-sm rounded-full text-xs font-semibold text-[#0F1E36] dark:text-[#F3F3F2] tracking-wider transition-colors cursor-pointer"
+          >
+            <span>Let's talk</span>
+            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </motion.button>
         </div>
       </div>
 

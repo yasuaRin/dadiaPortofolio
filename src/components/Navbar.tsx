@@ -43,14 +43,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 px-3 sm:px-6 md:px-12 py-3 sm:py-5 transition-all duration-300 pointer-events-none">
-        <div
-          className={`max-w-7xl mx-auto flex items-center justify-between pointer-events-auto transition-all duration-300 ${
-            isScrolled
-              ? 'bg-white/90 dark:bg-[#121212]/90 backdrop-blur-md px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-[#BAE6FD]/80 dark:border-[#262626] shadow-sm'
-              : 'bg-white/40 dark:bg-black/30 backdrop-blur-xs sm:bg-transparent px-3 sm:px-0 py-2 sm:py-0 rounded-full sm:rounded-none'
-          }`}
-        >
+      <header className="relative w-full z-30 px-3 sm:px-6 md:px-12 py-3 sm:py-5 transition-colors duration-200">
+        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/70 dark:bg-[#121212]/80 backdrop-blur-md px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-full border border-[#BAE6FD]/80 dark:border-[#262626] shadow-xs">
           {/* Brand Typography */}
           <motion.button
             whileHover={{ scale: 1.02 }}

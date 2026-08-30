@@ -31,17 +31,21 @@ export interface Certificate {
   highlight?: string;
 }
 
+export interface SkillItem {
+  name: string;
+  description: string;
+  level?: 'Mastery' | 'Advanced' | 'Proficient' | 'Exploring' | 'Expert' | 'Hands-on';
+  category?: string;
+  tags?: string[];
+  projects?: string[];
+}
+
 export interface SkillCategory {
   id: string;
   name: string;
   tagline: string;
-  skills: {
-    name: string;
-    description: string;
-    level?: string;
-    tags?: string[];
-  }[];
   appliedSummary: string;
+  skills: SkillItem[];
 }
 
 export interface PersonalityArea {

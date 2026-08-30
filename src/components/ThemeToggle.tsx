@@ -22,7 +22,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       <button
         type="button"
         id="theme-btn-light"
-        onClick={() => setTheme('light')}
+        onClick={(e) => setTheme('light', e)}
         aria-pressed={!isDark}
         className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold tracking-wider uppercase transition-colors duration-200 cursor-pointer ${
           !isDark ? 'text-[#0F1E36]' : 'text-[#64748B] hover:text-[#0F1E36] dark:text-[#888] dark:hover:text-[#F3F3F2]'
@@ -43,7 +43,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       <button
         type="button"
         id="theme-btn-dark"
-        onClick={() => setTheme('dark')}
+        onClick={(e) => setTheme('dark', e)}
         aria-pressed={isDark}
         className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold tracking-wider uppercase transition-colors duration-200 cursor-pointer ${
           isDark ? 'text-[#F3F3F2]' : 'text-[#64748B] hover:text-[#0F1E36] dark:text-[#888] dark:hover:text-[#F3F3F2]'

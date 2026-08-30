@@ -15,7 +15,6 @@ import { PageLoader } from './components/PageLoader';
 import { ScrollProgress } from './components/ScrollProgress';
 import { Marquee } from './components/Marquee';
 import { KineticBackgroundText } from './components/KineticBackgroundText';
-import { ThemeTransitionOverlay } from './components/ThemeTransitionOverlay';
 
 function PortfolioApp() {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -60,10 +59,7 @@ function PortfolioApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative transition-colors duration-300 overflow-hidden">
-      {/* Full-Screen Framer Motion Theme Switch Wipe Overlay */}
-      <ThemeTransitionOverlay />
-
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative overflow-hidden">
       {/* Background Interactive Physics Simulation (Spans the Entire Application) */}
       <BackgroundPhysics />
 

@@ -25,6 +25,9 @@ interface Shockwave {
 
 export const BackgroundPhysics: React.FC = () => {
   const { theme } = useTheme();
+  const themeRef = useRef(theme);
+  themeRef.current = theme;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef<{ x: number; y: number; active: boolean; targetX: number; targetY: number }>({
     x: -1000,
@@ -45,8 +48,8 @@ export const BackgroundPhysics: React.FC = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Initialize particles across full viewport
-    const particleCount = Math.min(65, Math.max(30, Math.floor((width * height) / 28000)));
+    // Initialize particles across full viewport once
+    const particleCount = Math.min(55, Math.max(25, Math.floor((width * height) / 32000)));
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -62,7 +65,7 @@ export const BackgroundPhysics: React.FC = () => {
         baseY: y,
         vx: (Math.random() - 0.5) * 0.45,
         vy: (Math.random() - 0.5) * 0.45,
-        radius: colorType === 'accent' ? 3.2 : colorType === 'primary' ? 2.5 : 1.8,
+        radius: colorType === 'accent' ? 3.0 : colorType === 'primary' ? 2.3 : 1.6,
         colorType,
         pulsePhase: Math.random() * Math.PI * 2,
         pulseSpeed: 0.02 + Math.random() * 0.02,
@@ -126,7 +129,7 @@ export const BackgroundPhysics: React.FC = () => {
         mouse.y = -1000;
       }
 
-      const isDark = theme === 'dark';
+      const isDark = themeRef.current === 'dark';
 
       // Colors palette according to theme: Pastel Blue in Light Mode, Pastel Pink in Dark Mode
       const primaryColor = isDark ? 'rgba(243, 243, 242, ' : 'rgba(15, 30, 54, ';
@@ -282,7 +285,7 @@ export const BackgroundPhysics: React.FC = () => {
       window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('click', handleClick);
     };
-  }, [theme]);
+  }, []);
 
   return (
     <canvas

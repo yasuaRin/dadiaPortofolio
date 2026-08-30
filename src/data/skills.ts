@@ -3,151 +3,225 @@ import { SkillCategory } from '../types';
 export const skillCategoriesData: SkillCategory[] = [
   {
     id: 'data',
-    name: 'DATA',
-    tagline: 'Finding patterns, uncovering truth, and turning raw numbers into strategic decisions.',
-    appliedSummary: 'I leverage analytical tools and structured query languages to extract clarity from messy datasets, engineer reliable pipelines, and present intuitive visual summaries for decision makers.',
+    name: 'Data & Analytics',
+    tagline: 'Turning raw numbers and messy tables into clear, actionable insights for your team.',
+    appliedSummary: 'I clean, analyze, and visualize data so you can make informed business decisions with confidence.',
     skills: [
       {
         name: 'Python',
-        description: 'Data manipulation, statistical analysis, and algorithmic scripting with Pandas, NumPy, and Scikit-Learn.',
-        tags: ['Pandas', 'NumPy', 'Scikit-Learn']
+        description: 'Writing scripts to clean messy spreadsheets, analyze patterns, build predictive models, and automate data tasks.',
+        level: 'Expert',
+        category: 'Data & Analytics',
+        tags: ['Pandas', 'NumPy', 'Data Cleaning', 'Statistics'],
+        projects: ['VIDHELP', 'Sales Analysis Automation']
       },
       {
-        name: 'SQL',
-        description: 'Relational database querying, multi-table joins, aggregations, schema design, and analytical window functions.',
-        tags: ['PostgreSQL', 'MySQL', 'Schema Design']
-      },
-      {
-        name: 'Excel',
-        description: 'Advanced modeling, pivot tables, lookup formulas, data validation, and rapid financial/operational mockups.',
-        tags: ['Advanced Modeling', 'Pivot Analysis', 'Power Query']
+        name: 'SQL & Databases',
+        description: 'Extracting answers from company databases, combining multiple tables, and keeping data organized and fast.',
+        level: 'Expert',
+        category: 'Data & Analytics',
+        tags: ['PostgreSQL', 'MySQL', 'Database Design', 'Fast Queries'],
+        projects: ['VIDHELP', 'Payroll System', 'Sales Analysis Automation']
       },
       {
         name: 'Power BI',
-        description: 'Interactive dashboard authoring, DAX measure creation, data modeling, and executive KPI reporting.',
-        tags: ['DAX', 'Dashboard Design', 'Data Modeling']
+        description: 'Creating clear, interactive dashboards and visual reports that stakeholders and executives love using.',
+        level: 'Advanced',
+        category: 'Data & Analytics',
+        tags: ['Interactive Dashboards', 'Visual Charts', 'Executive Reports'],
+        projects: ['Sales Analysis Automation']
       },
       {
-        name: 'Data Analysis',
-        description: 'Exploratory data analysis (EDA), anomaly detection, trend evaluation, and hypothesis testing.',
-        tags: ['EDA', 'Trend Analysis', 'Statistical Inference']
+        name: 'Excel & Spreadsheets',
+        description: 'Building financial sheets, formulas (XLOOKUP, formulas), PivotTables, and automated data cleanups with Power Query.',
+        level: 'Expert',
+        category: 'Data & Analytics',
+        tags: ['Formulas & Lookups', 'PivotTables', 'Financial Sheets', 'Power Query'],
+        projects: ['Sales Analysis Automation', 'Payroll System']
+      },
+      {
+        name: 'Exploratory Data Analysis',
+        description: 'Deep diving into new datasets to find hidden trends, anomalies, customer behavior patterns, and opportunities.',
+        level: 'Advanced',
+        category: 'Data & Analytics',
+        tags: ['Finding Trends', 'Pattern Recognition', 'Visualizing Insights'],
+        projects: ['VIDHELP', 'Sales Analysis Automation']
       },
       {
         name: 'Machine Learning',
-        description: 'Supervised and unsupervised models for classification, regression, clustering, and predictive forecasting.',
-        tags: ['Predictive Modeling', 'Feature Engineering', 'Evaluation']
+        description: 'Training smart algorithms that can predict outcomes, categorize information, and spot anomalies automatically.',
+        level: 'Proficient',
+        category: 'Data & Analytics',
+        tags: ['Predictive Models', 'Smart Categorization', 'Pattern Forecasting'],
+        projects: ['VIDHELP']
       }
     ]
   },
   {
     id: 'ai',
-    name: 'AI',
-    tagline: 'Building practical, grounded applications around intelligent systems.',
-    appliedSummary: 'Focusing on actionable AI applications that solve concrete workflow challenges rather than abstract hype — from LLM orchestration to contextual intelligent interfaces.',
+    name: 'AI & Smart Tools',
+    tagline: 'Using practical AI and smart automation to solve real everyday problems.',
+    appliedSummary: 'I build user-friendly software powered by smart AI assistants, automatic categorization, and language models.',
     skills: [
       {
-        name: 'Machine Learning',
-        description: 'End-to-end model framing, dataset preparation, hyperparameter tuning, and cross-validation.',
-        tags: ['Scikit-Learn', 'Classification', 'Regression']
+        name: 'Predictive Forecasting',
+        description: 'Teaching models to estimate future trends, customer demands, and risk scores from past historical data.',
+        level: 'Proficient',
+        category: 'AI & Smart Tools',
+        tags: ['Trend Prediction', 'Risk Estimation', 'Smart Scoring'],
+        projects: ['VIDHELP']
       },
       {
-        name: 'AI Applications',
-        description: 'Architecting intelligent digital interfaces that integrate machine intelligence directly into user workflows.',
-        tags: ['Intelligent UI', 'Real-time Inference', 'Smart Automation']
+        name: 'Smart Apps & Assistant UI',
+        description: 'Designing friendly web experiences that let everyday users interact seamlessly with AI features.',
+        level: 'Advanced',
+        category: 'AI & Smart Tools',
+        tags: ['Simple UI', 'Interactive Assistants', 'Smart Features'],
+        projects: ['VIDHELP']
       },
       {
-        name: 'LLM Integration',
-        description: 'Structured prompt design, API integration, Retrieval-Augmented Generation (RAG) concepts, and system guardrails.',
-        tags: ['Prompt Engineering', 'API Pipelines', 'Context Injection']
+        name: 'AI & Prompt Crafting',
+        description: 'Guiding large language models (like Gemini & GPT) to reliably format answers, summarize notes, and extract key facts.',
+        level: 'Advanced',
+        category: 'AI & Smart Tools',
+        tags: ['Helpful Prompts', 'Document Summaries', 'Structured Answers'],
+        projects: ['VIDHELP', 'Teravince']
       },
       {
-        name: 'AI Agents',
-        description: 'Exploring multi-step reasoning systems, tool-calling functions, and automated task execution workflows.',
-        tags: ['Tool Calling', 'Task Execution', 'Reasoning Flows']
+        name: 'Autonomous AI Workflows',
+        description: 'Connecting AI to real tools so it can research, summarize, and complete multi-step tasks independently.',
+        level: 'Hands-on',
+        category: 'AI & Smart Tools',
+        tags: ['Multi-step Tasks', 'Connected Tools', 'Automated Research'],
+        projects: ['VIDHELP']
       }
     ]
   },
   {
     id: 'development',
-    name: 'DEVELOPMENT',
-    tagline: 'Creating fast, responsive, and maintainable digital experiences.',
-    appliedSummary: 'Writing clean, component-driven frontend interfaces connected to reliable backend services, maintaining strict attention to responsiveness, usability, and speed.',
+    name: 'Web & App Development',
+    tagline: 'Crafting responsive, easy-to-use websites and reliable web applications.',
+    appliedSummary: 'Building clean user interfaces backed by secure, dependable databases and fast page loads.',
     skills: [
       {
         name: 'React',
-        description: 'Component architecture, custom hooks, state management, and modern declarative UI development.',
-        tags: ['React 18/19', 'Hooks', 'Component Architecture']
+        description: 'Building interactive, modern, and snappy web pages where everything updates smoothly without full reloads.',
+        level: 'Expert',
+        category: 'Web & App Development',
+        tags: ['Interactive Pages', 'Clean Components', 'Fast Navigation'],
+        projects: ['Web Portfolio', 'VIDHELP']
       },
       {
-        name: 'JavaScript & TypeScript',
-        description: 'Type-safe functional programming, asynchronous event loops, DOM interactions, and ES6+ standards.',
-        tags: ['TypeScript', 'ES6+', 'Async/Await']
+        name: 'TypeScript & JavaScript',
+        description: 'Writing solid, error-free web code that runs smoothly on desktop, tablets, and phones alike.',
+        level: 'Expert',
+        category: 'Web & App Development',
+        tags: ['Reliable Logic', 'Mobile & Desktop', 'Smooth Animations'],
+        projects: ['Web Portfolio', 'VIDHELP', 'Student GPA Tracker']
       },
       {
-        name: 'Node.js',
-        description: 'Server runtime execution, script automation, backend API services, and package management.',
-        tags: ['Express', 'REST Services', 'NPM']
+        name: 'Tailwind CSS & Design',
+        description: 'Crafting clean layouts, pleasant color palettes, dark/light themes, and mobile-friendly responsive designs.',
+        level: 'Expert',
+        category: 'Web & App Development',
+        tags: ['Mobile Friendly', 'Light & Dark Modes', 'Clean Layouts'],
+        projects: ['Web Portfolio', 'VIDHELP']
       },
       {
-        name: 'REST APIs',
-        description: 'API endpoint design, HTTP request handling, authentication headers, error handling, and payload parsing.',
-        tags: ['CRUD', 'HTTP Protocols', 'JSON']
+        name: 'Node.js & Web APIs',
+        description: 'Connecting frontend web pages to secure server services to save data, send emails, and process user requests.',
+        level: 'Advanced',
+        category: 'Web & App Development',
+        tags: ['Server Logic', 'Connecting Apps', 'Secure Data Flow'],
+        projects: ['VIDHELP', 'Payroll System']
       },
       {
-        name: 'Supabase',
-        description: 'Cloud PostgreSQL persistence, row-level security policies, real-time subscriptions, and auth integration.',
-        tags: ['PostgreSQL', 'Auth', 'Real-time DB']
+        name: 'Supabase & Cloud Storage',
+        description: 'Setting up cloud databases where user information and media are stored safely with real-time updates.',
+        level: 'Advanced',
+        category: 'Web & App Development',
+        tags: ['Cloud Database', 'User Logins', 'Real-time Sync'],
+        projects: ['VIDHELP']
+      },
+      {
+        name: 'PHP & MySQL',
+        description: 'Developing traditional web portals, business admin panels, and database-backed management tools.',
+        level: 'Advanced',
+        category: 'Web & App Development',
+        tags: ['Admin Dashboards', 'User Accounts', 'Database Records'],
+        projects: ['Payroll System']
       }
     ]
   },
   {
     id: 'automation',
-    name: 'AUTOMATION',
-    tagline: 'Eliminating manual friction and optimizing operational flow.',
-    appliedSummary: 'Bridging internal business operations and technology to automate repetitive data collection, multi-stakeholder approvals, and multi-app communication.',
+    name: 'Automation & Productivity',
+    tagline: 'Automating repetitive busywork so your team can focus on what matters.',
+    appliedSummary: 'Connecting forms, spreadsheets, and messaging apps to handle approvals, notifications, and reports automatically.',
     skills: [
       {
         name: 'Power Automate',
-        description: 'Multi-stage automated cloud flows, scheduled triggers, conditional routing, and enterprise integration.',
-        tags: ['Cloud Flows', 'Approval Routing', 'Error Handling']
+        description: 'Creating automated workflows that trigger emails, route manager approvals, and move files across tools hands-free.',
+        level: 'Expert',
+        category: 'Automation & Productivity',
+        tags: ['Automatic Emails', 'Approval Flows', 'Hands-free Tasks'],
+        projects: ['Payment Request Automation', 'Sales Analysis Automation']
       },
       {
-        name: 'Microsoft Forms',
-        description: 'Structured data capture, branched survey logic, input validation, and real-time backend synchronization.',
-        tags: ['Data Intake', 'Form Logic', 'Integration']
+        name: 'Online Forms & Surveys',
+        description: 'Creating simple intake forms that collect responses accurately and route data directly into organized spreadsheets.',
+        level: 'Expert',
+        category: 'Automation & Productivity',
+        tags: ['Easy Surveys', 'Clean Data Intake', 'Automated Routing'],
+        projects: ['Payment Request Automation']
       },
       {
-        name: 'Workflow Automation',
-        description: 'End-to-end business process reengineering, notification triggers, and continuous task orchestration.',
-        tags: ['Process Mapping', 'Notification Loops', 'Trigger Systems']
+        name: 'Workflow Optimization',
+        description: 'Spotting steps that waste people\'s time and replacing manual data re-entry with one-click automated systems.',
+        level: 'Advanced',
+        category: 'Automation & Productivity',
+        tags: ['Time Savers', 'Removing Bottlenecks', 'Smooth Team Handoffs'],
+        projects: ['Payment Request Automation', 'Sales Analysis Automation']
       }
     ]
   },
   {
     id: 'business',
-    name: 'BUSINESS',
-    tagline: 'Understanding how technology translates into real value.',
-    appliedSummary: 'Grounding every line of code and every dataset in practical business reality, user desirability, and sustainable process efficiency.',
+    name: 'Product & Planning',
+    tagline: 'Making sure what we build actually solves the real problem and feels great to use.',
+    appliedSummary: 'Bridging the gap between everyday business goals and technical features with thoughtful design.',
     skills: [
       {
-        name: 'Market Analysis',
-        description: 'Evaluating competitive landscapes, market trends, user demographic needs, and growth opportunities.',
-        tags: ['Competitive Research', 'Trend Mapping', 'Benchmarking']
+        name: 'Listening & Requirements',
+        description: 'Talking with team members and users to understand exactly what they need before any code is written.',
+        level: 'Expert',
+        category: 'Product & Planning',
+        tags: ['User Interviews', 'Clear Action Plans', 'Team Alignment'],
+        projects: ['VIDHELP', 'Payment Request Automation', 'Payroll System']
       },
       {
-        name: 'Business Analysis',
-        description: 'Requirements elicitation, stakeholder communication, workflow mapping, and gap analysis.',
-        tags: ['Requirements', 'Stakeholder Alignment', 'Gap Analysis']
+        name: 'UI/UX & Interactive Prototypes',
+        description: 'Sketching and designing clickable prototypes in Figma so everyone can preview the app before building it.',
+        level: 'Advanced',
+        category: 'Product & Planning',
+        tags: ['Figma Designs', 'Clickable Mockups', 'Simple & Friendly'],
+        projects: ['Teravince', 'Web Portfolio', 'VIDHELP']
+      },
+      {
+        name: 'User & Market Research',
+        description: 'Understanding what users want, looking at existing solutions, and finding ways to make the product stand out.',
+        level: 'Proficient',
+        category: 'Product & Planning',
+        tags: ['User Needs', 'Benchmarking', 'Practical Value'],
+        projects: ['Teravince', 'VIDHELP']
       },
       {
         name: 'Process Improvement',
-        description: 'Identifying operational bottlenecks, eliminating redundancies, and streamlining organizational throughput.',
-        tags: ['Efficiency', 'Bottleneck Removal', 'Standardization']
-      },
-      {
-        name: 'Product Thinking',
-        description: 'Balancing user needs, technical feasibility, and business viability to build software people actually use.',
-        tags: ['User Centricity', 'UX Architecture', 'Value Framing']
+        description: 'Helping teams work faster with clearer steps, fewer misunderstandings, and standardized guides.',
+        level: 'Expert',
+        category: 'Product & Planning',
+        tags: ['Faster Turnaround', 'Clear Guidelines', 'Less Confusion'],
+        projects: ['Payment Request Automation', 'Sales Analysis Automation']
       }
     ]
   }
@@ -155,28 +229,40 @@ export const skillCategoriesData: SkillCategory[] = [
 
 export interface LanguageItem {
   name: string;
+  nativeScript?: string;
   level: string;
+  proficiencyScore: number;
   detail: string;
   tag: string;
+  badge: string;
 }
 
 export const languagesData: LanguageItem[] = [
   {
     name: 'Indonesian',
-    level: 'Native',
-    detail: 'Native fluency in written and spoken communication.',
-    tag: 'Native'
+    nativeScript: 'Bahasa Indonesia',
+    level: 'Native Speaker',
+    proficiencyScore: 100,
+    detail: 'First language — comfortable with everyday conversations, public speaking, and professional business writing.',
+    tag: 'Native Speaker',
+    badge: 'Native Fluent'
   },
   {
     name: 'English',
-    level: 'Advanced',
-    detail: 'Professional proficiency; 3rd Winner of National English Speech Competition.',
-    tag: 'Advanced · Oratory Awardee'
+    nativeScript: 'English',
+    level: 'Fluent / Professional',
+    proficiencyScore: 90,
+    detail: 'Fluent in daily work, presentations, and team discussions. 3rd place winner in the National English Speech Competition.',
+    tag: 'National Speech Award Winner',
+    badge: 'National Speech Awardee'
   },
   {
     name: 'Mandarin',
-    level: 'Intermediate',
-    detail: 'Working proficiency in spoken and written Mandarin; Scholarship Awardee.',
-    tag: 'Intermediate · Scholarship Recipient'
+    nativeScript: '中文 (Mandarin)',
+    level: 'Conversational Working',
+    proficiencyScore: 65,
+    detail: 'Conversational working proficiency in speaking and reading. Recipient of an International Language Scholarship.',
+    tag: 'Scholarship Recipient',
+    badge: 'Scholarship Awardee'
   }
 ];
