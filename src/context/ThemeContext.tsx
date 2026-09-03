@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { playThemeSound } from '../utils/soundEffects';
 
 export type Theme = 'light' | 'dark';
 
@@ -58,7 +59,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   ) => {
     if (newTheme === theme) return;
 
-    // Immediately resolve and calculate coordinates
+    // 1. Play tactile acoustic switch sound immediately on gesture (zero audio delay)
+    playThemeSound(newTheme);
+
+    // 2. Resolve origin coordinates instantly
     let x = window.innerWidth - 80;
     let y = 40;
 
@@ -79,7 +83,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)
-    ) + 60;
+    ) + 40;
 
     const doc = document as unknown as {
       startViewTransition?: (callback: () => void) => {
@@ -105,7 +109,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
         transition.ready
           .then(() => {
-            // Instant, zero-delay circular clip-path expanding outward seamlessly
+            // Silky smooth zero-lag circular clip-path reveal with custom ease-out cubic curve
             const animation = document.documentElement.animate(
               {
                 clipPath: [
@@ -114,8 +118,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 ]
               },
               {
-                duration: 420,
-                easing: 'cubic-bezier(0.2, 0, 0, 1)',
+                duration: 400,
+                easing: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
                 pseudoElement: '::view-transition-new(root)',
                 fill: 'both'
               }
@@ -131,9 +135,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           });
 
         transition.finished
-          .catch(() => {
-            // Handled
-          })
+          .catch(() => {})
           .finally(() => {
             isTransitioningRef.current = false;
           });
@@ -164,4 +166,5 @@ export const useTheme = (): ThemeContextType => {
   }
   return context;
 };
+
 

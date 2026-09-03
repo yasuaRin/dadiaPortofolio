@@ -8,6 +8,8 @@ export interface Project {
   technologies: string[];
   featured?: boolean;
   year?: string;
+  role?: string;
+  liveUrl?: string;
   clientOrContext?: string;
   overview: string;
   problem: string;
@@ -39,6 +41,9 @@ export interface SkillItem {
   tags?: string[];
   projects?: string[];
 }
+
+export type Skill = SkillItem;
+
 
 export interface SkillCategory {
   id: string;

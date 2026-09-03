@@ -3,14 +3,15 @@ import { EducationItem } from '../types';
 export const educationData: EducationItem[] = [
   {
     id: 'presuniv',
-    period: '2023 — Present',
+    period: '2023 — 2026',
     institution: 'President University',
-    degree: 'Bachelor of Computer Science',
-    field: 'Information Systems · Data Science',
+    degree: 'Bachelor of Computer Science (S.Kom)',
+    field: 'Information Systems · Data Science & AI',
     location: 'Bekasi, West Java',
     notes: [
-      'Focusing on Data Science, Applied Machine Learning, Database Architecture, and Enterprise Systems.',
-      'Active contributor to tech competitions, cross-disciplinary digital initiatives, and system development.'
+      'Successfully defended Undergraduate Thesis in Early August 2026.',
+      'Specialized in Data Science, Applied AI/ML Systems, Database Architecture, and Enterprise Automation.',
+      'Active contributor to tech competitions, cross-disciplinary digital initiatives, and scalable data solutions.'
     ]
   },
   {
@@ -22,7 +23,8 @@ export const educationData: EducationItem[] = [
     location: 'Denpasar, Bali',
     notes: [
       'Trilingual curriculum (Indonesian, English, Mandarin).',
-      'Awardee of competitive language and speech honors.'
+      'Awarded 3rd Place in National English Speech Competition.',
+      'Recipient of the prestigious Mandarin Scholarship for academic and language excellence.'
     ]
   }
 ];

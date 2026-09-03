@@ -42,10 +42,6 @@ export const Education: React.FC = () => {
               <span className="font-serif italic font-normal pastel-gradient-text">Milestones.</span>
             </h2>
           </motion.div>
-
-          <p className="text-xs sm:text-sm font-mono text-[#64748B] dark:text-[#AAA] max-w-sm">
-            Rigorous coursework across computing, analytics, and information systems engineering.
-          </p>
         </div>
 
         {/* Vertical Timeline Architecture */}

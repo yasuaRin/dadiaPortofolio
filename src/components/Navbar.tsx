@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
+  onOpenResumeModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpenResumeModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
     { id: 'about', label: 'Perspective' },
     { id: 'education', label: 'Timeline' },
     { id: 'work', label: 'Selected Work' },
-    { id: 'skills', label: 'Capabilities' },
+    { id: 'skills', label: 'Skills' },
     { id: 'certificates', label: 'Recognition' },
     { id: 'contact', label: 'Connect' }
   ];
@@ -97,6 +98,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             {/* Theme Mode Switcher */}
             <ThemeToggle />
 
+            {/* CV & Portfolio Modal Button */}
+            <motion.button
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              onClick={onOpenResumeModal}
+              title="Download CV & Portfolio"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#E0F2FE] hover:bg-[#BAE6FD] dark:bg-[#1E1E1E] dark:hover:bg-[#282828] text-[#0369A1] dark:text-[#F472B6] border border-[#0284C7]/20 dark:border-[#333] rounded-full text-xs font-mono font-bold tracking-wider transition-colors cursor-pointer"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>DOWNLOAD CV</span>
+            </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.04, y: -1 }}
               whileTap={{ scale: 0.96 }}
@@ -109,9 +123,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             </motion.button>
           </nav>
 
-          {/* Mobile Action Hub: Theme + Hamburger Toggle */}
+          {/* Mobile Action Hub: Theme + CV Modal + Hamburger Toggle */}
           <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
             <ThemeToggle />
+            <button
+              onClick={onOpenResumeModal}
+              className="w-10 h-10 flex items-center justify-center text-[#0284C7] dark:text-[#F472B6] rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer focus:outline-none"
+              aria-label="Download CV and Portfolio"
+              title="CV & Portfolio"
+            >
+              <FileText className="w-4 h-4" />
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-10 h-10 flex items-center justify-center text-[#0F1E36] dark:text-[#F3F3F2] rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer focus:outline-none"
@@ -177,10 +199,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
               <button
                 onClick={() => {
+                  onOpenResumeModal();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full py-3 px-4 bg-[#E0F2FE] dark:bg-[#202020] text-[#0369A1] dark:text-[#F472B6] border border-[#0284C7]/20 dark:border-[#333] text-center text-xs font-mono font-bold tracking-wider rounded-2xl uppercase mt-2 cursor-pointer transition-colors shadow-xs inline-flex items-center justify-center gap-2"
+              >
+                <FileText className="w-4 h-4" />
+                <span>DOWNLOAD CV</span>
+              </button>
+
+              <button
+                onClick={() => {
                   onNavigate('contact');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-3.5 px-4 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-center text-xs font-mono font-bold tracking-wider rounded-2xl uppercase mt-2 cursor-pointer hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors shadow-sm inline-flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-4 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-center text-xs font-mono font-bold tracking-wider rounded-2xl uppercase cursor-pointer hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors shadow-sm inline-flex items-center justify-center gap-2"
               >
                 <span>GET IN TOUCH</span>
                 <ArrowUpRight className="w-4 h-4" />

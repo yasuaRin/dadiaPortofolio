@@ -15,10 +15,12 @@ import { PageLoader } from './components/PageLoader';
 import { ScrollProgress } from './components/ScrollProgress';
 import { Marquee } from './components/Marquee';
 import { KineticBackgroundText } from './components/KineticBackgroundText';
+import { ResumeDownloadModal } from './components/ResumeDownloadModal';
 
 function PortfolioApp() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState<boolean>(false);
   const { theme } = useTheme();
 
   // Automatic active section tracking via IntersectionObserver
@@ -59,7 +61,10 @@ function PortfolioApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative overflow-hidden">
+    <div
+      id="portfolio-root"
+      className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative overflow-hidden"
+    >
       {/* Background Interactive Physics Simulation (Spans the Entire Application) */}
       <BackgroundPhysics />
 
@@ -72,13 +77,20 @@ function PortfolioApp() {
       {/* 2. Scroll Progress Bar & Side Numbers */}
       <ScrollProgress activeSection={activeSection} onNavigate={handleNavigate} />
 
-      {/* 3. Floating Navigation with Theme Switcher */}
-      <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
+      {/* 3. Floating Navigation with Theme Switcher & CV Center */}
+      <Navbar
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
+        onOpenResumeModal={() => setIsResumeModalOpen(true)}
+      />
 
       {/* 4. Main Editorial Content Flow */}
       <main className="flex-1 relative z-10">
         {/* Hero Section */}
-        <Hero onNavigate={handleNavigate} />
+        <Hero
+          onNavigate={handleNavigate}
+          onOpenResumeModal={() => setIsResumeModalOpen(true)}
+        />
 
         {/* Marquee Ticker 1 */}
         <Marquee text="DATA — AI — BUSINESS — PRODUCT — DATA — AI — BUSINESS — PRODUCT →" />
@@ -108,11 +120,17 @@ function PortfolioApp() {
         <Certificates />
 
         {/* Contact / Connect */}
-        <Contact />
+        <Contact onOpenResumeModal={() => setIsResumeModalOpen(true)} />
       </main>
 
       {/* 5. Minimalist Editorial Footer */}
       <Footer onNavigate={handleNavigate} />
+
+      {/* 6. CV & Portfolio Dual Export Modal */}
+      <ResumeDownloadModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </div>
   );
 }

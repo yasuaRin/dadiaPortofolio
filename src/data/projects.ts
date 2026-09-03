@@ -9,23 +9,26 @@ export const projectsData: Project[] = [
     categories: ['Business', 'Data', 'AI'],
     featured: true,
     year: '2025',
-    clientOrContext: 'Operational Intelligence & Performance Suite',
-    description: 'A digital platform designed to improve internal operations, brand performance tracking, and revenue visibility.',
-    technologies: ['React', 'Supabase', 'Machine Learning', 'Data Analytics', 'TypeScript', 'Tailwind CSS'],
-    overview: 'VIDHELP is an end-to-end operational intelligence and analytics dashboard built to streamline brand workflows, consolidate distributed data streams, and provide actionable insights into revenue visibility and team operational bottlenecks.',
-    problem: 'Internal teams were struggling with scattered metrics across multiple tracking sheets, delayed revenue reporting, and lack of automated insights into operational efficiency and brand campaign performance.',
-    approach: 'Designed a unified architecture integrating real-time database feeds, lightweight predictive ML algorithms for trend detection, and a human-centered analytics interface tailored for both technical operators and executive decision makers.',
-    technologyDetails: 'Engineered with React and TypeScript on the frontend for high responsiveness; Supabase PostgreSQL for real-time relational persistence; and custom Python/ML data pipelines for anomaly detection and trend forecasting.',
-    outcome: 'Delivered an integrated operational hub that eliminates manual spreadsheet aggregation, reduces reporting latency from days to real-time, and provides clear visibility into key revenue drivers.',
+    role: 'Team Leader · ML Engineer · Full-Stack Developer (FE & BE)',
+    liveUrl: 'https://vidhelp-frontend.vercel.app/',
+    clientOrContext: 'Capstone Project · VIDHELP Agency Operations Suite',
+    description: 'An enterprise operational intelligence and analytics platform engineered to solve the 4 core business bottlenecks of VIDHELP agency.',
+    technologies: ['React', 'Supabase', 'Python / ML', 'Data Analytics', 'TypeScript', 'Tailwind CSS'],
+    overview: 'VIDHELP was engineered as our university capstone project to resolve critical operational bottlenecks for VIDHELP agency. Acting as Team Leader, ML Engineer, and Full-Stack Developer, I spearheaded the architectural design and implementation to eliminate scattered spreadsheets, streamline creator operations, and deliver real-time predictive financial telemetry.',
+    problem: 'VIDHELP agency faced 4 critical core business challenges: 1) Disjointed client and creator tracking across unstandardized spreadsheets; 2) Delayed revenue recognition and slow invoicing turnaround; 3) Lack of unified operational metrics to diagnose team bandwidth and workflow bottlenecks; 4) Absence of predictive ML trend signals to forecast campaign yields and allocate agency resources efficiently.',
+    approach: 'Architected a modular full-stack web ecosystem with real-time relational persistence, dynamic operational dashboards, and predictive Machine Learning algorithms that classify performance anomalies and forecast campaign revenues automatically.',
+    technologyDetails: 'Developed with React and TypeScript on the frontend with custom analytics visualizers; Supabase PostgreSQL for secure real-time multi-tenant database persistence; and Python ML pipelines powering predictive trend forecasts and operational variance detection.',
+    outcome: 'Successfully resolved all 4 core business bottlenecks: unified agency tracking into one single pane of glass, automated revenue visibility, provided real-time team workflow telemetry, and deployed ML forecasting for strategic client management.',
     keyHighlights: [
-      'Centralized multi-channel operational telemetry into a single interactive view',
-      'Automated revenue tracking and performance variance alerts',
-      'Predictive trend signals assisting tactical resource planning'
+      'Capstone Project: Led full lifecycle as Team Leader, ML Engineer, and Full-Stack Developer',
+      'Targeted resolution of the 4 fundamental business bottlenecks of VIDHELP agency',
+      'Deployed real-time operational dashboard with live ML analytics pipelines',
+      'Live deployment active at https://vidhelp-frontend.vercel.app/'
     ],
     metrics: [
-      { label: 'Data Latency', value: 'Real-time' },
-      { label: 'Reporting Speed', value: 'Instant' },
-      { label: 'Platform Focus', value: 'Ops & AI' }
+      { label: 'Role', value: 'Team Lead & ML' },
+      { label: 'Core Problems', value: '4 Solved' },
+      { label: 'Platform Status', value: 'Live' }
     ]
   },
   {
@@ -35,153 +38,133 @@ export const projectsData: Project[] = [
     category: 'Data · Automation',
     categories: ['Data', 'Automation'],
     year: '2024',
+    role: 'Data Engineer & Automation Specialist',
     clientOrContext: 'Commercial Analytics & Workflow Pipeline',
-    description: 'Automated sales analysis across multiple platforms to make reporting faster and easier to understand.',
+    description: 'Automated sales analysis across multiple platforms to make reporting faster, error-free, and easier to understand.',
     technologies: ['Python', 'Pandas', 'Power BI', 'SQL', 'Data Pipelines'],
-    overview: 'An automated data ingestion and aggregation pipeline that pulls multi-channel commercial transactions into standardized analytical reports.',
-    problem: 'Sales data was siloed across separate e-commerce and retail channels, requiring repetitive manual exports, data cleaning, and formula maintenance each reporting cycle.',
+    overview: 'An automated data ingestion and aggregation pipeline that pulls multi-channel commercial transactions into standardized analytical reports with zero manual overhead.',
+    problem: 'Sales data was siloed across separate e-commerce and retail channels, requiring repetitive manual exports, tedious data cleaning, and high risk of formula discrepancy each reporting cycle.',
     approach: 'Constructed an automated ETL script that harmonizes disparate schema formats, cleanses outliers, calculates rolling performance metrics, and exports clean summaries into dynamic dashboards.',
     technologyDetails: 'Built using Python (Pandas/NumPy) for automated data transformations and validation; scheduled workflows; and Power BI for interactive stakeholder visuals.',
     outcome: 'Eliminated hours of repetitive data wrangling while improving data consistency and enabling faster strategic pricing and inventory decisions.',
     keyHighlights: [
-      'Automated multi-source schema normalization',
+      'Automated multi-source schema normalization and cleansing',
       'Instant generation of period-over-period sales summaries',
-      'Clean interactive dashboards for stakeholders'
+      'Interactive executive dashboards for real-time commercial visibility'
     ],
     metrics: [
       { label: 'Time Saved', value: '~85%' },
-      { label: 'Pipeline Speed', value: 'Scheduled' },
+      { label: 'Pipeline Speed', value: 'Automated' },
       { label: 'Output', value: 'Power BI' }
     ]
   },
   {
-    id: 'payment-request-automation',
-    title: 'Payment Request Automation',
-    subtitle: 'Enterprise Approval & Verification Workflow',
-    category: 'Automation · Power Platform',
-    categories: ['Automation', 'Power Platform'],
-    year: '2024',
-    clientOrContext: 'Finance Operations & Process Optimization',
-    description: 'A workflow designed to streamline payment requests, approvals, verification, and payment processing.',
-    technologies: ['Power Automate', 'Microsoft Forms', 'SharePoint', 'Process Engineering'],
-    overview: 'A standardized digital workflow that guides payment requests through tiered approvals, finance verification, and audit logging with zero manual paper handling.',
-    problem: 'Disorganized email threads and paper forms caused delays in invoice verification, missing receipt documentation, and lack of visibility into request status.',
-    approach: 'Mapped the organizational approval matrix and implemented structured intake forms coupled with conditional notification triggers and centralized audit records.',
-    technologyDetails: 'Leveraged Microsoft Power Automate for rule-based routing and status triggers, Microsoft Forms for validated intake, and SharePoint lists as a secure audit database.',
-    outcome: 'Reduced approval turnaround time, established transparent end-to-end tracking for requestors, and ensured compliance with verification policies.',
-    keyHighlights: [
-      'Structured conditional approval hierarchy based on expenditure tiers',
-      'Automated email & Teams notification triggers at each milestone',
-      'Centralized audit trail for accounting compliance'
-    ],
-    metrics: [
-      { label: 'Approval Latency', value: '-70%' },
-      { label: 'Paperless', value: '100%' },
-      { label: 'Audit Trail', value: 'Automated' }
-    ]
-  },
-  {
-    id: 'web-portfolio',
-    title: 'Web Portfolio',
-    subtitle: 'Personal Digital Experience & Showcase',
-    category: 'Web · React',
-    categories: ['Web', 'React'],
-    year: '2026',
-    clientOrContext: 'Personal Brand & Creative Space',
-    description: 'A personal web experience designed to present projects, skills, and professional interests.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Motion'],
-    overview: 'A modern, editorial web presence created to articulate technical skills, creative curiosity, and personal identity with clarity and restraint.',
-    problem: 'Traditional static resumes fail to convey interactive thinking, product sensibilities, and the nuanced intersections between data, business, and technology.',
-    approach: 'Adopted an editorial layout with generous whitespace, subtle micro-interactions, purpose-driven skill categorizations, and deep case-study exploration.',
-    technologyDetails: 'Crafted with React, TypeScript, Tailwind CSS, and Motion layout animations, ensuring high performance, responsive ergonomics, and strict accessibility.',
-    outcome: 'A seamless, expressive digital portfolio that presents work effectively to recruiters, hiring managers, and collaborators across all devices.',
-    keyHighlights: [
-      'Minimalist visual aesthetic prioritizing typography and hierarchy',
-      'Modular architecture with zero bloated dependencies',
-      'Fluid responsiveness across mobile, tablet, and ultra-wide displays'
-    ],
-    metrics: [
-      { label: 'Performance', value: '100 Lighthouse' },
-      { label: 'Physics', value: '60 FPS Canvas' },
-      { label: 'Themes', value: 'Dual Mode' }
-    ]
-  },
-  {
     id: 'payroll-system',
-    title: 'Payroll System',
-    subtitle: 'Employee Compensation & Records Portal',
-    category: 'Web · Information Systems',
-    categories: ['Web', 'Information Systems'],
+    title: 'Payroll Generation System',
+    subtitle: 'Automated Compensation & Payslip Engine',
+    category: 'Automation · Data',
+    categories: ['Automation', 'Data', 'Web'],
     year: '2024',
-    clientOrContext: 'Internal Systems & Business Logic',
-    description: 'A system designed to manage payroll-related information and processes.',
-    technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'Relational DB Design'],
-    overview: 'A database-driven web application designed to compute compensations, tax deductions, bonuses, and generate employee payment records accurately.',
-    problem: 'Manual payroll calculation spreadsheets were susceptible to calculation errors, lack of role-based security, and tedious slip generation.',
-    approach: 'Designed normalized relational database schemas with automated salary calculation engines, secure authentication, and exportable payslip generation.',
-    technologyDetails: 'Developed with relational MySQL database models, structured backend logic handling Indonesian payroll and tax rules, and an intuitive administrative interface.',
-    outcome: 'Streamlined periodic payroll runs with reliable accuracy, secure employee credential management, and quick summary reports for HR.',
+    role: 'Solo Developer (100% Python Engine)',
+    clientOrContext: 'Independent Enterprise Solution',
+    description: 'An automated payroll generation system developed entirely using Python to compute compensations, tax brackets, and generate structured payment records.',
+    technologies: ['Python', 'Pandas', 'Automated Reporting', 'Data Processing', 'File I/O'],
+    overview: 'Developed entirely as a solo engineer, this system leverages pure Python engines to compute complex employee payrolls, calculate custom statutory tax deductions and allowances, and generate formatted payslip reports instantly.',
+    problem: 'Manual payroll processing across spreadsheets was prone to human calculation errors, slow turnaround times during pay cycles, and lack of systematic payslip export generation.',
+    approach: 'Designed a standalone Python-driven data calculation pipeline that validates employee hours, applies multi-tiered tax calculations and bonuses, and exports verified payroll summaries and individual employee slips.',
+    technologyDetails: 'Engineered completely with Python, utilizing modular functions, robust data validation, structured file handling, and automated report generation routines.',
+    outcome: 'Reduced periodic payroll calculation from hours to seconds with 100% mathematical accuracy, generating ready-to-distribute payment documentation with zero manual data entry errors.',
     keyHighlights: [
-      'Automated gross-to-net salary and deduction calculations',
-      'Role-based access controls for HR admins and staff',
-      'Detailed monthly expenditure summaries'
+      'Developed independently as the sole software engineer',
+      'Pure Python architecture for calculation, tax breakdown, and slip generation',
+      '100% calculation accuracy with automated validation checks'
     ],
     metrics: [
-      { label: 'Accuracy', value: '100% Exact' },
-      { label: 'Slip Generation', value: 'Instant' },
-      { label: 'Role Access', value: 'RBAC' }
+      { label: 'Development', value: 'Solo Project' },
+      { label: 'Core Engine', value: '100% Python' },
+      { label: 'Accuracy', value: '100% Exact' }
     ]
   },
   {
     id: 'student-gpa-tracker',
-    title: 'Student GPA Tracker',
-    subtitle: 'Academic Performance & Projection Tool',
-    category: 'Data · Web',
-    categories: ['Data', 'Web'],
+    title: 'Student GPA & Academic Tracker',
+    subtitle: 'ML Academic Trajectory & Performance Forecaster',
+    category: 'AI · Data · Web',
+    categories: ['AI', 'Data', 'Web'],
     year: '2023',
-    clientOrContext: 'Academic Utility & Data Management',
-    description: 'A tool for managing and monitoring academic performance.',
-    technologies: ['JavaScript', 'HTML5/CSS3', 'Local Storage', 'Data Visualization'],
-    overview: 'A lightweight analytical utility helping university students organize course credits, track semester-by-semester GPA trends, and simulate target graduation outcomes.',
-    problem: 'Students often lack quick tools to forecast how upcoming semester grades impact their cumulative GPA, leading to guesswork in academic planning.',
-    approach: 'Built an interactive semester management matrix with dynamic credit weighting, immediate recalculation, and visual progression charts.',
-    technologyDetails: 'Engineered using vanilla JavaScript and modern browser storage APIs for instant local privacy without requiring server signups.',
-    outcome: 'Provided a clean, accessible utility that gives students clear visibility into their academic trajectory and target study goals.',
+    role: 'Team Leader · ML Engineer · Full-Stack Developer (FE & BE)',
+    clientOrContext: 'Academic Analytics & Machine Learning Initiative',
+    description: 'An AI-powered academic analytics platform utilizing Machine Learning to forecast student graduation GPA trajectories and optimize study planning.',
+    technologies: ['Machine Learning', 'Python', 'JavaScript', 'Data Science', 'Full-Stack Architecture'],
+    overview: 'Serving as Team Leader, ML Engineer, and Full-Stack Developer, I guided the development of this intelligent academic management system that combines predictive modeling with an interactive course management interface.',
+    problem: 'University students frequently struggle to anticipate how individual course grades affect their cumulative GPA and degree honors, lacking data-driven simulation tools to model their academic trajectory.',
+    approach: 'Engineered predictive ML regression models that evaluate historical credit weighting and coursework trends, paired with a dynamic frontend interface allowing students to perform goal-seeking simulations.',
+    technologyDetails: 'Built predictive ML algorithms in Python to evaluate GPA trajectories, integrated with an intuitive full-stack web application supporting credit-weighted scoring and instant local persistence.',
+    outcome: 'Delivered an empowering academic companion that enables students to forecast outcomes, prioritize high-impact subjects, and maintain clear sight of honors goals.',
     keyHighlights: [
-      'Dynamic weighted GPA calculation by credit hour',
-      'Interactive goal-seeking calculator for target honors',
-      'Zero latency client-side data persistence'
+      'Led the initiative as Team Leader, ML Engineer, and Full-Stack Developer (FE & BE)',
+      'Integrated Machine Learning algorithms for performance trend forecasting',
+      'Dynamic weighted GPA calculation with goal-seeking targets'
     ],
     metrics: [
-      { label: 'Calculation', value: 'Real-time' },
-      { label: 'Privacy', value: '100% Local' },
-      { label: 'Forecasting', value: 'Target Seeking' }
+      { label: 'Role', value: 'Lead & ML Eng' },
+      { label: 'Model', value: 'ML Forecast' },
+      { label: 'Interface', value: 'Full-Stack' }
     ]
   },
   {
     id: 'teravince',
-    title: 'Teravince',
-    subtitle: 'Digital Innovation & Experience Exploration',
-    category: 'Product · Technology',
-    categories: ['Product', 'Technology'],
+    title: 'Teravince NGO Digital Platform',
+    subtitle: 'Non-Profit Web Experience & Impact Portal',
+    category: 'Web · Product',
+    categories: ['Web', 'Product'],
     year: '2024',
-    clientOrContext: 'Digital Venture & Product Prototyping',
-    description: 'A digital project exploring technology-driven solutions and user experience.',
-    technologies: ['UI/UX Design', 'Web Technologies', 'Product Discovery', 'User Research'],
-    overview: 'A digital venture exploration focusing on human-centered digital experiences, clean product architecture, and tech-enabled utility.',
-    problem: 'Users frequently face friction in adopting complex digital tools when user experience and practical utility are out of balance.',
-    approach: 'Conducted user research, wireframed user journeys, and prototyped functional interactive interfaces tested for usability and clarity.',
-    technologyDetails: 'Synthesized design thinking frameworks, Figma prototyping, and modern frontend foundations to translate conceptual models into tangible prototypes.',
-    outcome: 'Established a validated product prototype highlighting how refined UX design transforms complex functional flows into intuitive interactions.',
+    role: 'Frontend Developer',
+    clientOrContext: 'Teravince (NGO) · Non-Profit Digital Initiative',
+    description: 'A responsive digital platform designed and developed for the non-governmental organization (NGO) Teravince to expand community reach and program visibility.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX Design', 'Accessibility'],
+    overview: 'Teravince is a non-governmental organization (NGO) committed to positive community and educational impact. As a Frontend Developer, I built the modern, accessible web interface to articulate their mission, programs, and outreach initiatives.',
+    problem: 'The NGO needed an engaging, modern digital presence to communicate its community programs clearly, engage volunteers, and ensure effortless navigation across diverse devices and low-bandwidth connections.',
+    approach: 'Developed a high-performance, accessible frontend interface featuring responsive layouts, clear visual storytelling, intuitive program discovery, and seamless interaction flows.',
+    technologyDetails: 'Constructed using modern React and TypeScript with Tailwind CSS for utility-driven styling, responsive ergonomics, and strict web accessibility (WCAG AA) standards.',
+    outcome: 'Delivered a clean, highly accessible digital platform that significantly enhanced Teravince NGO’s community engagement, volunteer onboarding, and public storytelling.',
     keyHighlights: [
-      'User journey mapping and high-fidelity prototype validation',
-      'Design system focusing on accessibility and visual hierarchy',
-      'Scalable product architecture ready for iterative development'
+      'Frontend Developer for Teravince NGO digital initiative',
+      'Engineered accessible, high-performance responsive web experience',
+      'Designed clear narrative hierarchy to spotlight non-profit programs'
     ],
     metrics: [
-      { label: 'Prototyping', value: 'High Fidelity' },
-      { label: 'UX Validation', value: 'Conducted' },
-      { label: 'Design System', value: 'Componentized' }
+      { label: 'Organization', value: 'NGO' },
+      { label: 'Role', value: 'FE Developer' },
+      { label: 'Accessibility', value: 'WCAG AA' }
+    ]
+  },
+  {
+    id: 'web-portfolio',
+    title: 'Digital Portfolio Experience',
+    subtitle: 'Interactive Engineering & Showcase Platform',
+    category: 'Web · Engineering',
+    categories: ['Web', 'React'],
+    year: '2026',
+    role: 'Solo Designer & Frontend Engineer',
+    liveUrl: 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app',
+    clientOrContext: 'Personal Digital Engineering Showcase',
+    description: 'A bespoke, editorial digital portfolio showcasing data science, machine learning, and full-stack engineering work.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Canvas Physics'],
+    overview: 'A bespoke web application designed and coded to articulate technical engineering rigor, machine learning capabilities, and editorial visual craftsmanship with speed and restraint.',
+    problem: 'Conventional static portfolios lack the interactivity needed to demonstrate deep technical architecture, live telemetry, and nuanced design engineering.',
+    approach: 'Crafted an unboxed, editorial visual language with rich motion choreography, interactive data matrices, live project inspection, and zero bloated third-party dependencies.',
+    technologyDetails: 'Engineered with React 18, TypeScript, Tailwind CSS, and Motion layout transitions with multi-view presentation modes (Bento, Cascade, Matrix).',
+    outcome: 'A production-grade digital experience that seamlessly presents technical projects, academic milestones, and multilingual competencies across all device formats.',
+    keyHighlights: [
+      'Bespoke design system with dual light/dark themes and interactive canvas physics',
+      'Multi-mode project inspection (Bento 3D Tilt, Cascade Inspector, and Data Matrix)',
+      '100% responsive architecture optimized for all viewport dimensions'
+    ],
+    metrics: [
+      { label: 'Performance', value: '100 Score' },
+      { label: 'Design System', value: 'Bespoke' },
+      { label: 'Architecture', value: 'React + TS' }
     ]
   }
 ];

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, FileText } from 'lucide-react';
 import { motion } from 'motion/react';
-import avatarImg from '../assets/images/profile_avatar_1788084076128.jpg';
+import avatarImg from '../assets/images/dadia_avatar_1788299438051.jpg';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
+  onOpenResumeModal: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResumeModal }) => {
   const heroRef = useRef<HTMLElement>(null);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
 
@@ -42,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
           <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#64748B] dark:text-[#999]">
-            AVAILABLE FOR DATA &amp; AI INITIATIVES
+            GRADUATED 2026 &middot; OPEN FOR AI &amp; DATA ROLES
           </span>
         </div>
 
@@ -114,18 +115,20 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-base sm:text-xl text-[#334155] dark:text-[#AAA] font-normal leading-relaxed mt-6 max-w-2xl"
         >
-          Information Systems &middot; Data Analytics &middot; AI Solutions. Bridging business context with modern computing to build clean, purposeful systems.
+          Fresh Information Systems Graduate &middot; Data Analytics &amp; AI Enthusiast. Bridging machine intelligence, statistical insights, and enterprise architecture to build high-impact solutions.
         </motion.p>
 
         {/* Actions Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-[#BFDBFE]/60 dark:border-[#222] w-full max-w-md">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-[#BFDBFE]/60 dark:border-[#222] w-full max-w-xl">
           <motion.button
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            onClick={() => onNavigate('work')}
+            onClick={() => {
+              onNavigate('about');
+            }}
             id="hero-explore-work-btn"
-            className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-sm"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-sm"
           >
             <span>Explore Work</span>
             <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
@@ -135,9 +138,21 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            onClick={onOpenResumeModal}
+            id="hero-download-cv-btn"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#222] dark:hover:bg-[#2A2A2A] text-white dark:text-[#F3F3F2] border border-[#0284C7]/20 dark:border-[#333] rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs"
+          >
+            <FileText className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+            <span>Download CV</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             onClick={() => onNavigate('contact')}
             id="hero-contact-btn"
-            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-[#BAE6FD] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] bg-white/85 dark:bg-[#161616]/80 backdrop-blur-sm rounded-full text-xs font-semibold text-[#0F1E36] dark:text-[#F3F3F2] tracking-wider transition-colors cursor-pointer"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-5 py-3.5 border border-[#BAE6FD] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] bg-white/85 dark:bg-[#161616]/80 backdrop-blur-sm rounded-full text-xs font-semibold text-[#0F1E36] dark:text-[#F3F3F2] tracking-wider transition-colors cursor-pointer"
           >
             <span>Let's talk</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

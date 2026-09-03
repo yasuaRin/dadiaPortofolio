@@ -123,6 +123,11 @@ export const Project3DCard: React.FC<Project3DCardProps> = ({
             <p className="text-xs sm:text-sm font-serif italic text-[#475569] dark:text-[#AAA] mt-1 line-clamp-1">
               {project.subtitle}
             </p>
+            {project.role && (
+              <p className="text-[11px] font-mono font-medium text-[#0284C7] dark:text-[#F472B6] mt-1 line-clamp-1">
+                {project.role}
+              </p>
+            )}
           </div>
 
           {/* Live Micro-Tab Navigator */}
@@ -216,13 +221,28 @@ export const Project3DCard: React.FC<Project3DCardProps> = ({
               <span className="truncate">{project.technologies.slice(0, 3).join(' · ')}</span>
             </div>
 
-            <button
-              onClick={() => onSelect(project)}
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-[10px] font-mono font-bold uppercase tracking-wider hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shrink-0"
-            >
-              <span>Inspect</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </button>
+            <div className="flex items-center gap-2 shrink-0">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-[#0284C7]/40 dark:border-[#F472B6]/40 text-[#0284C7] dark:text-[#F472B6] hover:bg-[#0284C7] hover:text-white dark:hover:bg-[#F472B6] dark:hover:text-[#111] text-[10px] font-mono font-bold uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  <span>Live</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              )}
+
+              <button
+                onClick={() => onSelect(project)}
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-[10px] font-mono font-bold uppercase tracking-wider hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer"
+              >
+                <span>Inspect</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>

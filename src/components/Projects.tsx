@@ -18,6 +18,13 @@ export const Projects: React.FC = () => {
 
   const categories = ['All', 'Data', 'Automation', 'Web', 'Product'];
 
+  // Sanitized search query handler
+  const handleSearchChange = (rawText: string) => {
+    // Sanitize input: limit to 60 chars, strip dangerous injection patterns
+    const sanitized = rawText.slice(0, 60).replace(/[<>{}[\]\\]/g, '');
+    setSearchQuery(sanitized);
+  };
+
   // Filter projects based on active category and search text
   const filteredProjects = useMemo(() => {
     return projectsData.filter((project) => {
@@ -59,17 +66,6 @@ export const Projects: React.FC = () => {
               <span className="font-serif italic font-normal pastel-gradient-text">Analytics Work.</span>
             </h2>
           </div>
-
-          <div className="max-w-md space-y-3">
-            <p className="text-sm sm:text-base text-[#475569] dark:text-[#AAA] font-normal leading-relaxed">
-              Explore concrete systems, data automation pipelines, and digital products engineered for operational clarity and human utility.
-            </p>
-
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#64748B] dark:text-[#777]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{projectsData.length} Documented Case Studies</span>
-            </div>
-          </div>
         </div>
 
         {/* UI / UX CONTROL BAR: Categories, Search, and View Mode Switcher */}
@@ -102,8 +98,13 @@ export const Projects: React.FC = () => {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                maxLength={60}
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck={false}
                 placeholder="Search stack or title..."
+                aria-label="Search projects by technology or title"
                 className="w-full pl-8 pr-7 py-1.5 rounded-full bg-[#EAF2FC] dark:bg-[#1C1C1C] border border-[#BFDBFE]/60 dark:border-transparent focus:border-[#0284C7] dark:focus:border-[#F472B6] text-xs font-mono text-[#0F1E36] dark:text-[#F3F3F2] placeholder-[#94A3B8] focus:outline-none transition-all"
               />
               {searchQuery && (

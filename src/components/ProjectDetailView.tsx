@@ -94,6 +94,34 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <p className="text-xl sm:text-2xl text-[#475569] dark:text-[#AAA] font-serif italic max-w-3xl">
               {project.subtitle}
             </p>
+
+            {project.role && (
+              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
+                <span className="text-[#64748B] dark:text-[#888] font-bold">ROLE:</span>
+                <span className="px-3 py-1 rounded-full bg-[#E0F2FE] dark:bg-[#1E1E1E] text-[#0284C7] dark:text-[#F472B6] font-semibold">
+                  {project.role}
+                </span>
+                {project.clientOrContext && (
+                  <span className="text-[#64748B] dark:text-[#AAA]">
+                    &middot; {project.clientOrContext}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {project.liveUrl && (
+              <div className="pt-3">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0284C7] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold uppercase tracking-wider hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+                >
+                  <span>Launch Live Platform</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Structured Case Study Modules */}

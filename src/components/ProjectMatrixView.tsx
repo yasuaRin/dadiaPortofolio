@@ -51,6 +51,11 @@ export const ProjectMatrixView: React.FC<ProjectMatrixViewProps> = ({
                     <div className="text-[11px] font-serif italic text-[#475569] dark:text-[#888]">
                       {project.subtitle}
                     </div>
+                    {project.role && (
+                      <div className="text-[10px] font-mono text-[#0284C7] dark:text-[#F472B6] mt-0.5">
+                        {project.role}
+                      </div>
+                    )}
                   </td>
                   <td className="py-4 px-6 hidden md:table-cell">
                     <span className="px-2.5 py-1 rounded bg-[#E0F2FE] dark:bg-[#202020] text-[#0369A1] dark:text-[#DDD] text-[10px] uppercase font-semibold">

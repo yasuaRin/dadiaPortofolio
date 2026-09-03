@@ -56,9 +56,14 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
               <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors">
                 {project.title}
               </h4>
-              <p className="text-sm font-serif italic text-[#475569] dark:text-[#AAA] mt-0.5 mb-3">
+              <p className="text-sm font-serif italic text-[#475569] dark:text-[#AAA] mt-0.5 mb-1.5">
                 {project.subtitle}
               </p>
+              {project.role && (
+                <p className="text-[11px] font-mono font-medium text-[#0284C7] dark:text-[#F472B6] mb-3">
+                  {project.role}
+                </p>
+              )}
               <p className="text-xs sm:text-sm text-[#334155] dark:text-[#CCC] leading-relaxed line-clamp-2 mb-4">
                 {project.description}
               </p>
@@ -75,16 +80,31 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                   ))}
                 </div>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onSelectProject(project);
-                  }}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#F3F3F2] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors cursor-pointer"
-                >
-                  <span>Case Study</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
+                <div className="flex items-center gap-2">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-xs font-mono font-bold uppercase tracking-wider text-[#0284C7] dark:text-[#F472B6] hover:underline"
+                    >
+                      <span>Live</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectProject(project);
+                    }}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#F3F3F2] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors cursor-pointer"
+                  >
+                    <span>Case Study</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           );
