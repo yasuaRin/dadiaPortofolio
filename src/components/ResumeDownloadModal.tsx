@@ -16,6 +16,16 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   const [cvDriveUrl, setCvDriveUrl] = useState(resumeConfig.cvViewUrl);
   const [isEditingUrl, setIsEditingUrl] = useState(false);
   const [customUrlInput, setCustomUrlInput] = useState(resumeConfig.cvViewUrl);
+  const [urlValidationError, setUrlValidationError] = useState<string | null>(null);
+
+  const isSafeUrl = (raw: string): boolean => {
+    try {
+      const parsed = new URL(raw);
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+    } catch {
+      return false;
+    }
+  };
 
   // Close on Escape
   useEffect(() => {
@@ -59,8 +69,14 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   };
 
   const handleOpenCV = () => {
-    // Open verified ATS CV directly without sound effect
-    window.open(cvDriveUrl, '_blank', 'noopener,noreferrer');
+    // Only open if URL is verified as safe http/https to prevent javascript: or data: XSS/injection
+    const target = cvDriveUrl.trim();
+    if (isSafeUrl(target)) {
+      window.open(target, '_blank', 'noopener,noreferrer');
+    } else {
+      // Fallback to safe default
+      window.open(resumeConfig.cvViewUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const handlePrintPage = () => {
@@ -71,9 +87,17 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   };
 
   const handleSaveCustomUrl = () => {
-    if (customUrlInput.trim()) {
-      setCvDriveUrl(customUrlInput.trim());
+    const trimmed = customUrlInput.trim();
+    if (!trimmed) {
+      setUrlValidationError('URL cannot be empty');
+      return;
     }
+    if (!isSafeUrl(trimmed)) {
+      setUrlValidationError('Invalid URL protocol. Only https:// and http:// links are allowed.');
+      return;
+    }
+    setUrlValidationError(null);
+    setCvDriveUrl(trimmed);
     setIsEditingUrl(false);
   };
 
@@ -171,20 +195,40 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
 
                 {/* Quick Link Editor for Custom Drive Links */}
                 {isEditingUrl ? (
-                  <div className="mt-3 pt-3 border-t border-[#BAE6FD]/60 dark:border-[#282828] flex items-center gap-2">
-                    <input
-                      type="url"
-                      value={customUrlInput}
-                      onChange={(e) => setCustomUrlInput(e.target.value)}
-                      placeholder="Paste Google Drive or PDF link..."
-                      className="flex-1 px-3 py-1.5 rounded-lg bg-white dark:bg-[#111] border border-[#CBD5E1] dark:border-[#333] text-xs font-mono text-[#0F1E36] dark:text-[#F3F3F2] focus:outline-none focus:border-[#0284C7]"
-                    />
-                    <button
-                      onClick={handleSaveCustomUrl}
-                      className="px-3 py-1.5 bg-[#0284C7] text-white text-xs font-mono rounded-lg font-bold hover:bg-[#0369A1] transition-colors cursor-pointer"
-                    >
-                      Save
-                    </button>
+                  <div className="mt-3 pt-3 border-t border-[#BAE6FD]/60 dark:border-[#282828] space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="url"
+                        value={customUrlInput}
+                        onChange={(e) => {
+                          setCustomUrlInput(e.target.value);
+                          if (urlValidationError) setUrlValidationError(null);
+                        }}
+                        placeholder="Paste verified https:// link..."
+                        className="flex-1 px-3 py-1.5 rounded-lg bg-white dark:bg-[#111] border border-[#CBD5E1] dark:border-[#333] text-xs font-mono text-[#0F1E36] dark:text-[#F3F3F2] focus:outline-none focus:border-[#0284C7]"
+                      />
+                      <button
+                        onClick={handleSaveCustomUrl}
+                        className="px-3 py-1.5 bg-[#0284C7] text-white text-xs font-mono rounded-lg font-bold hover:bg-[#0369A1] transition-colors cursor-pointer"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsEditingUrl(false);
+                          setUrlValidationError(null);
+                          setCustomUrlInput(cvDriveUrl);
+                        }}
+                        className="px-2.5 py-1.5 bg-neutral-200 dark:bg-[#252525] text-neutral-700 dark:text-[#AAA] text-xs font-mono rounded-lg hover:bg-neutral-300 dark:hover:bg-[#333] transition-colors cursor-pointer"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                    {urlValidationError && (
+                      <p className="text-[11px] font-mono text-red-600 dark:text-red-400">
+                        {urlValidationError}
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <div className="mt-2 text-right">
