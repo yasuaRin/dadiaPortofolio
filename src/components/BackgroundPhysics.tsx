@@ -137,9 +137,9 @@ export const BackgroundPhysics: React.FC = () => {
         mouse.y = -1000;
       }
 
-      // Smooth color morphing between themes without visual hitches
+      // Smooth color morphing between themes without visual hitches (synchronized ~240ms)
       const targetThemeFactor = themeRef.current === 'dark' ? 1 : 0;
-      themeFactor += (targetThemeFactor - themeFactor) * 0.1;
+      themeFactor += (targetThemeFactor - themeFactor) * 0.15;
 
       // Primary color: Light [15, 30, 54] -> Dark [243, 243, 242]
       const prR = Math.round(15 + (243 - 15) * themeFactor);

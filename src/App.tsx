@@ -63,7 +63,7 @@ function PortfolioApp() {
   return (
     <div
       id="portfolio-root"
-      className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative overflow-hidden transition-colors duration-300"
+      className="min-h-screen flex flex-col bg-white dark:bg-[#0D0D0D] text-[#0F1E36] dark:text-[#F3F3F2] selection:bg-[#38BDF8]/30 dark:selection:bg-[#F472B6]/40 selection:text-[#0F1E36] dark:selection:text-white font-sans antialiased relative overflow-hidden transition-colors duration-250"
     >
       {/* Background Interactive Physics Simulation (Spans the Entire Application) */}
       <BackgroundPhysics />

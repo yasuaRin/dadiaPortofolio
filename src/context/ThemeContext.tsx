@@ -45,34 +45,68 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [theme]);
 
-  const toggleTheme = (_event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
+  const toggleTheme = (event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
-    setThemeWithTransition(nextTheme);
+    setThemeWithTransition(nextTheme, event);
   };
 
-  const setTheme = (newTheme: Theme, _event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
-    setThemeWithTransition(newTheme);
+  const setTheme = (newTheme: Theme, event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
+    setThemeWithTransition(newTheme, event);
   };
 
-  const setThemeWithTransition = (newTheme: Theme) => {
+  const setThemeWithTransition = (
+    newTheme: Theme,
+    _event?: React.MouseEvent | { clientX: number; clientY: number } | null
+  ) => {
     if (newTheme === theme) return;
 
-    // 1. Play tactile acoustic switch sound immediately (zero delay)
-    playThemeSound(newTheme);
+    // 1. Play cute tactile acoustic sound asynchronously so it never blocks the DOM render frame
+    setTimeout(() => {
+      playThemeSound(newTheme);
+    }, 0);
 
-    // 2. Synchronously update root DOM classes on the exact click frame
     const root = document.documentElement;
-    root.classList.toggle('dark', newTheme === 'dark');
-    root.style.colorScheme = newTheme;
 
-    // 3. Update React state with 0 delay (single re-render)
-    setThemeState(newTheme);
+    const applyThemeToDOM = () => {
+      if (newTheme === 'dark') {
+        root.classList.add('dark');
+        root.style.colorScheme = 'dark';
+      } else {
+        root.classList.remove('dark');
+        root.style.colorScheme = 'light';
+      }
+      setThemeState(newTheme);
 
-    try {
-      localStorage.setItem('dadia_theme', newTheme);
-    } catch {
-      // ignore
+      try {
+        localStorage.setItem('dadia_theme', newTheme);
+      } catch {
+        // ignore
+      }
+    };
+
+    // 2. Hardware-accelerated View Transitions API (Zero delay, zero gap, GPU compositor)
+    if (
+      typeof document !== 'undefined' &&
+      'startViewTransition' in document &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      try {
+        document.startViewTransition(() => {
+          applyThemeToDOM();
+        });
+        return;
+      } catch {
+        // Fallback below if View Transition throws
+      }
     }
+
+    // 3. Fallback: Synchronized CSS theme morphing across all surfaces
+    root.classList.add('theme-morphing');
+    applyThemeToDOM();
+
+    setTimeout(() => {
+      root.classList.remove('theme-morphing');
+    }, 250);
   };
 
   return (
