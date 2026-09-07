@@ -124,7 +124,7 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
             role="dialog"
             aria-modal="true"
             aria-labelledby="resume-modal-title"
-            className="relative w-full max-w-xl bg-white dark:bg-[#141414] border border-[#BFDBFE]/80 dark:border-[#2A2A2A] rounded-3xl shadow-2xl overflow-hidden z-10 p-6 sm:p-8 no-pdf-export"
+            className="relative w-full max-w-xl max-h-[92vh] max-h-[92dvh] overflow-y-auto overscroll-contain bg-white dark:bg-[#141414] border border-[#BFDBFE]/80 dark:border-[#2A2A2A] rounded-3xl shadow-2xl z-10 p-5 sm:p-8 no-pdf-export"
           >
             {/* Top Close Button */}
             <button

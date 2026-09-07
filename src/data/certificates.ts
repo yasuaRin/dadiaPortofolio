@@ -8,7 +8,7 @@ export const certificatesData: Certificate[] = [
     issuer: 'ASEAN-Korea Cooperation Initiative',
     type: 'certification',
     description: 'Comprehensive digital capability development program focusing on cross-border tech innovations, data ecosystems, and emerging digital economies across ASEAN and Korea.',
-    skillsLearned: ['Digital Economy', 'Cross-Border Collaboration', 'Data Ecosystems', 'Technology Strategy'],
+    skillsLearned: ['Programming', 'Cross-Border Collaboration', 'Data Ecosystems', 'Technology Strategy'],
     credentialId: 'KADA-2025-ASEAN-0894',
     highlight: 'Advanced Digital Capability & Innovation Track'
   },

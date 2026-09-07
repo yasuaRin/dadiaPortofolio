@@ -31,25 +31,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResumeModal }) => 
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-[85vh] sm:min-h-[90vh] pt-4 sm:pt-8 pb-12 sm:pb-16 px-4 sm:px-8 md:px-12 flex flex-col justify-between overflow-hidden bg-transparent"
+      className="relative min-h-[85vh] sm:min-h-[90vh] pt-6 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-8 md:px-12 flex flex-col justify-between overflow-hidden bg-transparent"
     >
       {/* Background Editorial Watermark */}
       <div className="absolute top-1/3 -right-20 pointer-events-none select-none text-[18vw] sm:text-[16vw] font-bold text-[#0F1E36]/[0.03] dark:text-white/[0.02] tracking-tighter uppercase font-sans">
         SYSTEMS
-      </div>
-
-      {/* Top Editorial Eyebrow Bar */}
-      <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-[#BFDBFE]/60 dark:border-[#222]">
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#64748B] dark:text-[#999]">
-            GRADUATED 2026 &middot; OPEN FOR AI &amp; DATA ROLES
-          </span>
-        </div>
-
-        <div className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#64748B] dark:text-[#777]">
-          LOCATION: INDONESIA &middot; 2026
-        </div>
       </div>
 
       {/* Main Editorial Layout */}
