@@ -45,8 +45,12 @@ export const BackgroundPhysics: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, 2);
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
 
     // Initialize particles across full viewport once
     const particleCount = Math.min(55, Math.max(25, Math.floor((width * height) / 32000)));
@@ -74,8 +78,11 @@ export const BackgroundPhysics: React.FC = () => {
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -114,6 +121,7 @@ export const BackgroundPhysics: React.FC = () => {
     window.addEventListener('click', handleClick);
 
     let time = 0;
+    let themeFactor = themeRef.current === 'dark' ? 1 : 0;
 
     const render = () => {
       time += 0.01;
@@ -129,13 +137,33 @@ export const BackgroundPhysics: React.FC = () => {
         mouse.y = -1000;
       }
 
-      const isDark = themeRef.current === 'dark';
+      // Smooth color morphing between themes without visual hitches
+      const targetThemeFactor = themeRef.current === 'dark' ? 1 : 0;
+      themeFactor += (targetThemeFactor - themeFactor) * 0.1;
 
-      // Colors palette according to theme: Pastel Blue in Light Mode, Pastel Pink in Dark Mode
-      const primaryColor = isDark ? 'rgba(243, 243, 242, ' : 'rgba(15, 30, 54, ';
-      const accentColor = isDark ? 'rgba(244, 114, 182, ' : 'rgba(2, 132, 199, ';
-      const mutedColor = isDark ? 'rgba(190, 140, 175, ' : 'rgba(125, 175, 235, ';
-      const lineBaseColor = isDark ? '244, 114, 182' : '56, 189, 248';
+      // Primary color: Light [15, 30, 54] -> Dark [243, 243, 242]
+      const prR = Math.round(15 + (243 - 15) * themeFactor);
+      const prG = Math.round(30 + (243 - 30) * themeFactor);
+      const prB = Math.round(54 + (242 - 54) * themeFactor);
+      const primaryColor = `rgba(${prR}, ${prG}, ${prB}, `;
+
+      // Accent color: Light [2, 132, 199] (#0284C7) -> Dark [244, 114, 182] (#F472B6)
+      const acR = Math.round(2 + (244 - 2) * themeFactor);
+      const acG = Math.round(132 + (114 - 132) * themeFactor);
+      const acB = Math.round(199 + (182 - 199) * themeFactor);
+      const accentColor = `rgba(${acR}, ${acG}, ${acB}, `;
+
+      // Muted color: Light [125, 175, 235] -> Dark [190, 140, 175]
+      const muR = Math.round(125 + (190 - 125) * themeFactor);
+      const muG = Math.round(175 + (140 - 175) * themeFactor);
+      const muB = Math.round(235 + (175 - 235) * themeFactor);
+      const mutedColor = `rgba(${muR}, ${muG}, ${muB}, `;
+
+      // Connecting line base: Light [56, 189, 248] -> Dark [244, 114, 182]
+      const lnR = Math.round(56 + (244 - 56) * themeFactor);
+      const lnG = Math.round(189 + (114 - 189) * themeFactor);
+      const lnB = Math.round(248 + (182 - 248) * themeFactor);
+      const lineBaseColor = `${lnR}, ${lnG}, ${lnB}`;
 
       // 1. Update and Render Shockwaves
       for (let s = shockwavesRef.current.length - 1; s >= 0; s--) {
@@ -218,7 +246,7 @@ export const BackgroundPhysics: React.FC = () => {
 
           if (dist < maxDist) {
             const alphaRatio = 1 - dist / maxDist;
-            const lineAlpha = alphaRatio * (isDark ? 0.16 : 0.1);
+            const lineAlpha = alphaRatio * (0.1 + 0.06 * themeFactor);
 
             // Highlight line if near mouse
             let boost = 0;
@@ -252,19 +280,17 @@ export const BackgroundPhysics: React.FC = () => {
 
         if (p.colorType === 'accent') {
           ctx.fillStyle = `${accentColor}${0.7 + pulse * 0.3})`;
-          // Soft aura glow for accent nodes
-          if (isDark) {
-            ctx.shadowColor = 'rgba(244, 114, 182, 0.45)';
-            ctx.shadowBlur = 8;
-          } else {
-            ctx.shadowColor = 'rgba(56, 189, 248, 0.45)';
-            ctx.shadowBlur = 6;
-          }
+          // Soft aura glow for accent nodes with smooth hue transition
+          const shadowR = Math.round(56 + (244 - 56) * themeFactor);
+          const shadowG = Math.round(189 + (114 - 189) * themeFactor);
+          const shadowB = Math.round(248 + (182 - 248) * themeFactor);
+          ctx.shadowColor = `rgba(${shadowR}, ${shadowG}, ${shadowB}, 0.45)`;
+          ctx.shadowBlur = 6 + 2 * themeFactor;
         } else if (p.colorType === 'primary') {
-          ctx.fillStyle = `${primaryColor}${isDark ? 0.65 : 0.5})`;
+          ctx.fillStyle = `${primaryColor}${0.5 + 0.15 * themeFactor})`;
           ctx.shadowBlur = 0;
         } else {
-          ctx.fillStyle = `${mutedColor}${isDark ? 0.35 : 0.25})`;
+          ctx.fillStyle = `${mutedColor}${0.25 + 0.1 * themeFactor})`;
           ctx.shadowBlur = 0;
         }
 

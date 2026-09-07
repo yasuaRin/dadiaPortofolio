@@ -32,9 +32,11 @@ body {
   padding-right: env(safe-area-inset-right, 0px);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Fast tap response & touch ergonomics */
+/* Fast tap response & touch ergonomics across all mobile devices */
 button, a, input, select, textarea {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -45,37 +47,51 @@ html.dark body {
   color: #F3F3F2;
 }
 
-/* Zero-delay, zero-gap circular View Transitions */
-::view-transition-group(root) {
-  animation: none !important;
-  z-index: 1;
+/* 
+ * Hardware-accelerated, zero-delay theme transition.
+ * Targeted specifically to structural surfaces, containers, and borders
+ * to completely eliminate layout thrashing and maintain a solid 60/120 FPS.
+ */
+html,
+body,
+#portfolio-root,
+header,
+nav,
+footer,
+section,
+dialog {
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::view-transition-image-pair(root) {
-  isolation: isolate;
-  z-index: 1;
+/* Smooth transition for theme cards and borders */
+.theme-surface,
+.cert-card,
+.project-card,
+[class*="backdrop-blur"],
+header[id="editorial-header"],
+div[id="portfolio-root"] {
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none !important;
-  mix-blend-mode: normal !important;
-  display: block;
-  position: fixed;
-  inset: 0;
-  height: 100%;
-  width: 100%;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-::view-transition-old(root) {
-  z-index: 1;
-}
-
-::view-transition-new(root) {
-  z-index: 99999;
-  will-change: clip-path;
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  #portfolio-root,
+  header,
+  nav,
+  footer,
+  section,
+  dialog,
+  .theme-surface,
+  .cert-card,
+  .project-card {
+    transition: none !important;
+  }
 }
 
 /* Continuous smooth rotation with zero gaps or hitches */

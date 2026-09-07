@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { flushSync } from 'react-dom';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { playThemeSound } from '../utils/soundEffects';
 
 export type Theme = 'light' | 'dark';
@@ -19,14 +18,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (saved === 'light' || saved === 'dark') {
         return saved;
       }
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
     } catch {
       // fallback
     }
     return 'light';
   });
 
-  const isTransitioningRef = useRef<boolean>(false);
-
+  // Keep DOM class and localStorage in exact sync
   useEffect(() => {
     try {
       localStorage.setItem('dadia_theme', theme);
@@ -44,112 +45,34 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [theme]);
 
-  const toggleTheme = (event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
+  const toggleTheme = (_event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
-    setThemeWithTransition(nextTheme, event);
+    setThemeWithTransition(nextTheme);
   };
 
-  const setTheme = (newTheme: Theme, event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
-    setThemeWithTransition(newTheme, event);
+  const setTheme = (newTheme: Theme, _event?: React.MouseEvent | { clientX: number; clientY: number } | null) => {
+    setThemeWithTransition(newTheme);
   };
 
-  const setThemeWithTransition = (
-    newTheme: Theme,
-    event?: React.MouseEvent | { clientX: number; clientY: number } | null
-  ) => {
+  const setThemeWithTransition = (newTheme: Theme) => {
     if (newTheme === theme) return;
 
-    // 1. Play tactile acoustic switch sound immediately on gesture (zero audio delay)
+    // 1. Play tactile acoustic switch sound immediately (zero delay)
     playThemeSound(newTheme);
 
-    // 2. Resolve origin coordinates instantly
-    let x = window.innerWidth - 80;
-    let y = 40;
+    // 2. Synchronously update root DOM classes on the exact click frame
+    const root = document.documentElement;
+    root.classList.toggle('dark', newTheme === 'dark');
+    root.style.colorScheme = newTheme;
 
-    if (event && 'clientX' in event && typeof event.clientX === 'number' && event.clientX > 0) {
-      x = event.clientX;
-      y = event.clientY;
-    } else {
-      const targetBtnId = newTheme === 'dark' ? 'theme-btn-dark' : 'theme-btn-light';
-      const btn = document.getElementById(targetBtnId);
-      if (btn) {
-        const rect = btn.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      }
-    }
-
-    // Calculate maximum radius to fully cover screen diagonally with safety buffer
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    ) + 40;
-
-    const doc = document as unknown as {
-      startViewTransition?: (callback: () => void) => {
-        ready: Promise<void>;
-        finished: Promise<void>;
-      };
-    };
-
-    // Check if View Transition API is supported and not currently locked
-    if (typeof doc.startViewTransition === 'function' && !isTransitioningRef.current) {
-      isTransitioningRef.current = true;
-
-      try {
-        const transition = doc.startViewTransition(() => {
-          // Synchronously flush state and apply DOM attributes in the same render frame
-          flushSync(() => {
-            setThemeState(newTheme);
-          });
-          const root = document.documentElement;
-          root.classList.toggle('dark', newTheme === 'dark');
-          root.style.colorScheme = newTheme;
-        });
-
-        transition.ready
-          .then(() => {
-            // Silky smooth zero-lag circular clip-path reveal with custom ease-out cubic curve
-            const animation = document.documentElement.animate(
-              {
-                clipPath: [
-                  `circle(0px at ${x}px ${y}px)`,
-                  `circle(${endRadius}px at ${x}px ${y}px)`
-                ]
-              },
-              {
-                duration: 400,
-                easing: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
-                pseudoElement: '::view-transition-new(root)',
-                fill: 'both'
-              }
-            );
-
-            animation.onfinish = () => {
-              isTransitioningRef.current = false;
-            };
-          })
-          .catch(() => {
-            isTransitioningRef.current = false;
-            setThemeState(newTheme);
-          });
-
-        transition.finished
-          .catch(() => {})
-          .finally(() => {
-            isTransitioningRef.current = false;
-          });
-
-        return;
-      } catch {
-        isTransitioningRef.current = false;
-        setThemeState(newTheme);
-        return;
-      }
-    }
-
-    // Direct fallback for unsupported environments
+    // 3. Update React state with 0 delay (single re-render)
     setThemeState(newTheme);
+
+    try {
+      localStorage.setItem('dadia_theme', newTheme);
+    } catch {
+      // ignore
+    }
   };
 
   return (
@@ -166,5 +89,6 @@ export const useTheme = (): ThemeContextType => {
   }
   return context;
 };
+
 
 
