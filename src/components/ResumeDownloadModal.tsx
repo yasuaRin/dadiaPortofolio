@@ -13,6 +13,7 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [pdfProgress, setPdfProgress] = useState<{ current: number; total: number } | null>(null);
   const [pdfSuccess, setPdfSuccess] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
   const [cvDriveUrl, setCvDriveUrl] = useState(resumeConfig.cvViewUrl);
   const [isEditingUrl, setIsEditingUrl] = useState(false);
   const [customUrlInput, setCustomUrlInput] = useState(resumeConfig.cvViewUrl);
@@ -54,6 +55,7 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
     if (isGeneratingPDF) return;
     try {
       setIsGeneratingPDF(true);
+      setPdfError(null);
       setPdfProgress(null);
       await generatePortfolioPDF((current, total) => {
         setPdfProgress({ current, total });
@@ -62,6 +64,9 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
       setTimeout(() => setPdfSuccess(false), 3000);
     } catch (err) {
       console.error('Failed to generate portfolio PDF:', err);
+      setPdfError(
+        'Unable to complete automatic PDF capture in this browser. Try the "Print webpage layout" option below to save as PDF directly.'
+      );
     } finally {
       setIsGeneratingPDF(false);
       setPdfProgress(null);
@@ -300,6 +305,11 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
                     )}
                   </button>
                 </div>
+                {pdfError && (
+                  <div className="mt-3 p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 flex items-start gap-2">
+                    <span>{pdfError}</span>
+                  </div>
+                )}
               </div>
             </div>
 

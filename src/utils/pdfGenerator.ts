@@ -1,6 +1,3 @@
-import { toCanvas } from 'html-to-image';
-import { jsPDF } from 'jspdf';
-
 export interface PDFProgressCallback {
   (current: number, total: number): void;
 }
@@ -14,6 +11,12 @@ export interface PDFProgressCallback {
 export async function generatePortfolioPDF(
   onProgress?: PDFProgressCallback
 ): Promise<void> {
+  // Dynamically import libraries so they are only loaded when user requests PDF export
+  const [{ toCanvas }, { jsPDF }] = await Promise.all([
+    import('html-to-image'),
+    import('jspdf'),
+  ]);
+
   const targetElement = (document.getElementById('portfolio-root') ||
     document.querySelector('main') ||
     document.body) as HTMLElement;
