@@ -77,11 +77,10 @@ function PortfolioApp() {
       {/* 2. Scroll Progress Bar & Side Numbers */}
       <ScrollProgress activeSection={activeSection} onNavigate={handleNavigate} />
 
-      {/* 3. Floating Navigation with Theme Switcher & CV Center */}
+      {/* 3. Floating Navigation with Theme Switcher */}
       <Navbar
         activeSection={activeSection}
         onNavigate={handleNavigate}
-        onOpenResumeModal={() => setIsResumeModalOpen(true)}
       />
 
       {/* 4. Main Editorial Content Flow */}
@@ -106,12 +105,6 @@ function PortfolioApp() {
 
         {/* Selected Work / Projects */}
         <Projects />
-
-        {/* Marquee Ticker 2 */}
-        <Marquee
-          text="EXPLORE — EXPERIMENT — ENGINEER — DELIVER — EXPLORE — EXPERIMENT — ENGINEER — DELIVER →"
-          reverse
-        />
 
         {/* Capabilities / Skills */}
         <Skills />

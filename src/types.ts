@@ -1,3 +1,21 @@
+export interface ProjectFeature {
+  number: string;
+  title: string;
+  description: string;
+  tag?: string;
+}
+
+export interface ApproachStep {
+  phase: string;
+  title: string;
+  description: string;
+}
+
+export interface TechStackGroup {
+  category: string;
+  items: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -10,7 +28,10 @@ export interface Project {
   year?: string;
   role?: string;
   liveUrl?: string;
+  githubUrl?: string;
   clientOrContext?: string;
+  duration?: string;
+  team?: string;
   overview: string;
   problem: string;
   approach: string;
@@ -19,6 +40,9 @@ export interface Project {
   keyHighlights?: string[];
   metrics?: { label: string; value: string }[];
   accentGradient?: string;
+  features?: ProjectFeature[];
+  approachSteps?: ApproachStep[];
+  techStackGrouped?: TechStackGroup[];
 }
 
 export interface Certificate {

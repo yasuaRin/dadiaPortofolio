@@ -4,167 +4,557 @@ export const projectsData: Project[] = [
   {
     id: 'vidhelp',
     title: 'VIDHELP',
-    subtitle: 'Operations & Analytics Platform',
-    category: 'Business · Data · AI',
-    categories: ['Business', 'Data', 'AI'],
+    subtitle: 'All-in-One Creative Agency Workspace',
+    category: 'Business · Web App · Smart Tool',
+    categories: ['Business', 'AI', 'Web'],
     featured: true,
     year: '2025',
-    role: 'Team Leader · ML Engineer · Full-Stack Developer (FE & BE)',
+    duration: '4 Months',
+    team: '4-person University Capstone Team (Team Leader)',
+    role: 'Team Leader · Full-Stack Web Developer · Smart Feature Lead',
     liveUrl: 'https://vidhelp-frontend.vercel.app/',
-    clientOrContext: 'Capstone Project · VIDHELP Agency Operations Suite',
-    description: 'An enterprise operational intelligence and analytics platform engineered to solve the 4 core business bottlenecks of VIDHELP agency.',
-    technologies: ['React', 'Supabase', 'Python / ML', 'Data Analytics', 'TypeScript', 'Tailwind CSS'],
-    overview: 'VIDHELP was engineered as our university capstone project to resolve critical operational bottlenecks for VIDHELP agency. Acting as Team Leader, ML Engineer, and Full-Stack Developer, I spearheaded the architectural design and implementation to eliminate scattered spreadsheets, streamline creator operations, and deliver real-time predictive financial telemetry.',
-    problem: 'VIDHELP agency faced 4 critical core business challenges: 1) Disjointed client and creator tracking across unstandardized spreadsheets; 2) Delayed revenue recognition and slow invoicing turnaround; 3) Lack of unified operational metrics to diagnose team bandwidth and workflow bottlenecks; 4) Absence of predictive ML trend signals to forecast campaign yields and allocate agency resources efficiently.',
-    approach: 'Architected a modular full-stack web ecosystem with real-time relational persistence, dynamic operational dashboards, and predictive Machine Learning algorithms that classify performance anomalies and forecast campaign revenues automatically.',
-    technologyDetails: 'Developed with React and TypeScript on the frontend with custom analytics visualizers; Supabase PostgreSQL for secure real-time multi-tenant database persistence; and Python ML pipelines powering predictive trend forecasts and operational variance detection.',
-    outcome: 'Successfully resolved all 4 core business bottlenecks: unified agency tracking into one single pane of glass, automated revenue visibility, provided real-time team workflow telemetry, and deployed ML forecasting for strategic client management.',
+    clientOrContext: 'University Capstone Project for VIDHELP Creative Agency',
+    description: 'An all-in-one web app built for a fast-growing creative agency to replace messy Google Sheets, automate invoices, and forecast monthly revenue.',
+    technologies: ['React', 'Supabase', 'Python', 'TypeScript', 'Tailwind CSS'],
+    overview: 'As our university graduation capstone project, my team of four partnered with VIDHELP, a video production and creative agency. I led the team, built the front and back of the website, and created a smart tool that helps them plan upcoming monthly earnings based on past work.',
+    problem: 'Before this, the agency was drowning in messy Google Sheets. Team members lost track of which creator was working on which video, invoices were calculated by hand and sent late, managers had no clue who was overworked, and nobody could reliably guess how much money the agency would make next month.',
+    approach: 'We listened to what the agency team struggled with every day and built a clean, central dashboard. Everything they need is now in one place: creators, clients, video progress, invoices, and a friendly smart tool that estimates future revenue.',
+    technologyDetails: 'Built using React and TypeScript for a fast, clean website; Supabase to securely save client and project info in real time; and a Python helper to estimate upcoming monthly earnings.',
+    outcome: 'We solved all 4 of the agency’s biggest daily headaches: no more lost spreadsheets, invoices get sent on time with a single click, the team workload is clear at a glance, and leadership can plan ahead with confidence.',
+    approachSteps: [
+      {
+        phase: '01. Listening',
+        title: 'Talking to the Team About Their Daily Headaches',
+        description: 'Sat down with agency managers and creators to understand where time was being wasted and why invoices were always late.'
+      },
+      {
+        phase: '02. Organizing',
+        title: 'Creating One Safe Place for All Information',
+        description: 'Organized all scattered spreadsheets into a single, secure database so client contacts, creator profiles, and payments are never lost.'
+      },
+      {
+        phase: '03. Building',
+        title: 'Designing an Easy Dashboard & Smart Forecasts',
+        description: 'Built clean screens for tracking video projects, generating bills with one click, and estimating future earnings automatically.'
+      },
+      {
+        phase: '04. Testing',
+        title: 'Putting it in the Hands of the Agency',
+        description: 'Tested the app with real agency workflows, made sure everyone found it easy to use, and launched it live on the web.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'What You See (Frontend)',
+        items: ['React 18', 'TypeScript', 'Tailwind CSS', 'Interactive Charts']
+      },
+      {
+        category: 'Behind the Scenes (Backend)',
+        items: ['Supabase', 'Secure Database', 'Instant Sync', 'User Logins']
+      },
+      {
+        category: 'Smart Helpers & Logic',
+        items: ['Python', 'Revenue Estimator', 'Automatic Trend Calculation']
+      },
+      {
+        category: 'Hosting & Tools',
+        items: ['Vercel Cloud Hosting', 'GitHub for Team Code', 'Live Web Access']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'All Creators & Clients in One Place',
+        description: 'Replaces endless spreadsheets with an easy directory where you can see who is available, their past videos, and contact info.',
+        tag: 'Everyday Work'
+      },
+      {
+        number: '02',
+        title: 'Team Workload & Progress Tracker',
+        description: 'A visual board showing what video each creator is working on so nobody gets overwhelmed and deadlines aren’t missed.',
+        tag: 'Team Flow'
+      },
+      {
+        number: '03',
+        title: 'One-Click Invoices & Billing',
+        description: 'Whenever a client approves a video, the system automatically creates a clean invoice, saving hours of manual calculator work.',
+        tag: 'Save Time'
+      },
+      {
+        number: '04',
+        title: 'Smart Monthly Revenue Estimator',
+        description: 'Looks at past video jobs and seasonal trends to give managers a helpful prediction of how much the agency will earn next month.',
+        tag: 'Smart Tools'
+      }
+    ],
     keyHighlights: [
-      'Capstone Project: Led full lifecycle as Team Leader, ML Engineer, and Full-Stack Developer',
-      'Targeted resolution of the 4 fundamental business bottlenecks of VIDHELP agency',
-      'Deployed real-time operational dashboard with live ML analytics pipelines',
-      'Live deployment active at https://vidhelp-frontend.vercel.app/'
+      'Led a 4-person capstone team from initial idea to live production',
+      'Fixed the agency’s 4 biggest daily bottlenecks in one simple app',
+      'Turned hours of manual weekly spreadsheet math into instant reports',
+      'Live and accessible online today at https://vidhelp-frontend.vercel.app/'
     ],
     metrics: [
-      { label: 'Role', value: 'Team Lead & ML' },
-      { label: 'Core Problems', value: '4 Solved' },
-      { label: 'Platform Status', value: 'Live' }
+      { label: 'My Role', value: 'Team Lead' },
+      { label: 'Big Headaches', value: '4 Solved' },
+      { label: 'Current State', value: 'Live & Working' }
     ]
   },
   {
     id: 'sales-analysis-automation',
-    title: 'Sales Analysis Automation',
-    subtitle: 'Multi-Platform Reporting Pipeline',
+    title: 'Sales Report Automator',
+    subtitle: 'Turning Messy Sales Files Into Clean Reports',
     category: 'Data · Automation',
     categories: ['Data', 'Automation'],
     year: '2024',
+    duration: '2 Months',
+    team: 'Commercial Analytics Project',
     role: 'Data Engineer & Automation Specialist',
-    clientOrContext: 'Commercial Analytics & Workflow Pipeline',
-    description: 'Automated sales analysis across multiple platforms to make reporting faster, error-free, and easier to understand.',
-    technologies: ['Python', 'Pandas', 'Power BI', 'SQL', 'Data Pipelines'],
-    overview: 'An automated data ingestion and aggregation pipeline that pulls multi-channel commercial transactions into standardized analytical reports with zero manual overhead.',
-    problem: 'Sales data was siloed across separate e-commerce and retail channels, requiring repetitive manual exports, tedious data cleaning, and high risk of formula discrepancy each reporting cycle.',
-    approach: 'Constructed an automated ETL script that harmonizes disparate schema formats, cleanses outliers, calculates rolling performance metrics, and exports clean summaries into dynamic dashboards.',
-    technologyDetails: 'Built using Python (Pandas/NumPy) for automated data transformations and validation; scheduled workflows; and Power BI for interactive stakeholder visuals.',
-    outcome: 'Eliminated hours of repetitive data wrangling while improving data consistency and enabling faster strategic pricing and inventory decisions.',
+    clientOrContext: 'Multi-Shop Retail and E-commerce Business',
+    description: 'An automated tool that grabs sales numbers from different online shops and spreadsheets, cleans them up, and builds clear dashboards in seconds.',
+    technologies: ['Python', 'Pandas', 'Power BI', 'SQL', 'Automated Scripts'],
+    overview: 'The team was wasting hours every Monday manually downloading sales files from online stores and physical shops, copying and pasting rows into Excel, and fixing formula errors. I built a Python script that does all of that automatically at the push of a button.',
+    problem: 'Sales data was trapped in different formats across multiple websites and retail registers. Someone had to manually copy, paste, and check numbers every week. It was exhausting, took almost a full working day, and often had accidental copy-paste mistakes.',
+    approach: 'I wrote a simple automation script in Python that automatically collects all the weekly sales files, cleans up misspelled names and currencies, and plugs the clean totals directly into an interactive dashboard.',
+    technologyDetails: 'Used Python and Pandas to automatically read, clean, and organize files; and Power BI to create visual charts that anyone on the team can understand in seconds.',
+    outcome: 'Cut weekly reporting time from an entire day down to just 2 minutes, completely eliminated human math mistakes, and gave business owners clear insights into their best-selling products.',
+    approachSteps: [
+      {
+        phase: '01. Gathering',
+        title: 'Finding Where the Files Live',
+        description: 'Mapped out all the different websites and registers where sales receipts and CSV spreadsheets were being saved.'
+      },
+      {
+        phase: '02. Cleaning',
+        title: 'Teaching the Computer to Fix Typos',
+        description: 'Wrote scripts that fix mismatched product codes, currency conversions, and duplicate receipts automatically.'
+      },
+      {
+        phase: '03. Calculating',
+        title: 'Figuring Out Profit & Weekly Growth',
+        description: 'Programmed the math to automatically calculate profit margins, best-seller rankings, and week-by-week sales growth.'
+      },
+      {
+        phase: '04. Sharing',
+        title: 'Making Beautiful, Easy-to-Read Charts',
+        description: 'Connected the clean numbers into a visual Power BI dashboard so managers can filter by product, city, or date with one click.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'Automation & Code',
+        items: ['Python', 'Pandas', 'File Readers', 'Data Cleaning']
+      },
+      {
+        category: 'Visual Reports',
+        items: ['Power BI', 'Interactive Charts', 'Clickable Filters']
+      },
+      {
+        category: 'Data Storage',
+        items: ['SQL', 'Excel / CSV Handlers', 'Automated Scheduled Tasks']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'Automatic File Collection',
+        description: 'Pulls transaction reports from multiple stores and websites into one single folder with zero manual downloading.',
+        tag: 'Automation'
+      },
+      {
+        number: '02',
+        title: 'Self-Cleaning Data',
+        description: 'Instantly spots missing dates, incorrect prices, and duplicate orders, fixing them before the report is made.',
+        tag: 'Accuracy'
+      },
+      {
+        number: '03',
+        title: 'Weekly & Monthly Trends',
+        description: 'Automatically compares this month’s sales to last month so the team instantly sees which products are gaining popularity.',
+        tag: 'Insights'
+      },
+      {
+        number: '04',
+        title: 'Visual Click-and-Explore Dashboard',
+        description: 'A friendly visual dashboard where anyone can filter by branch, product category, or discount with a single tap.',
+        tag: 'Easy Visuals'
+      }
+    ],
     keyHighlights: [
-      'Automated multi-source schema normalization and cleansing',
-      'Instant generation of period-over-period sales summaries',
-      'Interactive executive dashboards for real-time commercial visibility'
+      'Turned an 8-hour weekly manual chore into a 2-minute automated task',
+      '100% accurate calculations with zero human copy-paste errors',
+      'Created simple visual dashboards that non-technical managers love using'
     ],
     metrics: [
       { label: 'Time Saved', value: '~85%' },
-      { label: 'Pipeline Speed', value: 'Automated' },
-      { label: 'Output', value: 'Power BI' }
+      { label: 'Report Time', value: '2 Minutes' },
+      { label: 'Output', value: 'Power BI Charts' }
     ]
   },
   {
     id: 'payroll-system',
-    title: 'Payroll Generation System',
-    subtitle: 'Automated Compensation & Payslip Engine',
+    title: 'Easy Payroll & Payslip Generator',
+    subtitle: 'Fast, Accurate Salary & Tax Calculations',
     category: 'Automation · Data',
     categories: ['Automation', 'Data', 'Web'],
     year: '2024',
-    role: 'Solo Developer (100% Python Engine)',
-    clientOrContext: 'Independent Enterprise Solution',
-    description: 'An automated payroll generation system developed entirely using Python to compute compensations, tax brackets, and generate structured payment records.',
-    technologies: ['Python', 'Pandas', 'Automated Reporting', 'Data Processing', 'File I/O'],
-    overview: 'Developed entirely as a solo engineer, this system leverages pure Python engines to compute complex employee payrolls, calculate custom statutory tax deductions and allowances, and generate formatted payslip reports instantly.',
-    problem: 'Manual payroll processing across spreadsheets was prone to human calculation errors, slow turnaround times during pay cycles, and lack of systematic payslip export generation.',
-    approach: 'Designed a standalone Python-driven data calculation pipeline that validates employee hours, applies multi-tiered tax calculations and bonuses, and exports verified payroll summaries and individual employee slips.',
-    technologyDetails: 'Engineered completely with Python, utilizing modular functions, robust data validation, structured file handling, and automated report generation routines.',
-    outcome: 'Reduced periodic payroll calculation from hours to seconds with 100% mathematical accuracy, generating ready-to-distribute payment documentation with zero manual data entry errors.',
+    duration: '1.5 Months',
+    team: 'Independent Project',
+    role: 'Solo Developer (Built 100% from Scratch)',
+    clientOrContext: 'Independent Business Solution',
+    description: 'An automated payroll tool that figures out employee pay, taxes, bonuses, and overtime in seconds, then prints ready-to-send payslips.',
+    technologies: ['Python', 'Pandas', 'Automated PDF/Excel', 'Data Validation'],
+    overview: 'Calculating employee salaries by hand every month was stressful and risky. One small formula mistake in Excel could mean paying someone the wrong amount or miscalculating taxes. I built a lightweight Python tool that handles the entire payroll process automatically and prints out clean individual payslips.',
+    problem: 'The company was spending days checking spreadsheets, calculating tax brackets by hand, and typing out individual pay slips. Human errors were common, and employees often had questions because the calculations weren’t clear.',
+    approach: 'I built a simple, reliable Python engine where the user just enters work hours and base rates. The program instantly applies regional tax rules, adds overtime, deducts insurance, and generates clean, professional payslip files ready to print or email.',
+    technologyDetails: 'Written completely in Python with clean, modular code that checks its own math to guarantee 100% accuracy before generating files.',
+    outcome: 'Reduced monthly payroll processing from several stressful days to just a few seconds, with zero math errors and happy employees who receive clear, itemized payslips on time.',
+    approachSteps: [
+      {
+        phase: '01. Rules',
+        title: 'Setting Up Tax & Overtime Guidelines',
+        description: 'Gathered official local tax rules, health insurance rates, and company overtime policies so the computer knows the exact rules.'
+      },
+      {
+        phase: '02. Coding',
+        title: 'Building the Calculation Engine',
+        description: 'Wrote step-by-step Python code that takes hours worked, multiplies by hourly pay, and accurately subtracts taxes and deductions.'
+      },
+      {
+        phase: '03. Double-Checking',
+        title: 'Automated Math Checks',
+        description: 'Built in automatic checks that compare the company total against all employee slips to ensure every single cent balances out.'
+      },
+      {
+        phase: '04. Printing',
+        title: 'One-Click Payslip Creation',
+        description: 'Created an export button that generates individual, clean payslip files ready to hand out to employees.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'Programming Language',
+        items: ['Python 3', 'Clean Functions', 'Reliable Math Logic']
+      },
+      {
+        category: 'File Handling',
+        items: ['Excel / CSV Reader', 'Spreadsheet Exporter', 'File Organizer']
+      },
+      {
+        category: 'Quality Checks',
+        items: ['Automatic Balance Verification', 'Audit Trail', 'Clear Receipts']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'Accurate Tax & Deduction Math',
+        description: 'Takes the guesswork out of income tax brackets and health insurance deductions with 100% exact math.',
+        tag: 'Zero Mistakes'
+      },
+      {
+        number: '02',
+        title: 'Overtime & Bonus Calculator',
+        description: 'Easily adds holiday rates, weekend overtime, and special bonuses without breaking existing calculations.',
+        tag: 'Flexible'
+      },
+      {
+        number: '03',
+        title: 'Ready-to-Print Individual Payslips',
+        description: 'Generates neat, professional payslips showing employees exactly where every dollar went in plain terms.',
+        tag: 'Clean Output'
+      },
+      {
+        number: '04',
+        title: 'Total Balance Summary for Bosses',
+        description: 'Gives the finance manager a one-page summary sheet showing total payout, taxes withheld, and bank totals.',
+        tag: 'Quick Review'
+      }
+    ],
     keyHighlights: [
-      'Developed independently as the sole software engineer',
-      'Pure Python architecture for calculation, tax breakdown, and slip generation',
-      '100% calculation accuracy with automated validation checks'
+      'Built 100% independently from concept to working tool',
+      'Eliminated hours of stressful monthly calculator math',
+      '100% mathematical accuracy with built-in safety checks'
     ],
     metrics: [
-      { label: 'Development', value: 'Solo Project' },
-      { label: 'Core Engine', value: '100% Python' },
-      { label: 'Accuracy', value: '100% Exact' }
+      { label: 'Built By', value: 'Solo Project' },
+      { label: 'Built With', value: '100% Python' },
+      { label: 'Math Errors', value: '0% (Exact)' }
     ]
   },
   {
     id: 'student-gpa-tracker',
-    title: 'Student GPA & Academic Tracker',
-    subtitle: 'ML Academic Trajectory & Performance Forecaster',
-    category: 'AI · Data · Web',
+    title: 'Student Grade & Graduation Forecaster',
+    subtitle: 'Helping Students Plan Their Academic Journey',
+    category: 'Smart Tool · Web App',
     categories: ['AI', 'Data', 'Web'],
     year: '2023',
-    role: 'Team Leader · ML Engineer · Full-Stack Developer (FE & BE)',
-    clientOrContext: 'Academic Analytics & Machine Learning Initiative',
-    description: 'An AI-powered academic analytics platform utilizing Machine Learning to forecast student graduation GPA trajectories and optimize study planning.',
-    technologies: ['Machine Learning', 'Python', 'JavaScript', 'Data Science', 'Full-Stack Architecture'],
-    overview: 'Serving as Team Leader, ML Engineer, and Full-Stack Developer, I guided the development of this intelligent academic management system that combines predictive modeling with an interactive course management interface.',
-    problem: 'University students frequently struggle to anticipate how individual course grades affect their cumulative GPA and degree honors, lacking data-driven simulation tools to model their academic trajectory.',
-    approach: 'Engineered predictive ML regression models that evaluate historical credit weighting and coursework trends, paired with a dynamic frontend interface allowing students to perform goal-seeking simulations.',
-    technologyDetails: 'Built predictive ML algorithms in Python to evaluate GPA trajectories, integrated with an intuitive full-stack web application supporting credit-weighted scoring and instant local persistence.',
-    outcome: 'Delivered an empowering academic companion that enables students to forecast outcomes, prioritize high-impact subjects, and maintain clear sight of honors goals.',
+    duration: '3 Months',
+    team: 'University Student Initiative (Team Leader)',
+    role: 'Team Leader · Smart Feature Lead · Web Developer',
+    clientOrContext: 'Student Academic Planning Tool',
+    description: 'A friendly web app that helps university students track current grades, simulate future semesters, and see exactly what scores they need to graduate with honors.',
+    technologies: ['Python', 'JavaScript', 'Smart Forecasting', 'Web App', 'HTML/CSS'],
+    overview: 'As students, my classmates and I always wondered: "What grades do I need next semester to graduate with honors?" or "Will getting a B in this 4-credit class pull my GPA down?" I led a team to build an easy simulator that answers those exact questions in seconds.',
+    problem: 'University grade calculations are confusing. Different courses have different credit weights, retake rules vary, and students often have to guess or use messy notes to figure out their graduation standing.',
+    approach: 'We built a friendly web calculator that lets students input their past courses, see their weighted GPA immediately, and run "what-if" simulations to see what grades they need in future classes.',
+    technologyDetails: 'Built with a clean web interface in JavaScript and HTML/CSS, backed by smart Python math models that calculate grade trajectories and target score boundaries.',
+    outcome: 'Created an empowering, easy-to-use academic companion that helped fellow students plan their study schedules, reduce exam anxiety, and hit their graduation goals.',
+    approachSteps: [
+      {
+        phase: '01. Discovery',
+        title: 'Understanding Student Confusion',
+        description: 'Surveyed university peers to see what confused them most about credit weights, honors cutoffs, and GPA targets.'
+      },
+      {
+        phase: '02. Formula Design',
+        title: 'Coding the University Grade Rules',
+        description: 'Programmed the exact credit-weight formulas so 4-credit courses carry more weight than 2-credit electives.'
+      },
+      {
+        phase: '03. Target Simulator',
+        title: 'Building the "What Do I Need?" Feature',
+        description: 'Built reverse-calculation logic: the student picks their dream GPA (e.g. 3.75) and the tool calculates the minimum grades needed.'
+      },
+      {
+        phase: '04. Clean Interface',
+        title: 'Making it Fun and Simple to Use',
+        description: 'Designed a clean, colorful dashboard with visual progress bars so students can easily see how close they are to their goal.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'Smart Math & Logic',
+        items: ['Python', 'Trend Models', 'Reverse Goal Calculator']
+      },
+      {
+        category: 'Student Website (Frontend)',
+        items: ['JavaScript', 'HTML5', 'Modern CSS', 'Visual Progress Charts']
+      },
+      {
+        category: 'User Experience',
+        items: ['Instant Results', 'Saves to Browser', 'Zero Confusing Math']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'Instant Weighted GPA Calculator',
+        description: 'Automatically balances credits and course grades so students never have to calculate weighted averages by hand.',
+        tag: 'Fast Math'
+      },
+      {
+        number: '02',
+        title: 'Target Grade Goal-Seeker',
+        description: 'Enter the GPA you want to graduate with, and the app instantly tells you what grades you need in your remaining classes.',
+        tag: 'Goal Planner'
+      },
+      {
+        number: '03',
+        title: 'Course History & Retake Support',
+        description: 'Easily organize past semesters, including retaken classes and lab credits, without messing up the total count.',
+        tag: 'Organized'
+      },
+      {
+        number: '04',
+        title: 'Visual Progress & Momentum Bars',
+        description: 'See your academic journey as a visual story, showing your semester-by-semester improvements.',
+        tag: 'Visuals'
+      }
+    ],
     keyHighlights: [
-      'Led the initiative as Team Leader, ML Engineer, and Full-Stack Developer (FE & BE)',
-      'Integrated Machine Learning algorithms for performance trend forecasting',
-      'Dynamic weighted GPA calculation with goal-seeking targets'
+      'Led the student project team as Team Leader and Lead Developer',
+      'Built a reverse goal-seeker that tells students what grades to aim for',
+      'Designed to be approachable, friendly, and stress-free for everyday students'
     ],
     metrics: [
-      { label: 'Role', value: 'Lead & ML Eng' },
-      { label: 'Model', value: 'ML Forecast' },
-      { label: 'Interface', value: 'Full-Stack' }
+      { label: 'My Role', value: 'Team Leader' },
+      { label: 'Core Goal', value: 'Graduation Help' },
+      { label: 'Simulations', value: 'Instant & Live' }
     ]
   },
   {
     id: 'teravince',
-    title: 'Teravince NGO Digital Platform',
-    subtitle: 'Non-Profit Web Experience & Impact Portal',
-    category: 'Web · Product',
+    title: 'Teravince Non-Profit Website',
+    subtitle: 'Connecting Volunteers & Donors to Community Programs',
+    category: 'Web · Community',
     categories: ['Web', 'Product'],
     year: '2024',
-    role: 'Frontend Developer',
-    clientOrContext: 'Teravince (NGO) · Non-Profit Digital Initiative',
-    description: 'A responsive digital platform designed and developed for the non-governmental organization (NGO) Teravince to expand community reach and program visibility.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX Design', 'Accessibility'],
-    overview: 'Teravince is a non-governmental organization (NGO) committed to positive community and educational impact. As a Frontend Developer, I built the modern, accessible web interface to articulate their mission, programs, and outreach initiatives.',
-    problem: 'The NGO needed an engaging, modern digital presence to communicate its community programs clearly, engage volunteers, and ensure effortless navigation across diverse devices and low-bandwidth connections.',
-    approach: 'Developed a high-performance, accessible frontend interface featuring responsive layouts, clear visual storytelling, intuitive program discovery, and seamless interaction flows.',
-    technologyDetails: 'Constructed using modern React and TypeScript with Tailwind CSS for utility-driven styling, responsive ergonomics, and strict web accessibility (WCAG AA) standards.',
-    outcome: 'Delivered a clean, highly accessible digital platform that significantly enhanced Teravince NGO’s community engagement, volunteer onboarding, and public storytelling.',
+    duration: '2 Months',
+    team: 'Non-Profit Web Initiative',
+    role: 'Frontend Web Developer',
+    clientOrContext: 'Teravince Community Non-Governmental Organization (NGO)',
+    description: 'A clean, welcoming, and accessible website designed for the non-profit organization Teravince to help volunteers find programs and get involved.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Accessible Design', 'Mobile-Friendly'],
+    overview: 'Teravince is a community non-profit organization dedicated to youth education and local community support. As the Frontend Developer, I built their public website to make their story clear, explain their programs, and make it super easy for anyone to sign up as a volunteer.',
+    problem: 'The organization had great community programs, but their old website was outdated, hard to read on mobile phones, and didn’t explain clearly how interested volunteers could join in.',
+    approach: 'I designed and built a warm, modern web experience with large readable text, simple navigation, inspiring photos, and an easy-to-use signup form that works smoothly on any smartphone even with slow internet.',
+    technologyDetails: 'Built with React and Tailwind CSS, paying special attention to high contrast, large buttons, fast loading speeds, and accessibility for all visitors.',
+    outcome: 'Gave the organization a credible, inspiring digital front door that helped them attract new volunteers, showcase past events, and receive positive feedback from community partners.',
+    approachSteps: [
+      {
+        phase: '01. Listening',
+        title: 'Understanding the NGO’s Mission',
+        description: 'Talked with community leaders to find out what questions volunteers and donors ask most often.'
+      },
+      {
+        phase: '02. Layout',
+        title: 'Designing for Real People on Mobile Phones',
+        description: 'Created a simple layout with large buttons, high-contrast colors, and friendly wording that anyone can read.'
+      },
+      {
+        phase: '03. Coding',
+        title: 'Building Fast, Reusable Pages',
+        description: 'Built the website using modern React and Tailwind CSS so pages load quickly even on slow mobile networks.'
+      },
+      {
+        phase: '04. Review',
+        title: 'Testing with Real Community Volunteers',
+        description: 'Asked everyday volunteers to test the sign-up form and verified that the site is easy to navigate on both iPhones and Androids.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'Website Technology',
+        items: ['React 18', 'TypeScript', 'Tailwind CSS', 'Vite']
+      },
+      {
+        category: 'Design & Accessibility',
+        items: ['High Contrast Colors', 'Easy-to-Read Fonts', 'Large Tap Targets', 'Screen-Reader Friendly']
+      },
+      {
+        category: 'Mobile Experience',
+        items: ['Fast Loading on Mobile', 'Low-Data Usage', 'Responsive Layouts']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'Clear Community Storytelling',
+        description: 'Presents the NGO’s mission and community achievements with inspiring photos and plain, heartfelt language.',
+        tag: 'Story'
+      },
+      {
+        number: '02',
+        title: 'Simple Volunteer Sign-Up',
+        description: 'A friendly 3-step form that makes it effortless for students and community members to volunteer for upcoming events.',
+        tag: 'Get Involved'
+      },
+      {
+        number: '03',
+        title: 'Easy Reading for Everyone',
+        description: 'Designed following accessibility guidelines with high-contrast text and comfortable font sizes for all ages.',
+        tag: 'Accessible'
+      },
+      {
+        number: '04',
+        title: 'Super Fast on Any Smartphone',
+        description: 'Optimized so pages load instantly even on basic smartphones and weak cellular connections.',
+        tag: 'Mobile First'
+      }
+    ],
     keyHighlights: [
-      'Frontend Developer for Teravince NGO digital initiative',
-      'Engineered accessible, high-performance responsive web experience',
-      'Designed clear narrative hierarchy to spotlight non-profit programs'
+      'Built as the frontend developer for a real non-profit community organization',
+      'Created an accessible, mobile-first website that works on all screen sizes',
+      'Made it effortless for everyday volunteers to sign up and get involved'
     ],
     metrics: [
-      { label: 'Organization', value: 'NGO' },
-      { label: 'Role', value: 'FE Developer' },
-      { label: 'Accessibility', value: 'WCAG AA' }
+      { label: 'Organization', value: 'Community NGO' },
+      { label: 'My Role', value: 'Frontend Developer' },
+      { label: 'Design Standard', value: 'Accessible & Mobile' }
     ]
   },
   {
     id: 'web-portfolio',
-    title: 'Digital Portfolio Experience',
-    subtitle: 'Interactive Engineering & Showcase Platform',
-    category: 'Web · Engineering',
+    title: 'Personal Portfolio & Showcase',
+    subtitle: 'The Site You Are Browsing Right Now',
+    category: 'Web · Portfolio',
     categories: ['Web', 'React'],
     year: '2026',
+    duration: 'Ongoing',
+    team: 'Personal Project',
     role: 'Solo Designer & Frontend Engineer',
     liveUrl: 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app',
-    clientOrContext: 'Personal Digital Engineering Showcase',
-    description: 'A bespoke, editorial digital portfolio showcasing data science, machine learning, and full-stack engineering work.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Canvas Physics'],
-    overview: 'A bespoke web application designed and coded to articulate technical engineering rigor, machine learning capabilities, and editorial visual craftsmanship with speed and restraint.',
-    problem: 'Conventional static portfolios lack the interactivity needed to demonstrate deep technical architecture, live telemetry, and nuanced design engineering.',
-    approach: 'Crafted an unboxed, editorial visual language with rich motion choreography, interactive data matrices, live project inspection, and zero bloated third-party dependencies.',
-    technologyDetails: 'Engineered with React 18, TypeScript, Tailwind CSS, and Motion layout transitions with multi-view presentation modes (Bento, Cascade, Matrix).',
-    outcome: 'A production-grade digital experience that seamlessly presents technical projects, academic milestones, and multilingual competencies across all device formats.',
+    clientOrContext: 'Personal Digital Portfolio & Project Showcase',
+    description: 'A custom-built, interactive website designed to share my projects, journey, and skills in a clean, human, and engaging way.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Interactive Canvas'],
+    overview: 'I wanted a personal website that felt thoughtful and fun to explore—not just a boring static resume. I designed and coded this entire site from scratch to tell the real stories behind what I build, complete with smooth animations and interactive previews.',
+    problem: 'Traditional PDF resumes and cookie-cutter portfolio templates don’t show how you actually think, solve problems, or care about user experience.',
+    approach: 'I built a modern web experience with clean typography, pleasant colors, smooth transitions, and deep project stories that anyone can read and understand without getting lost in technical buzzwords.',
+    technologyDetails: 'Built using modern React, TypeScript, and Tailwind CSS, featuring dark and light modes, smooth page transitions, and an interactive particle background.',
+    outcome: 'A polished, fast-loading personal website that gives visitors, recruiters, and clients an authentic look into my work, skills, and design philosophy.',
+    approachSteps: [
+      {
+        phase: '01. Goal',
+        title: 'Focusing on Human Stories',
+        description: 'Decided to write about my projects like real stories—explaining the actual headache, what I did, and how it helped people.'
+      },
+      {
+        phase: '02. Design',
+        title: 'Clean Typography & Warm Palette',
+        description: 'Selected friendly, readable fonts and balanced colors with dedicated light and dark modes that are comfortable on the eyes.'
+      },
+      {
+        phase: '03. Craft',
+        title: 'Adding Interactive Touches',
+        description: 'Added an interactive floating particle canvas and smooth case study popups so exploring my work feels engaging.'
+      },
+      {
+        phase: '04. Polish',
+        title: 'Testing on All Screens',
+        description: 'Polished every screen from small smartphones to large laptop monitors to make sure everything looks crisp and responsive.'
+      }
+    ],
+    techStackGrouped: [
+      {
+        category: 'Website Building Blocks',
+        items: ['React 18', 'TypeScript', 'Vite', 'Tailwind CSS']
+      },
+      {
+        category: 'Animations & Interactions',
+        items: ['Motion Animations', 'Interactive Canvas', 'Smooth Theme Switcher']
+      },
+      {
+        category: 'Design & Accessibility',
+        items: ['Easy-to-Read Fonts', 'Mobile-First Layout', 'Dark & Light Modes']
+      }
+    ],
+    features: [
+      {
+        number: '01',
+        title: 'Human-Centered Project Stories',
+        description: 'Detailed project walk-throughs written in plain language so anyone can understand what was built and why.',
+        tag: 'Storytelling'
+      },
+      {
+        number: '02',
+        title: 'Seamless Light & Dark Modes',
+        description: 'A comfortable theme switcher that smoothly transitions colors without flashing your eyes.',
+        tag: 'Comfort'
+      },
+      {
+        number: '03',
+        title: 'Playful Interactive Canvas',
+        description: 'Subtle floating background particles that gently react as you move your mouse or tap your screen.',
+        tag: 'Interaction'
+      },
+      {
+        number: '04',
+        title: 'Built for Phones, Tablets & Desktops',
+        description: 'Carefully sized so text, buttons, and preview windows fit comfortably on any screen you use.',
+        tag: 'Responsive'
+      }
+    ],
     keyHighlights: [
-      'Bespoke design system with dual light/dark themes and interactive canvas physics',
-      'Multi-mode project inspection (Bento 3D Tilt, Cascade Inspector, and Data Matrix)',
-      '100% responsive architecture optimized for all viewport dimensions'
+      'Designed and coded 100% from scratch with modern web standards',
+      'Written in friendly, everyday language to tell genuine project stories',
+      'Smoothly adapts between dark and light themes with responsive layouts'
     ],
     metrics: [
-      { label: 'Performance', value: '100 Score' },
-      { label: 'Design System', value: 'Bespoke' },
-      { label: 'Architecture', value: 'React + TS' }
+      { label: 'Design', value: 'Custom Built' },
+      { label: 'Language', value: 'Everyday English' },
+      { label: 'Status', value: 'Live & Active' }
     ]
   }
 ];
+
+
