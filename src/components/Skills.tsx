@@ -67,7 +67,7 @@ export const Skills: React.FC = () => {
               04 — SKILLS &amp; EXPERTISE
             </span>
 
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-[#0F1E36] dark:text-[#F3F3F2]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
               Technical &amp;{' '}
               <span className="font-serif italic font-normal pastel-gradient-text">
                 Soft Skills.

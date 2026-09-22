@@ -31,7 +31,7 @@ export const KineticBackgroundText: React.FC<KineticBackgroundTextProps> = ({
       aria-hidden="true"
     >
       <div
-        className="whitespace-nowrap text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#1A1A1A]/[0.03] dark:text-white/[0.04] uppercase font-sans will-change-transform"
+        className="whitespace-nowrap text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1A1A1A]/[0.03] dark:text-white/[0.04] uppercase font-sans will-change-transform"
         style={{
           transform: `translateX(${offset % 600}px)`
         }}

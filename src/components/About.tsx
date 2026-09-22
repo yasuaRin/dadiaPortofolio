@@ -25,24 +25,24 @@ export const About: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#0F1E36] dark:text-[#F3F3F2] leading-[1.02]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] leading-[1.1]">
               A LITTLE<br />
               ABOUT<br />
               <span className="font-serif italic font-normal pastel-gradient-text">ME.</span>
             </h2>
 
-            <div className="w-16 h-[2px] bg-[#0284C7] dark:bg-gradient-to-r dark:from-[#F472B6] dark:to-[#FDA4AF] my-6" />
+            <div className="w-12 h-[2px] bg-[#0284C7] dark:bg-gradient-to-r dark:from-[#F472B6] dark:to-[#FDA4AF] my-4" />
           </motion.div>
 
           {/* Right Column: Progressive Text Narrative */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6">
             {/* Primary Editorial Narrative */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-6 text-base sm:text-lg md:text-xl text-[#334155] dark:text-[#CCC] font-normal leading-relaxed bg-white/50 dark:bg-[#141414]/50 border border-[#BAE6FD]/60 dark:border-[#222] p-8 sm:p-10 rounded-3xl backdrop-blur-sm"
+              className="space-y-4 text-xs sm:text-sm md:text-base text-[#334155] dark:text-[#CCC] font-normal leading-relaxed bg-white/50 dark:bg-[#141414]/50 border border-[#BAE6FD]/60 dark:border-[#222] p-6 sm:p-8 rounded-2xl backdrop-blur-sm"
             >
               <p>
                 Hi, I’m <strong className="text-[#0F1E36] dark:text-[#FFF] font-semibold">Dadia</strong>. I’m passionate about <strong className="text-[#0F1E36] dark:text-[#FFF] font-semibold">technology, data, and business</strong>, and I enjoy exploring different fields instead of sticking to just one.

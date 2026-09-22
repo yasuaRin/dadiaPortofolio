@@ -108,7 +108,7 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] leading-[1.15]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] leading-[1.15]">
             Real Projects Built for<br />
             <span className="font-serif italic font-normal text-[#0284C7] dark:text-[#F472B6]">
               Everyday Problems.

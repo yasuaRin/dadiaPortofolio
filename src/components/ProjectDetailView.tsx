@@ -88,7 +88,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             </span>
             <span className="w-1 h-1 rounded-full bg-[#CBD5E1] dark:bg-[#444]" />
             <span className="text-xs sm:text-sm font-mono font-semibold text-[#0F1E36] dark:text-[#F3F3F2] truncate max-w-[180px] sm:max-w-[320px]">
-              {project.title} &mdash; CASE STUDY
+              {project.title}
             </span>
           </div>
 
@@ -129,7 +129,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               {/* Category & Status Eyebrow */}
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#0284C7] dark:text-[#F472B6] uppercase">
-                  <span>CASE STUDY &bull; {projectNumberStr}</span>
+                  <span>{projectNumberStr}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#0284C7] dark:bg-[#F472B6]" />
                   <span className="text-[#64748B] dark:text-[#999]">{project.category}</span>
                 </div>
@@ -142,52 +142,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
 
               {/* Title & Value Proposition */}
-              <div className="space-y-3">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
+              <div className="space-y-2 sm:space-y-2.5">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
                   {project.title}
                 </h1>
-                <p className="text-base sm:text-xl font-serif italic text-[#475569] dark:text-[#AAA]">
+                <p className="text-sm sm:text-base md:text-lg font-serif italic text-[#475569] dark:text-[#AAA]">
                   {project.subtitle}
                 </p>
-                <p className="text-sm sm:text-base text-[#334155] dark:text-[#DDD] leading-relaxed max-w-3xl pt-1">
+                <p className="text-xs sm:text-sm text-[#334155] dark:text-[#DDD] leading-relaxed max-w-2xl pt-0.5">
                   {project.description}
                 </p>
-              </div>
-
-              {/* Context Metadata Pill Matrix */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] shadow-xs">
-                <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
-                    My Role
-                  </div>
-                  <div className="text-xs sm:text-sm font-semibold text-[#0F1E36] dark:text-[#EEE]">
-                    {project.role}
-                  </div>
-                </div>
-                <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
-                    Duration / Year
-                  </div>
-                  <div className="text-xs sm:text-sm font-semibold text-[#0F1E36] dark:text-[#EEE]">
-                    {project.duration || '2-4 Months'} &bull; {project.year}
-                  </div>
-                </div>
-                <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
-                    Context / Team
-                  </div>
-                  <div className="text-xs sm:text-sm font-semibold text-[#0F1E36] dark:text-[#EEE]">
-                    {project.team || project.clientOrContext || 'Independent Engineering'}
-                  </div>
-                </div>
-                <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
-                    Primary Stack
-                  </div>
-                  <div className="text-xs sm:text-sm font-mono font-semibold text-[#0284C7] dark:text-[#F472B6] truncate">
-                    {project.technologies.slice(0, 3).join(', ')}
-                  </div>
-                </div>
               </div>
 
               {/* Action Buttons */}
@@ -500,23 +464,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 SECTION I: PROJECT-TO-PROJECT NAVIGATION
                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
             <nav
-              aria-label="Project case study navigation"
-              className="pt-12 border-t border-[#E2E8F0] dark:border-[#222] flex flex-col sm:flex-row items-center justify-between gap-6"
+              aria-label="Project navigation"
+              className="pt-10 border-t border-[#E2E8F0] dark:border-[#222] flex items-center justify-between gap-4"
             >
               {onSelectProject && prevProject ? (
                 <button
                   onClick={() => onSelectProject(prevProject)}
-                  className="group flex items-center gap-3 text-left p-3 rounded-2xl hover:bg-white dark:hover:bg-[#161616] transition-colors cursor-pointer"
+                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#EEE] transition-colors cursor-pointer"
                 >
-                  <ArrowLeft className="w-5 h-5 text-[#64748B] dark:text-[#888] transition-transform duration-200 group-hover:-translate-x-1" />
-                  <div>
-                    <div className="text-[10px] font-mono uppercase text-[#64748B] dark:text-[#888]">
-                      Previous Project
-                    </div>
-                    <div className="text-sm font-bold text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6]">
-                      {prevProject.title}
-                    </div>
-                  </div>
+                  <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
+                  <span>Previous</span>
                 </button>
               ) : (
                 <div />
@@ -528,7 +485,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                   onClick={onClose}
                   className="text-[#64748B] dark:text-[#888] hover:text-[#0F1E36] dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  View All Work
+                  View All Projects
                 </button>
                 <span className="text-[#CBD5E1] dark:text-[#444]">&bull;</span>
                 <a
@@ -543,17 +500,10 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               {onSelectProject && nextProject ? (
                 <button
                   onClick={() => onSelectProject(nextProject)}
-                  className="group flex items-center gap-3 text-right p-3 rounded-2xl hover:bg-white dark:hover:bg-[#161616] transition-colors cursor-pointer"
+                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#EEE] transition-colors cursor-pointer"
                 >
-                  <div>
-                    <div className="text-[10px] font-mono uppercase text-[#64748B] dark:text-[#888]">
-                      Next Project
-                    </div>
-                    <div className="text-sm font-bold text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6]">
-                      {nextProject.title}
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-[#64748B] dark:text-[#888] transition-transform duration-200 group-hover:translate-x-1" />
+                  <span>Next</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </button>
               ) : (
                 <div />

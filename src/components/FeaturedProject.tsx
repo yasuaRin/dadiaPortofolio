@@ -47,13 +47,13 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, onSel
         {/* Project Title ONLY — completely clean, no text next to it */}
         <h3
           onClick={() => onSelect(project)}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors cursor-pointer"
+          className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors cursor-pointer"
         >
           {project.title}
         </h3>
 
         {/* Lead Description Glimpse */}
-        <p className="text-sm sm:text-base text-[#475569] dark:text-[#A3A3A3] leading-relaxed max-w-3xl">
+        <p className="text-xs sm:text-sm text-[#475569] dark:text-[#A3A3A3] leading-relaxed max-w-2xl">
           {project.description}
         </p>
 

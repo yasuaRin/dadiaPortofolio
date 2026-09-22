@@ -82,17 +82,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResumeModal }) => 
           HELLO, I'M
         </motion.div>
 
-        {/* Giant Typographic Title with Parallax */}
+        {/* Typographic Title with Parallax */}
         <motion.div
           style={{
             transform: `translate3d(${-mouseOffset.x * 0.8}px, ${-mouseOffset.y * 0.8}px, 0)`
           }}
           className="transition-transform duration-150 ease-out"
         >
-          <h1 className="text-[clamp(3.2rem,9vw,8rem)] font-bold tracking-tighter leading-[0.92] text-[#0F1E36] dark:text-[#F3F3F2]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02] text-[#0F1E36] dark:text-[#F3F3F2]">
             DADIA<span className="pastel-gradient-text">.</span>
           </h1>
-          <div className="text-xl sm:text-3xl md:text-4xl text-[#475569] dark:text-[#AAA] font-serif italic mt-3 sm:mt-4 tracking-tight">
+          <div className="text-base sm:text-xl md:text-2xl text-[#475569] dark:text-[#AAA] font-serif italic mt-2 sm:mt-3 tracking-tight">
             Ni Putu Dadia Yasuarini
           </div>
         </motion.div>
@@ -102,7 +102,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResumeModal }) => 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-base sm:text-xl text-[#334155] dark:text-[#AAA] font-normal leading-relaxed mt-6 max-w-2xl"
+          className="text-xs sm:text-sm md:text-base text-[#334155] dark:text-[#AAA] font-normal leading-relaxed mt-4 sm:mt-5 max-w-xl"
         >
           Fresh Information Systems Graduate &middot; Data Analytics &amp; AI Enthusiast. Bridging machine intelligence, statistical insights, and enterprise architecture to build high-impact solutions.
         </motion.p>

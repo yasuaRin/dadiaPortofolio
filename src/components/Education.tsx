@@ -37,7 +37,7 @@ export const Education: React.FC = () => {
                 02 — ACADEMIC FOUNDATION
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#0F1E36] dark:text-[#F3F3F2]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
               Academic Path &amp;<br />
               <span className="font-serif italic font-normal pastel-gradient-text">Milestones.</span>
             </h2>

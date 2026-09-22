@@ -98,7 +98,7 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                     }}
                     className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#F3F3F2] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors cursor-pointer"
                   >
-                    <span>Case Study</span>
+                    <span>Details</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -209,7 +209,7 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                 onClick={() => onSelectProject(activeProject)}
                 className="w-full group flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-full bg-[#0F1E36] dark:bg-[#F3F3F2] text-white dark:text-[#111] font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-white hover:shadow-lg transition-all cursor-pointer"
               >
-                <span>Launch Full Case Study</span>
+                <span>View Project Overview</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Project } from '../types';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface SupportingProjectCardProps {
@@ -98,19 +98,34 @@ export const SupportingProjectCard: React.FC<SupportingProjectCardProps> = ({
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </span>
 
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-[10px] font-mono text-[#64748B] dark:text-[#999] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors py-1 px-2.5 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:bg-[#F1F5F9] dark:hover:bg-[#202020]"
-              title="Open live deployment in new tab"
-            >
-              <span>Live App</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </a>
-          )}
+          <div className="flex items-center gap-1.5">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-[10px] font-mono text-[#64748B] dark:text-[#999] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors py-1 px-2.5 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:bg-[#F1F5F9] dark:hover:bg-[#202020]"
+                title="View repository on GitHub"
+              >
+                <Github className="w-3 h-3" />
+                <span>Code</span>
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-[10px] font-mono text-[#64748B] dark:text-[#999] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors py-1 px-2.5 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:bg-[#F1F5F9] dark:hover:bg-[#202020]"
+                title="Open live deployment in new tab"
+              >
+                <span>Live App</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

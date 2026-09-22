@@ -76,7 +76,7 @@ export const Certificates: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] mb-2">
               Certifications &amp;{' '}
               <span className="font-serif italic font-normal pastel-gradient-text">
                 Honors.

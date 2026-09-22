@@ -190,7 +190,7 @@ export const Project3DCard: React.FC<Project3DCardProps> = ({
                   ))
                 ) : (
                   <div className="col-span-3 text-xs font-mono text-[#64748B] py-2">
-                    Verified architecture benchmarks available in case study.
+                    Verified architecture benchmarks available in project details.
                   </div>
                 )}
               </div>

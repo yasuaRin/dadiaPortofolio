@@ -71,12 +71,12 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-[#0F1E36] dark:text-[#F3F3F2] leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] leading-tight">
             Let's<br />
             <span className="font-serif italic font-normal pastel-gradient-text">Talk.</span>
           </h2>
 
-          <p className="text-sm sm:text-lg md:text-xl text-[#475569] dark:text-[#AAA] font-normal leading-relaxed mt-4">
+          <p className="text-xs sm:text-sm md:text-base text-[#475569] dark:text-[#AAA] font-normal leading-relaxed mt-3">
             Graduated and actively exploring full-time opportunities, data analytics initiatives, and AI engineering roles. Reach out directly.
           </p>
         </motion.div>
