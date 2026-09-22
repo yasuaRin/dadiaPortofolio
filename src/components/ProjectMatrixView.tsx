@@ -48,9 +48,6 @@ export const ProjectMatrixView: React.FC<ProjectMatrixViewProps> = ({
                     <div className="font-bold text-sm text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors font-sans">
                       {project.title}
                     </div>
-                    <div className="text-[11px] font-serif italic text-[#475569] dark:text-[#888]">
-                      {project.subtitle}
-                    </div>
                     {project.role && (
                       <div className="text-[10px] font-mono text-[#0284C7] dark:text-[#F472B6] mt-0.5">
                         {project.role}

@@ -16,6 +16,14 @@ export interface TechStackGroup {
   items: string[];
 }
 
+export interface ProblemItem {
+  number: string;
+  title: string;
+  description: string;
+  addressedInScope?: boolean;
+  resolutionTag?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -32,6 +40,7 @@ export interface Project {
   clientOrContext?: string;
   duration?: string;
   team?: string;
+  imageUrl?: string;
   overview: string;
   problem: string;
   approach: string;
@@ -40,9 +49,12 @@ export interface Project {
   keyHighlights?: string[];
   metrics?: { label: string; value: string }[];
   accentGradient?: string;
+  responsibilities?: string[];
+  impact?: string[];
   features?: ProjectFeature[];
   approachSteps?: ApproachStep[];
   techStackGrouped?: TechStackGroup[];
+  problemItems?: ProblemItem[];
 }
 
 export interface Certificate {
@@ -55,6 +67,11 @@ export interface Certificate {
   skillsLearned: string[];
   credentialId?: string;
   highlight?: string;
+  certificateUrl?: string;
+  signatory?: string;
+  hours?: string | number;
+  recipient?: string;
+  imageUrl?: string;
 }
 
 export interface SkillItem {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown, ArrowUpRight, FileText } from 'lucide-react';
 import { motion } from 'motion/react';
-import avatarImg from '../assets/images/dadia_avatar_1788299438051.jpg';
+import avatarImg from '../assets/images/photo_nobg.png';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
@@ -51,13 +51,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResumeModal }) => 
           <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#0284C7]/20 via-[#38BDF8]/20 to-[#F472B6]/25 dark:from-[#38BDF8]/20 dark:to-[#F472B6]/30 blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
           {/* Avatar Container with Sleek Dual Border */}
-          <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full p-1 bg-white/90 dark:bg-[#1A1A1A] border-2 border-[#BAE6FD] dark:border-[#F472B6]/40 shadow-lg overflow-hidden">
-            <img
-              src={avatarImg}
-              alt="Ni Putu Dadia Yasuarini"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-105"
-            />
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full p-1 bg-transparent border-2 border-[#BAE6FD] dark:border-[#F472B6]/40 shadow-lg overflow-hidden">
+            <div className="w-full h-full rounded-full overflow-hidden bg-transparent">
+              <img
+                src={avatarImg}
+                alt="Ni Putu Dadia Yasuarini"
+                referrerPolicy="no-referrer"
+                style={{ objectPosition: '52% 12%' }}
+                className="w-full h-full object-cover rounded-full transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+            </div>
           </div>
 
           {/* Active Status Beacon Badge */}

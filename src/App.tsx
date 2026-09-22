@@ -13,7 +13,6 @@ import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { PageLoader } from './components/PageLoader';
 import { ScrollProgress } from './components/ScrollProgress';
-import { Marquee } from './components/Marquee';
 import { KineticBackgroundText } from './components/KineticBackgroundText';
 import { ResumeDownloadModal } from './components/ResumeDownloadModal';
 
@@ -90,9 +89,6 @@ function PortfolioApp() {
           onNavigate={handleNavigate}
           onOpenResumeModal={() => setIsResumeModalOpen(true)}
         />
-
-        {/* Marquee Ticker 1 */}
-        <Marquee text="DATA — AI — BUSINESS — PRODUCT — DATA — AI — BUSINESS — PRODUCT →" />
 
         {/* About & Curiosity Matrix */}
         <About />

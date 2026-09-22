@@ -14,10 +14,6 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   const [pdfProgress, setPdfProgress] = useState<{ current: number; total: number } | null>(null);
   const [pdfSuccess, setPdfSuccess] = useState(false);
   const [pdfError, setPdfError] = useState<string | null>(null);
-  const [cvDriveUrl, setCvDriveUrl] = useState(resumeConfig.cvViewUrl);
-  const [isEditingUrl, setIsEditingUrl] = useState(false);
-  const [customUrlInput, setCustomUrlInput] = useState(resumeConfig.cvViewUrl);
-  const [urlValidationError, setUrlValidationError] = useState<string | null>(null);
 
   const isSafeUrl = (raw: string): boolean => {
     try {
@@ -74,12 +70,11 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
   };
 
   const handleOpenCV = () => {
-    // Only open if URL is verified as safe http/https to prevent javascript: or data: XSS/injection
-    const target = cvDriveUrl.trim();
+    // Open verified CV URL in new tab
+    const target = resumeConfig.cvViewUrl.trim();
     if (isSafeUrl(target)) {
       window.open(target, '_blank', 'noopener,noreferrer');
     } else {
-      // Fallback to safe default
       window.open(resumeConfig.cvViewUrl, '_blank', 'noopener,noreferrer');
     }
   };
@@ -89,21 +84,6 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
     setTimeout(() => {
       window.print();
     }, 300);
-  };
-
-  const handleSaveCustomUrl = () => {
-    const trimmed = customUrlInput.trim();
-    if (!trimmed) {
-      setUrlValidationError('URL cannot be empty');
-      return;
-    }
-    if (!isSafeUrl(trimmed)) {
-      setUrlValidationError('Invalid URL protocol. Only https:// and http:// links are allowed.');
-      return;
-    }
-    setUrlValidationError(null);
-    setCvDriveUrl(trimmed);
-    setIsEditingUrl(false);
   };
 
   return (
@@ -197,54 +177,6 @@ export const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({ isOpen
                     </button>
                   </div>
                 </div>
-
-                {/* Quick Link Editor for Custom Drive Links */}
-                {isEditingUrl ? (
-                  <div className="mt-3 pt-3 border-t border-[#BAE6FD]/60 dark:border-[#282828] space-y-2">
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="url"
-                        value={customUrlInput}
-                        onChange={(e) => {
-                          setCustomUrlInput(e.target.value);
-                          if (urlValidationError) setUrlValidationError(null);
-                        }}
-                        placeholder="Paste verified https:// link..."
-                        className="flex-1 px-3 py-1.5 rounded-lg bg-white dark:bg-[#111] border border-[#CBD5E1] dark:border-[#333] text-xs font-mono text-[#0F1E36] dark:text-[#F3F3F2] focus:outline-none focus:border-[#0284C7]"
-                      />
-                      <button
-                        onClick={handleSaveCustomUrl}
-                        className="px-3 py-1.5 bg-[#0284C7] text-white text-xs font-mono rounded-lg font-bold hover:bg-[#0369A1] transition-colors cursor-pointer"
-                      >
-                        Save
-                      </button>
-                      <button
-                        onClick={() => {
-                          setIsEditingUrl(false);
-                          setUrlValidationError(null);
-                          setCustomUrlInput(cvDriveUrl);
-                        }}
-                        className="px-2.5 py-1.5 bg-neutral-200 dark:bg-[#252525] text-neutral-700 dark:text-[#AAA] text-xs font-mono rounded-lg hover:bg-neutral-300 dark:hover:bg-[#333] transition-colors cursor-pointer"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                    {urlValidationError && (
-                      <p className="text-[11px] font-mono text-red-600 dark:text-red-400">
-                        {urlValidationError}
-                      </p>
-                    )}
-                  </div>
-                ) : (
-                  <div className="mt-2 text-right">
-                    <button
-                      onClick={() => setIsEditingUrl(true)}
-                      className="text-[10px] font-mono text-[#64748B] hover:text-[#0284C7] dark:hover:text-[#F472B6] underline transition-colors cursor-pointer"
-                    >
-                      Change CV Link URL
-                    </button>
-                  </div>
-                )}
               </div>
 
               {/* Option 2: Full Visual Page to PDF (Exact layout, ornaments, background) */}

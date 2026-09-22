@@ -29,7 +29,7 @@ export const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Simplified, intuitive categories as requested
-  const categories = ['All', 'AI & ML', 'Data & Automation', 'Web & Platforms'];
+  const categories = ['All', 'AI & ML', 'Data & Automation', 'Web & Platforms', 'Community & Social'];
 
   // Sanitized search query handler
   const handleSearchChange = (rawText: string) => {
@@ -60,6 +60,10 @@ export const Projects: React.FC = () => {
         matchesCategory =
           project.categories.some((c) => /web|product|engineering|react/i.test(c)) ||
           /web|product|engineering|react/i.test(project.category);
+      } else if (selectedCategory === 'Community & Social') {
+        matchesCategory =
+          project.categories.some((c) => /community|social|health|leadership/i.test(c)) ||
+          /community|social|health|leadership/i.test(project.category);
       }
 
       const query = searchQuery.trim().toLowerCase();
@@ -110,11 +114,6 @@ export const Projects: React.FC = () => {
               Everyday Problems.
             </span>
           </h2>
-
-          {/* Short Supporting Sentence */}
-          <p className="text-base sm:text-lg md:text-xl text-[#334155] dark:text-[#CCC] leading-relaxed max-w-2xl">
-            Instead of building projects just to show off lines of code, I focus on solving real headaches&mdash;like replacing messy spreadsheets, helping teams save hours every week, and turning confusing numbers into clear answers.
-          </p>
 
           {/* Section Metadata Matrix */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 text-xs font-mono text-[#64748B] dark:text-[#999]">
@@ -288,13 +287,13 @@ export const Projects: React.FC = () => {
                   {(!isFeaturedVisible || supportingProjects.length > 0) && (
                     <div className="space-y-6">
                       {isFeaturedVisible && (
-                        <div className="flex items-center justify-between pb-3 border-b border-[#CBD5E1]/60 dark:border-[#222]">
+                        <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#242424]">
                           <div>
                             <h3 className="text-xl sm:text-2xl font-bold text-[#0F1E36] dark:text-[#F3F3F2] tracking-tight">
-                              More Projects I Loved Working On
+                              Selected Projects
                             </h3>
                             <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#888] font-mono mt-0.5">
-                              Practical tools, automated business reports, and websites built for real users.
+                              Practical tools, automated business systems, and production platforms.
                             </p>
                           </div>
                           <span className="text-xs font-mono text-[#64748B] dark:text-[#888] shrink-0">

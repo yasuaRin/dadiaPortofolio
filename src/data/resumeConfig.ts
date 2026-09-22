@@ -9,7 +9,7 @@ export interface ResumeConfig {
 export const resumeConfig: ResumeConfig = {
   cvFileName: 'CV_Ni_Putu_Dadia_Yasuarini.pdf',
   // You can replace this with your direct Google Drive sharing link or hosted PDF link
-  cvDownloadUrl: 'https://drive.google.com/file/d/1_YOUR_GOOGLE_DRIVE_CV_ID/view?usp=sharing',
-  cvViewUrl: 'https://drive.google.com/file/d/1_YOUR_GOOGLE_DRIVE_CV_ID/view?usp=sharing',
-  lastUpdated: 'August 2026'
+  cvDownloadUrl: 'https://drive.google.com/file/d/1ogsQqobgQZ7CQeJE5VArQQbGl02-9KX7/view?usp=sharing',
+  cvViewUrl: 'https://drive.google.com/file/d/1ogsQqobgQZ7CQeJE5VArQQbGl02-9KX7/view?usp=sharing',
+  lastUpdated: 'September 2026'
 };

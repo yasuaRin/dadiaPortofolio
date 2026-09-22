@@ -53,12 +53,9 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                 </span>
               </div>
 
-              <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors">
+              <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors mb-2">
                 {project.title}
               </h4>
-              <p className="text-sm font-serif italic text-[#475569] dark:text-[#AAA] mt-0.5 mb-1.5">
-                {project.subtitle}
-              </p>
               {project.role && (
                 <p className="text-[11px] font-mono font-medium text-[#0284C7] dark:text-[#F472B6] mb-3">
                   {project.role}
@@ -144,6 +141,21 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                   {activeProject.subtitle}
                 </p>
               </div>
+
+              {/* Verified Production Interface Screenshot if available */}
+              {activeProject.imageUrl && (
+                <div className="relative rounded-2xl overflow-hidden border border-[#BFDBFE] dark:border-neutral-800 bg-slate-950 aspect-[16/10] shadow-sm">
+                  <img
+                    src={activeProject.imageUrl}
+                    alt={activeProject.title}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-xs text-[10px] font-mono text-white font-semibold">
+                    Production Screenshot Preview
+                  </div>
+                </div>
+              )}
 
               {/* Live Telemetry Matrix */}
               {activeProject.metrics && (

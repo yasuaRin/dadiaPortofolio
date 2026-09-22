@@ -1,6 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Certificate } from '../types';
-import { X, ArrowLeft, ArrowRight, Award, Calendar, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { CERTIFICATES_DRIVE_URL } from '../data/certificates';
+import {
+  X,
+  ArrowLeft,
+  ArrowRight,
+  Award,
+  Calendar,
+  ShieldCheck,
+  CheckCircle2,
+  ExternalLink,
+  Copy,
+  Check,
+  FileText,
+  FolderOpen
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface CertificateLightboxProps {
@@ -16,6 +30,8 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
   onSelectCert,
   allCertificates = []
 }) => {
+  const [copiedLink, setCopiedLink] = useState(false);
+
   const currentIndex = certificate
     ? allCertificates.findIndex((c) => c.id === certificate.id)
     : -1;
@@ -25,30 +41,6 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
     currentIndex >= 0 && currentIndex < allCertificates.length - 1
       ? allCertificates[currentIndex + 1]
       : null;
-
-  const touchStartX = useRef<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX;
-
-    // Minimum swipe threshold of 50px
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && nextCert && onSelectCert) {
-        // Swiped left -> show next
-        onSelectCert(nextCert);
-      } else if (diff < 0 && prevCert && onSelectCert) {
-        // Swiped right -> show previous
-        onSelectCert(prevCert);
-      }
-    }
-    touchStartX.current = null;
-  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -69,13 +61,31 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
 
   if (!certificate) return null;
 
-  const num = currentIndex + 1 < 10 ? `0${currentIndex + 1}` : `${currentIndex + 1}`;
-  const total = allCertificates.length < 10 ? `0${allCertificates.length}` : `${allCertificates.length}`;
+  const targetUrl = certificate.certificateUrl || certificate.imageUrl || CERTIFICATES_DRIVE_URL;
+  const driveFileIdMatch = targetUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  const driveFileId = driveFileIdMatch ? driveFileIdMatch[1] : null;
+  const drivePreviewUrl = driveFileId
+    ? `https://drive.google.com/file/d/${driveFileId}/preview`
+    : null;
+
+  const handleOpenUrl = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleCopyLink = (text: string) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    }
+  };
 
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 overflow-y-auto"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-labelledby="cert-lightbox-title"
@@ -86,96 +96,188 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#0F1E36]/70 dark:bg-black/85 backdrop-blur-md cursor-pointer"
+          className="fixed inset-0 bg-[#0F1E36]/65 dark:bg-black/85 backdrop-blur-md cursor-pointer"
           aria-hidden="true"
         />
 
-        {/* Modal Window with Dynamic Viewport Height Sizing */}
+        {/* Modal Window */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          initial={{ opacity: 0, scale: 0.96, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          className="relative w-full max-w-2xl max-h-[92vh] max-h-[92dvh] bg-white dark:bg-[#121212] rounded-2xl sm:rounded-3xl border border-[#BFDBFE] dark:border-[#262626] shadow-2xl overflow-hidden z-10 flex flex-col text-[#0F1E36] dark:text-[#F3F3F2]"
+          exit={{ opacity: 0, scale: 0.96, y: 12 }}
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+          className="relative w-full max-w-xl bg-white dark:bg-[#141414] rounded-2xl sm:rounded-3xl border border-[#E2E8F0] dark:border-[#262626] shadow-2xl overflow-hidden z-10 flex flex-col text-[#0F1E36] dark:text-[#F3F3F2]"
         >
-          {/* Sticky Header Bar */}
-          <div className="shrink-0 bg-[#0F1E36] dark:bg-[#0A0A0A] text-white px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between border-b border-[#1E3A5F] dark:border-[#222]">
-            <motion.button
-              whileHover={{ x: -3 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              onClick={onClose}
-              id="lightbox-back-btn"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#BAE6FD] hover:text-white transition-colors focus:outline-none cursor-pointer py-1.5 min-h-[44px] touch-manipulation"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to gallery</span>
-            </motion.button>
-
-            <div className="flex items-center gap-3 sm:gap-4">
-              <span className="text-xs font-mono text-[#BAE6FD]">
-                {num} / {total}
+          {/* Top Bar */}
+          <div className="px-6 py-4 border-b border-[#F1F5F9] dark:border-[#222] flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F0F7FF] dark:bg-[#1C1C1C] text-[#0284C7] dark:text-[#F472B6] border border-[#BAE6FD]/60 dark:border-[#333]">
+                <Award className="w-3 h-3" />
+                <span>{certificate.type}</span>
               </span>
-              <button
-                onClick={onClose}
-                id="lightbox-close-btn"
-                className="p-2 text-[#BAE6FD] hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
-                aria-label="Close lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
+
+              {certificate.hours && (
+                <span className="text-[11px] font-mono text-[#64748B] dark:text-[#888]">
+                  {certificate.hours}
+                </span>
+              )}
             </div>
+
+            <button
+              onClick={onClose}
+              className="p-1.5 text-[#64748B] hover:text-[#0F1E36] dark:text-[#888] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-[#222] rounded-full transition-colors cursor-pointer"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Scrollable Certificate Body */}
-          <div className="p-5 sm:p-8 md:p-10 space-y-6 sm:space-y-8 overflow-y-auto overscroll-contain flex-1">
-            {/* Visual Certificate Crest & Header */}
-            <div className="border border-[#BFDBFE] dark:border-[#262626] rounded-2xl p-5 sm:p-8 bg-[#F8FAFC] dark:bg-[#181818] text-center relative overflow-hidden shadow-xs">
-              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0284C7] dark:bg-[#262626] text-white dark:text-[#F472B6] mb-3 sm:mb-4 shadow-xs">
-                <Award className="w-6 h-6 sm:w-7 sm:h-7" />
-              </div>
-
-              <div className="text-[10px] font-mono uppercase tracking-widest text-[#64748B] dark:text-[#777] mb-2">
-                OFFICIAL RECOGNITION &middot; {certificate.issuer}
-              </div>
-
+          {/* Main Content Body */}
+          <div className="p-6 sm:p-8 space-y-6 overflow-y-auto max-h-[72vh]">
+            {/* Header: Title, Issuer, and Date */}
+            <div>
               <h2
                 id="cert-lightbox-title"
-                className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] mb-3 leading-snug break-words"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] mb-2 leading-snug"
               >
                 {certificate.title}
               </h2>
+              <div className="text-sm text-[#475569] dark:text-[#A3A3A3] font-medium mb-3">
+                {certificate.issuer}
+              </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#0369A1] dark:text-[#AAA] bg-[#E0F2FE] dark:bg-[#222] px-3.5 py-1.5 rounded-full border border-[#BAE6FD] dark:border-[#333]">
-                <Calendar className="w-3.5 h-3.5" />
-                <span>Awarded: {certificate.date}</span>
+              <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#64748B] dark:text-[#888]">
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#F472B6]" />
+                  <span>Issued: {certificate.date}</span>
+                </span>
+              </div>
+
+              {/* Short action button directly under issued */}
+              <div className="mt-3.5 flex items-center gap-2">
+                <a
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => handleOpenUrl(e, targetUrl)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#F472B6] dark:hover:bg-[#F472B6]/90 text-white dark:text-[#111] font-mono text-xs font-semibold transition-all shadow-xs cursor-pointer"
+                >
+                  <span>Open Certificate</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+
+                {certificate.certificateUrl && (
+                  <button
+                    type="button"
+                    onClick={() => handleCopyLink(certificate.certificateUrl!)}
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 dark:bg-[#202020] dark:hover:bg-[#282828] text-xs font-mono text-[#475569] dark:text-[#CCC] transition-colors cursor-pointer"
+                    title="Copy certificate link"
+                  >
+                    {copiedLink ? (
+                      <>
+                        <Check className="w-3 h-3 text-emerald-500" />
+                        <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3 h-3" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
             </div>
 
-            {/* Description */}
+            {/* Visual Certificate Document - Glimpse using original Drive URL */}
+            {certificate.imageUrl ? (
+              <div className="relative rounded-2xl overflow-hidden border border-neutral-200/90 dark:border-[#333] bg-white shadow-md">
+                <img
+                  src={certificate.imageUrl}
+                  alt={`${certificate.title} - ${certificate.issuer}`}
+                  className="w-full h-auto block select-none"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ) : drivePreviewUrl ? (
+              <div className="relative rounded-2xl overflow-hidden border border-neutral-200/90 dark:border-[#282828] bg-neutral-900 shadow-md">
+                {/* Header preview bar */}
+                <div className="px-4 py-2.5 bg-neutral-100 dark:bg-[#1C1C1C] border-b border-neutral-200 dark:border-[#2C2C2C] flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2 text-[#475569] dark:text-[#AAA]">
+                    <FileText className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#F472B6]" />
+                    <span className="font-semibold text-[#0F1E36] dark:text-[#EEE]">Certificate Glimpse</span>
+                    <span className="text-[10px] text-[#64748B] dark:text-[#777] hidden sm:inline">Google Drive</span>
+                  </div>
+                  <a
+                    href={targetUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => handleOpenUrl(e, targetUrl)}
+                    className="inline-flex items-center gap-1 text-[11px] text-[#0284C7] dark:text-[#F472B6] hover:underline font-bold"
+                  >
+                    <span>Open original document</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+
+                {/* Google Drive Document Preview Frame */}
+                <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-neutral-100 dark:bg-[#141414]">
+                  <iframe
+                    src={drivePreviewUrl}
+                    title={`${certificate.title} Preview`}
+                    className="w-full h-full border-0"
+                    allow="autoplay"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="relative rounded-2xl border border-neutral-200/90 dark:border-[#262626] bg-neutral-50 dark:bg-[#1A1A1A] p-5 sm:p-6 text-center">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-[#0284C7]/10 dark:bg-[#F472B6]/15 flex items-center justify-center text-[#0284C7] dark:text-[#F472B6] mb-3">
+                  <FolderOpen className="w-5 h-5" />
+                </div>
+                <h4 className="text-sm font-bold text-[#0F1E36] dark:text-[#F3F3F2] mb-1">
+                  Original Verification Document
+                </h4>
+                <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mb-3.5 max-w-sm mx-auto">
+                  View the official credential directly on the original Google Drive repository.
+                </p>
+                <a
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => handleOpenUrl(e, targetUrl)}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold hover:opacity-90 transition-opacity"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Open in Google Drive</span>
+                </a>
+              </div>
+            )}
+
+            {/* Scope / Description */}
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#64748B] dark:text-[#777] block mb-2">
-                Achievement Scope
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#64748B] dark:text-[#777] block mb-1.5">
+                Overview
               </span>
-              <p className="text-sm sm:text-base text-[#334155] dark:text-[#CCC] leading-relaxed break-words">
+              <p className="text-xs sm:text-sm text-[#334155] dark:text-[#CCC] leading-relaxed">
                 {certificate.description}
               </p>
             </div>
 
-            {/* Skills & Focus Areas */}
+            {/* Competencies */}
             {certificate.skillsLearned && certificate.skillsLearned.length > 0 && (
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#64748B] dark:text-[#777] block mb-2.5">
-                  Competencies &amp; Knowledge Covered
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#64748B] dark:text-[#777] block mb-2">
+                  Skills &amp; Topics
                 </span>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {certificate.skillsLearned.map((skill, idx) => (
                     <span
                       key={idx}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#E0F2FE] dark:bg-[#1E1E1E] border border-[#BAE6FD] dark:border-[#2E2E2E] rounded-lg text-xs font-medium text-[#0369A1] dark:text-[#DDD] break-words"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-50 dark:bg-[#1A1A1A] border border-neutral-200/80 dark:border-[#2C2C2C] rounded-lg text-xs font-medium text-[#334155] dark:text-[#DDD]"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#F472B6] shrink-0" />
+                      <CheckCircle2 className="w-3 h-3 text-[#0284C7] dark:text-[#F472B6] shrink-0" />
                       <span>{skill}</span>
                     </span>
                   ))}
@@ -184,33 +286,34 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
             )}
           </div>
 
-          {/* Sticky Footer: Verification Metadata & Pagination Controls */}
-          <div className="shrink-0 bg-neutral-50/95 dark:bg-[#0E0E0E]/95 backdrop-blur-sm px-4 sm:px-8 py-3.5 sm:py-4 border-t border-[#BFDBFE]/60 dark:border-[#262626] flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-[#64748B] dark:text-[#AAA]">
-            <div className="flex items-center gap-1.5 max-w-full">
-              <ShieldCheck className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6] shrink-0" />
-              <span className="break-all">Verification ID: {certificate.credentialId || 'AUTHENTICATED'}</span>
+          {/* Footer Controls */}
+          <div className="px-6 py-3.5 bg-neutral-50 dark:bg-[#101010] border-t border-[#F1F5F9] dark:border-[#222] flex items-center justify-between text-xs font-mono text-[#64748B] dark:text-[#888]">
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6]" />
+              <span>Verified Certificate</span>
             </div>
 
-            <div className="flex items-center gap-2 ml-auto">
-              <span className="text-[11px] text-[#888] mr-1 hidden md:inline">Swipe or use arrows:</span>
+            <div className="flex items-center gap-2">
               {prevCert && onSelectCert && (
                 <button
+                  type="button"
                   onClick={() => onSelectCert(prevCert)}
-                  className="min-h-[40px] min-w-[40px] p-2 rounded-xl border border-[#BFDBFE] dark:border-[#333] hover:bg-[#0284C7] dark:hover:bg-[#FFF] hover:text-white dark:hover:text-[#111] transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
+                  className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-[#333] hover:bg-white dark:hover:bg-[#202020] transition-colors cursor-pointer flex items-center gap-1"
                   title="Previous certificate"
-                  aria-label="Previous certificate"
                 >
-                  <ArrowLeft className="w-4 h-4" />
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Previous</span>
                 </button>
               )}
               {nextCert && onSelectCert && (
                 <button
+                  type="button"
                   onClick={() => onSelectCert(nextCert)}
-                  className="min-h-[40px] min-w-[40px] p-2 rounded-xl border border-[#BFDBFE] dark:border-[#333] hover:bg-[#0284C7] dark:hover:bg-[#FFF] hover:text-white dark:hover:text-[#111] transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
+                  className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-[#333] hover:bg-white dark:hover:bg-[#202020] transition-colors cursor-pointer flex items-center gap-1"
                   title="Next certificate"
-                  aria-label="Next certificate"
                 >
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="hidden sm:inline">Next</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               )}
             </div>

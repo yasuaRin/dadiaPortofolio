@@ -8,17 +8,10 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  Calendar,
-  Users,
   Briefcase,
   Layers,
-  Code2,
-  Lightbulb,
   Target,
-  TrendingUp,
-  Cpu,
-  ShieldCheck,
-  Check
+  Cpu
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -149,21 +142,21 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
 
               {/* Title & Value Proposition */}
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
+              <div className="space-y-3">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
                   {project.title}
                 </h1>
-                <p className="text-lg sm:text-2xl font-serif italic text-[#475569] dark:text-[#AAA]">
+                <p className="text-base sm:text-xl font-serif italic text-[#475569] dark:text-[#AAA]">
                   {project.subtitle}
                 </p>
-                <p className="text-base sm:text-xl text-[#334155] dark:text-[#DDD] leading-relaxed max-w-3xl pt-2">
+                <p className="text-sm sm:text-base text-[#334155] dark:text-[#DDD] leading-relaxed max-w-3xl pt-1">
                   {project.description}
                 </p>
               </div>
 
               {/* Context Metadata Pill Matrix */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] shadow-sm">
-                <div className="space-y-1">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] shadow-xs">
+                <div className="space-y-0.5">
                   <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
                     My Role
                   </div>
@@ -171,7 +164,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     {project.role}
                   </div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
                     Duration / Year
                   </div>
@@ -179,7 +172,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     {project.duration || '2-4 Months'} &bull; {project.year}
                   </div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
                     Context / Team
                   </div>
@@ -187,7 +180,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     {project.team || project.clientOrContext || 'Independent Engineering'}
                   </div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888] font-bold">
                     Primary Stack
                   </div>
@@ -198,16 +191,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-3 pt-1">
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer shadow-xs"
                   >
                     <span>LAUNCH LIVE PLATFORM</span>
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
                 {project.githubUrl && (
@@ -215,274 +208,220 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#EEE] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#EEE] transition-colors cursor-pointer"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-3.5 h-3.5" />
                     <span>SOURCE CODE</span>
                   </a>
                 )}
               </div>
 
-              {/* Large Product Interface Presentation */}
-              <div className="pt-4">
+              {/* Product Interface Presentation */}
+              <div className="pt-2">
                 <ProjectUIPreview project={project} variant="detail" />
               </div>
             </section>
 
             {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION B: THE PROBLEM
+                SECTION 01: THE CHALLENGES & SCOPE
                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <Target className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
+            <section className="space-y-5 pt-10 border-t border-[#E2E8F0] dark:border-[#222]">
+              <div className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6]" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  01 &mdash; WHAT WAS THE PROBLEM?
+                  01 &mdash; THE CHALLENGE
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  The Everyday Challenge We Faced
+              <div className="space-y-2 max-w-3xl">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
+                  Operational Friction Points
                 </h2>
-                <p className="text-base sm:text-lg text-[#334155] dark:text-[#CCC] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#475569] dark:text-[#BBB] leading-relaxed">
                   {project.problem}
                 </p>
               </div>
 
-              {/* Problem Breakdown Card */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-amber-50/60 dark:bg-amber-950/15 border border-amber-200/80 dark:border-amber-900/40 space-y-2">
-                <div className="text-xs font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
-                  The Main Headache
-                </div>
-                <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
-                  People were spending hours doing repetitive manual work, trying to make sense of disconnected files, and worrying about costly mistakes happening under pressure.
-                </p>
-              </div>
-            </section>
-
-            {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION C: MY PERSONAL ROLE & RESPONSIBILITIES
-               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <Briefcase className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  02 &mdash; WHAT WAS MY JOB?
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  {project.role}
-                </h2>
-                <p className="text-base sm:text-lg text-[#334155] dark:text-[#CCC] leading-relaxed">
-                  {project.overview}
-                </p>
-              </div>
-
-              {/* Responsibilities Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                <div className="p-5 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2">
-                  <div className="text-xs font-mono uppercase font-bold text-[#0284C7] dark:text-[#F472B6]">
-                    What I Designed &amp; Built
-                  </div>
-                  <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
-                    Designed the user screens, organized the data so it stays clean, and connected the front buttons to the background database.
-                  </p>
-                </div>
-                <div className="p-5 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2">
-                  <div className="text-xs font-mono uppercase font-bold text-[#0284C7] dark:text-[#F472B6]">
-                    How I Worked With Others
-                  </div>
-                  <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
-                    {project.team?.includes('Solo')
-                      ? 'Took full ownership from listening to what was needed, testing every edge case, to launching it live.'
-                      : 'Worked hand-in-hand with teammates, gathered early feedback, and made sure everyone knew what was coming next.'}
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION D: THE APPROACH & ARCHITECTURAL DECISIONS
-               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <Lightbulb className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  03 &mdash; HOW WE SOLVED IT
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  Step-by-Step From Problem to Fix
-                </h2>
-                <p className="text-base sm:text-lg text-[#334155] dark:text-[#CCC] leading-relaxed">
-                  {project.approach}
-                </p>
-              </div>
-
-              {/* 4 Step Structured Methodology */}
-              {project.approachSteps && project.approachSteps.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  {project.approachSteps.map((step, sIdx) => (
+              {/* Problem Breakdown Grid */}
+              {project.problemItems && project.problemItems.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                  {project.problemItems.map((item) => (
                     <div
-                      key={sIdx}
-                      className="p-5 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2"
+                      key={item.number}
+                      className={`p-4 rounded-xl border transition-colors ${
+                        item.addressedInScope
+                          ? 'bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900/40'
+                          : 'bg-[#F8FAFC] dark:bg-[#161616] border-[#E2E8F0] dark:border-[#262626]'
+                      }`}
                     >
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#0284C7] dark:text-[#F472B6]">
-                        {step.phase}
-                      </span>
-                      <h4 className="text-sm sm:text-base font-bold text-[#0F1E36] dark:text-[#EEE]">
-                        {step.title}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
-                        {step.description}
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <span className={`text-xs font-mono font-bold ${
+                            item.addressedInScope ? 'text-[#0284C7] dark:text-[#38BDF8]' : 'text-[#64748B] dark:text-[#888]'
+                          }`}>
+                            {item.number}
+                          </span>
+                          <span className="font-semibold text-sm text-[#0F1E36] dark:text-[#EEE]">
+                            {item.title}
+                          </span>
+                        </div>
+                        {item.resolutionTag && (
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full shrink-0 ${
+                            item.addressedInScope
+                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-200'
+                              : 'bg-neutral-200/70 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400'
+                          }`}>
+                            {item.resolutionTag}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-[#475569] dark:text-[#AAA] leading-relaxed">
+                        {item.description}
                       </p>
                     </div>
                   ))}
                 </div>
-              )}
-            </section>
-
-            {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION E: TECHNOLOGY STACK (CLEANLY GROUPED)
-               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <Cpu className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  04 &mdash; TOOLS &amp; TECH WE CHOSE
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  Simple, Reliable Tools for the Job
-                </h2>
-                <p className="text-base sm:text-lg text-[#334155] dark:text-[#CCC] leading-relaxed">
-                  {project.technologyDetails}
-                </p>
-              </div>
-
-              {/* Clean Grouped Stack Matrix */}
-              {project.techStackGrouped && project.techStackGrouped.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 pt-2">
-                  {project.techStackGrouped.map((grp, gIdx) => (
-                    <div
-                      key={gIdx}
-                      className="p-4 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-3"
-                    >
-                      <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#64748B] dark:text-[#888]">
-                        {grp.category}
-                      </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {grp.items.map((item, iIdx) => (
-                          <span
-                            key={iIdx}
-                            className="px-2 py-1 rounded-md bg-[#F1F5F9] dark:bg-[#202020] text-[11px] font-mono text-[#0F1E36] dark:text-[#DDD] border border-[#E2E8F0] dark:border-[#2C2C2C]"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
               ) : (
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] text-xs font-mono text-[#0284C7] dark:text-[#F472B6]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626]">
+                  <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
+                    Prior to this system, operations were constrained by manual workflows, fragmented records, and a lack of consolidated tooling.
+                  </p>
                 </div>
               )}
             </section>
 
             {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION F: KEY FEATURES WITH EVIDENCE
+                SECTION 02: CORE CAPABILITIES & SOLUTIONS
                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <Layers className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
+            <section className="space-y-5 pt-10 border-t border-[#E2E8F0] dark:border-[#222]">
+              <div className="flex items-center gap-2">
+                <Layers className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6]" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  05 &mdash; WHAT THE APP DOES
+                  02 &mdash; CORE CAPABILITIES
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  Key Features Built for Everyday Use
+              <div className="space-y-1">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
+                  Key System Features
                 </h2>
+                <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#999]">
+                  Engineered functional modules designed to solve operational requirements.
+                </p>
               </div>
 
               {/* Feature Cards Grid */}
               {project.features && project.features.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   {project.features.map((feat, fIdx) => (
                     <div
                       key={fIdx}
-                      className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2.5"
+                      className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-mono font-bold text-[#0284C7] dark:text-[#F472B6]">
                           {feat.number}
                         </span>
                         {feat.tag && (
-                          <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#F1F5F9] dark:bg-[#202020] text-[#64748B] dark:text-[#888]">
+                          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[#F1F5F9] dark:bg-[#202020] text-[#64748B] dark:text-[#888]">
                             {feat.tag}
                           </span>
                         )}
                       </div>
-                      <h4 className="text-base sm:text-lg font-bold text-[#0F1E36] dark:text-[#EEE]">
+                      <h4 className="text-sm sm:text-base font-bold text-[#0F1E36] dark:text-[#EEE]">
                         {feat.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#475569] dark:text-[#AAA] leading-relaxed">
                         {feat.description}
                       </p>
                     </div>
                   ))}
                 </div>
               ) : null}
+
+              {/* Explicit Responsibilities (e.g., Community / Social Initiatives) */}
+              {project.responsibilities && project.responsibilities.length > 0 && (
+                <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-3">
+                  <div className="text-xs font-mono uppercase tracking-wider font-bold text-[#0284C7] dark:text-[#F472B6]">
+                    Core Responsibilities &amp; Role Execution
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {project.responsibilities.map((resp, rIdx) => (
+                      <div
+                        key={rIdx}
+                        className="p-3.5 rounded-lg bg-[#F8FAFC] dark:bg-[#1A1A1A] border border-[#E2E8F0] dark:border-[#2C2C2C] space-y-2"
+                      >
+                        <div className="w-6 h-6 rounded-md bg-[#0284C7]/15 dark:bg-[#F472B6]/20 text-[#0284C7] dark:text-[#F472B6] flex items-center justify-center text-xs font-mono font-bold">
+                          0{rIdx + 1}
+                        </div>
+                        <p className="text-xs sm:text-sm text-[#334155] dark:text-[#CCC] leading-relaxed">
+                          {resp}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
 
             {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION G: RESULTS & MEASURABLE IMPACT
+                SECTION 03: OUTCOMES & IMPACT
                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="space-y-6 pt-12 border-t border-[#E2E8F0] dark:border-[#222]">
-              <div className="flex items-center gap-2.5">
-                <TrendingUp className="w-5 h-5 text-[#0284C7] dark:text-[#F472B6]" />
+            <section className="space-y-5 pt-10 border-t border-[#E2E8F0] dark:border-[#222]">
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6]" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
-                  06 &mdash; THE REAL RESULTS
+                  03 &mdash; RESULTS &amp; DELIVERABLES
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  How This Helped Real People &amp; Saved Time
-                </h2>
-                <p className="text-base sm:text-lg text-[#334155] dark:text-[#CCC] leading-relaxed">
+              {/* Single Crisp Outcome Card */}
+              <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-1.5">
+                <div className="text-xs font-mono uppercase font-bold text-[#0284C7] dark:text-[#F472B6]">
+                  Operational Outcome
+                </div>
+                <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
                   {project.outcome}
                 </p>
               </div>
 
+              {/* Explicit Community Impact (if present) */}
+              {project.impact && project.impact.length > 0 && (
+                <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-3">
+                  <div className="text-xs font-mono uppercase tracking-wider font-bold text-[#10B981] dark:text-[#34D399]">
+                    {project.id === 'dengue-awareness-project' ? 'Measurable Community Impact' : 'Measurable Impact & Delivered Value'}
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {project.impact.map((imp, iIdx) => (
+                      <div
+                        key={iIdx}
+                        className="p-3.5 rounded-lg bg-[#F0FDF4] dark:bg-[#064E3B]/20 border border-[#BBF7D0] dark:border-[#059669]/30 space-y-1.5"
+                      >
+                        <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#059669] dark:text-[#34D399]">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Impact 0{iIdx + 1}</span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-[#334155] dark:text-[#D1D5DB] leading-relaxed">
+                          {imp}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Metrics Row */}
               {project.metrics && project.metrics.length > 0 && (
-                <div className="grid grid-cols-3 gap-3 pt-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                   {project.metrics.map((m, mIdx) => (
                     <div
                       key={mIdx}
-                      className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] text-center"
+                      className="p-3.5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] text-center"
                     >
-                      <div className="text-[10px] sm:text-xs font-mono uppercase text-[#64748B] dark:text-[#888]">
+                      <div className="text-[10px] font-mono uppercase text-[#64748B] dark:text-[#888]">
                         {m.label}
                       </div>
-                      <div className="text-lg sm:text-2xl font-bold text-[#0284C7] dark:text-[#F472B6] mt-1">
+                      <div className="text-sm sm:text-base font-bold text-[#0284C7] dark:text-[#F472B6] mt-0.5">
                         {m.value}
                       </div>
                     </div>
@@ -490,15 +429,15 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 </div>
               )}
 
-              {/* Key Highlights Checklist */}
+              {/* Key Takeaways Checklist */}
               {project.keyHighlights && project.keyHighlights.length > 0 && (
-                <div className="p-6 rounded-2xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-3">
-                  <span className="text-xs font-mono uppercase tracking-wider font-bold text-[#64748B] dark:text-[#888] block">
-                    Key Takeaways &amp; Accomplishments
-                  </span>
-                  <div className="space-y-2.5">
+                <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2.5">
+                  <div className="text-xs font-mono uppercase tracking-wider font-bold text-[#64748B] dark:text-[#888]">
+                    Key Accomplishments
+                  </div>
+                  <div className="space-y-2">
                     {project.keyHighlights.map((hl, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-3 text-xs sm:text-sm text-[#334155] dark:text-[#CCC]">
+                      <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#334155] dark:text-[#CCC]">
                         <CheckCircle2 className="w-4 h-4 text-[#10B981] mt-0.5 shrink-0" />
                         <span>{hl}</span>
                       </div>
@@ -509,40 +448,52 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             </section>
 
             {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                SECTION H: FINAL PROJECT SHOWCASE & CTAs
+                SECTION 04: TECHNICAL ARCHITECTURE
                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-            <section className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-[#282828] text-center space-y-6">
-              <div className="max-w-xl mx-auto space-y-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#0284C7] dark:text-[#F472B6]">
-                  READY TO EXPLORE
+            <section className="space-y-4 pt-10 border-t border-[#E2E8F0] dark:border-[#222]">
+              <div className="flex items-center gap-2">
+                <Cpu className="w-4 h-4 text-[#0284C7] dark:text-[#F472B6]" />
+                <span className="text-xs font-mono uppercase tracking-[0.2em] font-bold text-[#64748B] dark:text-[#888]">
+                  04 &mdash; TECH STACK
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
-                  Check out {project.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#AAA]">
-                  Try out the live app or return to see the rest of the projects.
-                </p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#1E3A5F] dark:hover:bg-[#FDA4AF] transition-colors cursor-pointer"
-                  >
-                    <span>TRY LIVE APP</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                )}
-                <button
-                  onClick={onClose}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:border-[#0284C7] dark:hover:border-[#F472B6] text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#EEE] transition-colors cursor-pointer"
-                >
-                  <span>BACK TO ALL PROJECTS</span>
-                </button>
-              </div>
+              {/* Grouped Stack Matrix */}
+              {project.techStackGrouped && project.techStackGrouped.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                  {project.techStackGrouped.map((grp, gIdx) => (
+                    <div
+                      key={gIdx}
+                      className="p-3.5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2"
+                    >
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#64748B] dark:text-[#888]">
+                        {grp.category}
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {grp.items.map((item, iIdx) => (
+                          <span
+                            key={iIdx}
+                            className="px-2 py-0.5 rounded-md bg-[#F1F5F9] dark:bg-[#202020] text-[10px] font-mono text-[#0F1E36] dark:text-[#DDD] border border-[#E2E8F0] dark:border-[#2C2C2C]"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.map((tech, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] text-xs font-mono text-[#0284C7] dark:text-[#F472B6]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
             </section>
 
             {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

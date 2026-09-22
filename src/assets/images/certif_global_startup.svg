@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 990" width="100%" height="100%">
+  <defs>
+    <!-- Soft Watermark -->
+    <filter id="subtleShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#000000" flood-opacity="0.07" />
+    </filter>
+  </defs>
+
+  <!-- Certificate Paper Base -->
+  <rect width="700" height="990" fill="#FFFFFF" />
+
+  <!-- Outer Double Framing Borders -->
+  <rect x="24" y="24" width="652" height="942" fill="none" stroke="#CBD5E1" stroke-width="1.8" />
+  <rect x="32" y="32" width="636" height="926" fill="none" stroke="#E2E8F0" stroke-width="1" />
+
+  <!-- Center Soft Watermark (GS) -->
+  <g opacity="0.04" transform="translate(350, 520)">
+    <circle r="190" fill="#1D4ED8" />
+    <text x="0" y="90" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="260" font-weight="900" fill="#FFFFFF">GS</text>
+  </g>
+
+  <!-- Header Section -->
+  <g text-anchor="middle">
+    <!-- Main Title -->
+    <text x="350" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="900" letter-spacing="0.1em" fill="#1D4ED8">2024 GLOBAL</text>
+    <text x="350" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="900" letter-spacing="0.08em" fill="#1D4ED8">START-UP COMPETITION</text>
+
+    <!-- Subtitle -->
+    <text x="350" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="600" fill="#111827">Award of Achievement</text>
+
+    <!-- Awarded to -->
+    <text x="350" y="284" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="500" fill="#374151">Awarded to</text>
+
+    <!-- Gold Prize -->
+    <text x="350" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#EAB308">Gold Prize</text>
+
+    <!-- Team Name -->
+    <text x="350" y="402" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="35" font-weight="800" font-style="italic" letter-spacing="0.02em" fill="#1F2937">BUZZY WIZZY STUDIO</text>
+  </g>
+
+  <!-- Team Members Block -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <!-- Member 1 -->
+    <text x="345" y="474" text-anchor="end" font-size="14" font-weight="700" fill="#111827">GUIDO SIJABAT</text>
+    <text x="358" y="474" text-anchor="start" font-size="13" font-weight="400" font-style="italic" fill="#4B5563">PRESIDENT UNIVERSITY</text>
+
+    <!-- Member 2 -->
+    <text x="345" y="508" text-anchor="end" font-size="14" font-weight="700" fill="#111827">AMELYA ENJELITA</text>
+    <text x="358" y="508" text-anchor="start" font-size="13" font-weight="400" font-style="italic" fill="#4B5563">PRESIDENT UNIVERSITY</text>
+
+    <!-- Member 3 (Ni Putu Dadia) -->
+    <text x="345" y="542" text-anchor="end" font-size="14" font-weight="700" fill="#111827">NI PUTU DADIA</text>
+    <text x="358" y="542" text-anchor="start" font-size="13" font-weight="400" font-style="italic" fill="#4B5563">PRESIDENT UNIVERSITY</text>
+  </g>
+
+  <!-- Award Citation -->
+  <g text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500" fill="#1F2937">
+    <text x="350" y="622">For outstanding and successful achievement in the</text>
+    <text x="350" y="646">2024 Global Startup Competition on November 22<tspan font-size="11" dy="-6">nd</tspan><tspan font-size="15" dy="6">.</tspan></text>
+  </g>
+
+  <!-- Date -->
+  <text x="350" y="722" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" letter-spacing="0.04em" fill="#111827">2024. 11. 22.</text>
+
+  <!-- Bottom Authority Row -->
+  <g transform="translate(60, 810)">
+    <!-- Left: Korea Game Society Logo -->
+    <g transform="translate(70, 20)">
+      <!-- G Logo -->
+      <circle cx="26" cy="26" r="26" fill="#0C4A6E" />
+      <path d="M 26 8 A 18 18 0 1 1 14 38 L 22 32 A 9 9 0 1 0 26 17 Z" fill="#F59E0B" />
+      <circle cx="26" cy="26" r="10" fill="#0C4A6E" />
+
+      <!-- Text -->
+      <text x="62" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="800" fill="#111827">한국게임학회</text>
+      <text x="62" y="41" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#4B5563">Korea Game Society</text>
+    </g>
+
+    <!-- Right: Seal & President -->
+    <g transform="translate(390, 0)">
+      <!-- Traditional Red Korean Seal Stamp -->
+      <g transform="translate(45, -5)">
+        <rect x="0" y="0" width="68" height="68" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5" />
+        <text x="34" y="20" text-anchor="middle" font-family="'Batang', 'AppleMyungjo', serif" font-size="11.5" font-weight="900" fill="#DC2626">사단법인</text>
+        <text x="34" y="38" text-anchor="middle" font-family="'Batang', 'AppleMyungjo', serif" font-size="11.5" font-weight="900" fill="#DC2626">한국게임</text>
+        <text x="34" y="56" text-anchor="middle" font-family="'Batang', 'AppleMyungjo', serif" font-size="11.5" font-weight="900" fill="#DC2626">학회장인</text>
+      </g>
+
+      <!-- President Name -->
+      <line x1="0" y1="78" x2="160" y2="78" stroke="#E2E8F0" stroke-width="1" />
+      <text x="80" y="100" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="700" letter-spacing="0.08em" fill="#111827">JONG-HYUN WI</text>
+      <text x="80" y="122" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-style="italic" fill="#4B5563">President</text>
+    </g>
+  </g>
+</svg>

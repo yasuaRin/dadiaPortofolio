@@ -1,6 +1,5 @@
 import React from 'react';
 import { Project } from '../types';
-import { ProjectUIPreview } from './ProjectUIPreview';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -34,70 +33,68 @@ export const SupportingProjectCard: React.FC<SupportingProjectCardProps> = ({
       }}
       className="group relative rounded-3xl border border-[#CBD5E1] dark:border-[#262626] bg-white/90 dark:bg-[#151515]/90 p-6 sm:p-7 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-[#0284C7] dark:hover:border-[#F472B6] transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0284C7] dark:focus:ring-[#F472B6]"
     >
-      {/* Top Metadata Header: Number, Category, Year */}
+      {/* Top Metadata Header: Category & Year */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#242424]">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-[#0284C7] dark:text-[#F472B6]">
-              {numberStr}
-            </span>
-            <span className="w-1 h-1 rounded-full bg-[#CBD5E1] dark:bg-[#444]" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] dark:text-[#888]">
-              {project.category.split('·')[0].trim()}
-            </span>
-          </div>
-          <span className="text-[10px] font-mono text-[#64748B] dark:text-[#777]">
+        <div className="flex items-center justify-between pb-3.5 border-b border-[#E2E8F0] dark:border-[#242424]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#F472B6]">
+            {project.category.split('·')[0].trim()}
+          </span>
+          <span className="text-xs font-mono text-[#64748B] dark:text-[#777]">
             {project.year || '2024'}
           </span>
         </div>
 
-        {/* Title & One-line Description */}
-        <div className="space-y-1.5">
-          <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors flex items-center justify-between">
-            <span>{project.title}</span>
-            <ArrowUpRight className="w-4 h-4 text-[#64748B] dark:text-[#888] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
-          </h4>
-          <p className="text-xs sm:text-sm text-[#475569] dark:text-[#AAA] leading-relaxed line-clamp-2">
-            {project.description}
-          </p>
-        </div>
+        {/* Project Title ONLY — clean, confident, no text next to it */}
+        <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors">
+          {project.title}
+        </h4>
 
-        {/* Real Product UI Preview */}
-        <div className="pt-2">
-          <div className="transform transition-transform duration-300 group-hover:scale-[1.01]">
-            <ProjectUIPreview project={project} variant="card" />
-          </div>
-        </div>
-      </div>
-
-      {/* Card Bottom: Role, Stack, and Clear Interaction Affordance */}
-      <div className="pt-5 mt-4 border-t border-[#E2E8F0] dark:border-[#242424] space-y-3">
-        {/* Role & Stack in clean typographic key-value pairing */}
-        <div className="space-y-1 text-[11px] font-mono">
-          {project.role && (
-            <div className="flex items-baseline gap-2 truncate">
-              <span className="text-[#64748B] dark:text-[#777] uppercase text-[10px] shrink-0 font-semibold">
-                MY JOB:
-              </span>
-              <span className="text-[#0F1E36] dark:text-[#DDD] truncate font-medium">
-                {project.role}
+        {/* Optional Project Screenshot Preview */}
+        {project.imageUrl && (
+          <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] dark:border-[#262626] bg-slate-950 aspect-[16/10] group/img">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+              <span className="text-[10px] font-mono font-bold text-white bg-black/70 backdrop-blur-xs px-2 py-0.5 rounded">
+                Verified System UI
               </span>
             </div>
-          )}
-          <div className="flex items-baseline gap-2 truncate">
-            <span className="text-[#64748B] dark:text-[#777] uppercase text-[10px] shrink-0 font-semibold">
-              TOOLS:
-            </span>
-            <span className="text-[#0284C7] dark:text-[#F472B6] truncate font-medium">
-              {project.technologies.slice(0, 4).join(' · ')}
-            </span>
           </div>
+        )}
+
+        {/* Concise Overview Glimpse */}
+        <p className="text-sm text-[#475569] dark:text-[#A3A3A3] leading-relaxed line-clamp-2">
+          {project.description}
+        </p>
+      </div>
+
+      {/* Card Bottom: Tech Stack and Read More Action */}
+      <div className="pt-4 mt-3 border-t border-[#E2E8F0] dark:border-[#242424] space-y-3">
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-1.5">
+          {project.technologies.slice(0, 3).map((tech) => (
+            <span
+              key={tech}
+              className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F1F5F9] dark:bg-[#1F1F1F] text-[#475569] dark:text-[#AAA] border border-[#E2E8F0]/60 dark:border-[#2C2C2C]"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.technologies.length > 3 && (
+            <span className="text-[10px] font-mono px-1.5 py-0.5 text-[#64748B] dark:text-[#777]">
+              +{project.technologies.length - 3}
+            </span>
+          )}
         </div>
 
         {/* Affordance Strip */}
         <div className="flex items-center justify-between pt-1">
           <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0F1E36] dark:text-[#F3F3F2] group-hover:text-[#0284C7] dark:group-hover:text-[#F472B6] transition-colors">
-            <span>Read Story</span>
+            <span>Read More</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </span>
 
@@ -107,9 +104,10 @@ export const SupportingProjectCard: React.FC<SupportingProjectCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-[10px] font-mono text-[#64748B] dark:text-[#999] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors py-1 px-2 rounded hover:bg-[#F1F5F9] dark:hover:bg-[#202020]"
+              className="inline-flex items-center gap-1 text-[10px] font-mono text-[#64748B] dark:text-[#999] hover:text-[#0284C7] dark:hover:text-[#F472B6] transition-colors py-1 px-2.5 rounded-full border border-[#CBD5E1] dark:border-[#333] hover:bg-[#F1F5F9] dark:hover:bg-[#202020]"
+              title="Open live deployment in new tab"
             >
-              <span>Try Live</span>
+              <span>Live App</span>
               <ArrowUpRight className="w-3 h-3" />
             </a>
           )}
