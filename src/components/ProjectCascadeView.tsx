@@ -149,7 +149,8 @@ export const ProjectCascadeView: React.FC<ProjectCascadeViewProps> = ({
                     src={activeProject.imageUrl}
                     alt={activeProject.title}
                     className="w-full h-full object-cover object-top"
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                   />
                   <div className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-xs text-[10px] font-mono text-white font-semibold">
                     Production Screenshot Preview

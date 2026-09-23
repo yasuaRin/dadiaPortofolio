@@ -197,11 +197,11 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 </span>
               </div>
 
-              <div className="space-y-2 max-w-3xl">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
+              <div className="space-y-1.5 max-w-3xl">
+                <h2 className="text-lg sm:text-xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
                   Operational Friction Points
                 </h2>
-                <p className="text-sm sm:text-base text-[#475569] dark:text-[#BBB] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
                   {project.problem}
                 </p>
               </div>
@@ -266,10 +266,10 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
 
               <div className="space-y-1">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
+                <h2 className="text-lg sm:text-xl font-bold text-[#0F1E36] dark:text-[#F3F3F2]">
                   Key System Features
                 </h2>
-                <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#999]">
+                <p className="text-[11px] sm:text-xs text-[#64748B] dark:text-[#999]">
                   Engineered functional modules designed to solve operational requirements.
                 </p>
               </div>
@@ -280,22 +280,22 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                   {project.features.map((feat, fIdx) => (
                     <div
                       key={fIdx}
-                      className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2"
+                      className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-mono font-bold text-[#0284C7] dark:text-[#F472B6]">
                           {feat.number}
                         </span>
                         {feat.tag && (
-                          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[#F1F5F9] dark:bg-[#202020] text-[#64748B] dark:text-[#888]">
+                          <span className="text-[9px] font-mono font-semibold px-2 py-0.5 rounded bg-[#F1F5F9] dark:bg-[#202020] text-[#64748B] dark:text-[#888]">
                             {feat.tag}
                           </span>
                         )}
                       </div>
-                      <h4 className="text-sm sm:text-base font-bold text-[#0F1E36] dark:text-[#EEE]">
+                      <h4 className="text-xs sm:text-sm font-bold text-[#0F1E36] dark:text-[#EEE]">
                         {feat.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-[#475569] dark:text-[#AAA] leading-relaxed">
+                      <p className="text-xs text-[#475569] dark:text-[#AAA] leading-relaxed">
                         {feat.description}
                       </p>
                     </div>
@@ -318,7 +318,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                         <div className="w-6 h-6 rounded-md bg-[#0284C7]/15 dark:bg-[#F472B6]/20 text-[#0284C7] dark:text-[#F472B6] flex items-center justify-center text-xs font-mono font-bold">
                           0{rIdx + 1}
                         </div>
-                        <p className="text-xs sm:text-sm text-[#334155] dark:text-[#CCC] leading-relaxed">
+                        <p className="text-xs text-[#334155] dark:text-[#CCC] leading-relaxed">
                           {resp}
                         </p>
                       </div>
@@ -340,32 +340,32 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
 
               {/* Single Crisp Outcome Card */}
-              <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-1.5">
-                <div className="text-xs font-mono uppercase font-bold text-[#0284C7] dark:text-[#F472B6]">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-1">
+                <div className="text-[11px] font-mono uppercase font-bold text-[#0284C7] dark:text-[#F472B6]">
                   Operational Outcome
                 </div>
-                <p className="text-xs sm:text-sm text-[#475569] dark:text-[#BBB] leading-relaxed">
+                <p className="text-xs text-[#475569] dark:text-[#BBB] leading-relaxed">
                   {project.outcome}
                 </p>
               </div>
 
               {/* Explicit Community Impact (if present) */}
               {project.impact && project.impact.length > 0 && (
-                <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-3">
-                  <div className="text-xs font-mono uppercase tracking-wider font-bold text-[#10B981] dark:text-[#34D399]">
+                <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-[#161616] border border-[#E2E8F0] dark:border-[#262626] space-y-2.5">
+                  <div className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#10B981] dark:text-[#34D399]">
                     {project.id === 'dengue-awareness-project' ? 'Measurable Community Impact' : 'Measurable Impact & Delivered Value'}
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {project.impact.map((imp, iIdx) => (
                       <div
                         key={iIdx}
-                        className="p-3.5 rounded-lg bg-[#F0FDF4] dark:bg-[#064E3B]/20 border border-[#BBF7D0] dark:border-[#059669]/30 space-y-1.5"
+                        className="p-3 rounded-lg bg-[#F0FDF4] dark:bg-[#064E3B]/20 border border-[#BBF7D0] dark:border-[#059669]/30 space-y-1"
                       >
                         <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#059669] dark:text-[#34D399]">
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Impact 0{iIdx + 1}</span>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#334155] dark:text-[#D1D5DB] leading-relaxed">
+                        <p className="text-xs text-[#334155] dark:text-[#D1D5DB] leading-relaxed">
                           {imp}
                         </p>
                       </div>
@@ -401,8 +401,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                   </div>
                   <div className="space-y-2">
                     {project.keyHighlights.map((hl, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#334155] dark:text-[#CCC]">
-                        <CheckCircle2 className="w-4 h-4 text-[#10B981] mt-0.5 shrink-0" />
+                      <div key={hIdx} className="flex items-start gap-2 text-xs text-[#334155] dark:text-[#CCC]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] mt-0.5 shrink-0" />
                         <span>{hl}</span>
                       </div>
                     ))}

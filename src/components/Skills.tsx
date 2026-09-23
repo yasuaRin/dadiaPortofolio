@@ -74,11 +74,6 @@ export const Skills: React.FC = () => {
               </span>
             </h2>
           </motion.div>
-
-          <p className="text-xs sm:text-sm font-mono text-[#64748B] dark:text-[#888] max-w-md leading-relaxed">
-            A structured breakdown of core engineering capabilities, analytical
-            tools, database systems, and professional collaboration practices.
-          </p>
         </div>
 
         {/* Primary Classification Tabs & Navigation Bar */}

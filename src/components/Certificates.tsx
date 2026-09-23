@@ -76,16 +76,12 @@ export const Certificates: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2] mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#0F1E36] dark:text-[#F3F3F2]">
               Certifications &amp;{' '}
               <span className="font-serif italic font-normal pastel-gradient-text">
                 Honors.
               </span>
             </h2>
-
-            <p className="text-xs sm:text-sm text-[#475569] dark:text-[#999]">
-              Verified technical certifications, academy completions, and academic recognitions.
-            </p>
           </motion.div>
 
           {/* Drive Repository Master Link */}

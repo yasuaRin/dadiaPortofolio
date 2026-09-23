@@ -75,10 +75,6 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
             Let's<br />
             <span className="font-serif italic font-normal pastel-gradient-text">Talk.</span>
           </h2>
-
-          <p className="text-xs sm:text-sm md:text-base text-[#475569] dark:text-[#AAA] font-normal leading-relaxed mt-3">
-            Graduated and actively exploring full-time opportunities, data analytics initiatives, and AI engineering roles. Reach out directly.
-          </p>
         </motion.div>
 
         {/* Contact Content: Unified Channels Container with LinkedIn, Instagram, WhatsApp, and Gmail */}

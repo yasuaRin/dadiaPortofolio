@@ -56,7 +56,8 @@ export const SupportingProjectCard: React.FC<SupportingProjectCardProps> = ({
               src={project.imageUrl}
               alt={project.title}
               className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
               <span className="text-[10px] font-mono font-bold text-white bg-black/70 backdrop-blur-xs px-2 py-0.5 rounded">
@@ -67,7 +68,7 @@ export const SupportingProjectCard: React.FC<SupportingProjectCardProps> = ({
         )}
 
         {/* Concise Overview Glimpse */}
-        <p className="text-sm text-[#475569] dark:text-[#A3A3A3] leading-relaxed line-clamp-2">
+        <p className="text-xs sm:text-[13px] text-[#475569] dark:text-[#A3A3A3] leading-relaxed line-clamp-2">
           {project.description}
         </p>
       </div>

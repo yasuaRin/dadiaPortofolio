@@ -224,7 +224,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                   src={project.imageUrl}
                   alt="Sales Analysis Automation Dashboard"
                   className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
@@ -332,7 +333,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 src={project.imageUrl || payrollImg}
                 alt="Banana Byte Payroll Management System Interface"
                 className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black/85 backdrop-blur-md text-white text-xs font-mono font-bold shadow-xl">
@@ -393,7 +395,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 src={project.imageUrl || gpaTrackerImg}
                 alt="Student GPA Tracker Interface"
                 className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black/85 backdrop-blur-md text-white text-xs font-mono font-bold shadow-xl">
@@ -462,7 +465,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 src={project.imageUrl || teravinceImg}
                 alt="Teravince Performance Evaluation Platform"
                 className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black/85 backdrop-blur-md text-white text-xs font-mono font-bold shadow-xl">
@@ -531,7 +535,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 src={project.imageUrl || sosproImg}
                 alt="Dengue Awareness Social Project - Cikarang, Bekasi"
                 className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black/85 backdrop-blur-md text-white text-xs font-mono font-bold shadow-xl">
@@ -593,7 +598,8 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 src={project.imageUrl || portfolioImg}
                 alt="Personal Portfolio Web Page at a Glance"
                 className="w-full h-auto max-h-[480px] object-contain object-top transition-transform duration-500 group-hover/zoom:scale-[1.015]"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">

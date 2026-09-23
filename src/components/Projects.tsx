@@ -114,21 +114,6 @@ export const Projects: React.FC = () => {
               Everyday Problems.
             </span>
           </h2>
-
-          {/* Section Metadata Matrix */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 text-xs font-mono text-[#64748B] dark:text-[#999]">
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-[#0F1E36] dark:text-[#EEE]">6</span> Completed Projects
-            </div>
-            <span>&bull;</span>
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-[#0F1E36] dark:text-[#EEE]">University Capstone to Non-Profits</span>
-            </div>
-            <span className="hidden sm:inline">&bull;</span>
-            <div className="hidden sm:flex items-center gap-1.5">
-              React, Python, Supabase, SQL &amp; Power BI
-            </div>
-          </div>
         </header>
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

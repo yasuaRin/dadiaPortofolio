@@ -13,6 +13,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Mobile & Cross-Platform Ergonomics (iOS Safari / Android Chrome / Edge) -->
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Dadia Portfolio" />
@@ -20,13 +21,17 @@
     <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0D0D0D" media="(prefers-color-scheme: dark)" />
 
+    <!-- Favicon Links to eliminate 404s -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
     <!-- Cybersecurity Defense-in-Depth Meta Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="Cache-Control" content="no-transform" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https:; frame-ancestors 'self' https://ai.studio https://*.google.com https://*.run.app; base-uri 'self'; form-action 'self' mailto: https://wa.me; object-src 'none'; upgrade-insecure-requests;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https:; base-uri 'self'; form-action 'self' mailto: https://wa.me; object-src 'none'; upgrade-insecure-requests;" />
 
     <!-- Google Fonts Preconnect with Subresource Protection -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
