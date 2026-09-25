@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
-import { Linkedin, Instagram, Copy, Check, ArrowUpRight, Mail, Sparkles, FileText, FileDown } from 'lucide-react';
+import { Linkedin, Instagram, Copy, Check, ArrowUpRight, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import { playCelebrationSound } from '../utils/soundEffects';
-
-// Official WhatsApp Vector Icon SVG
-const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    aria-hidden="true"
-  >
-    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.586 1.874.887 2.796.888h.005c3.18 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.775-5.773-5.775zm3.376 8.214c-.149.42-1.026.804-1.428.847-.394.041-.884.053-2.584-.654-1.748-.727-2.91-2.484-3.003-2.607-.093-.122-.727-.969-.727-1.85 0-.882.463-1.316.627-1.493.164-.178.358-.223.477-.223.12 0 .239.001.343.007.109.006.257-.041.402.308.149.358.508 1.239.553 1.328.045.09.075.194.015.313-.06.12-.09.194-.179.299-.09.104-.189.233-.27.313-.09.09-.184.187-.079.367.104.179.465.767 1.002 1.246.691.616 1.274.808 1.453.898.179.09.284.075.388-.045.105-.12.448-.523.568-.702.119-.179.239-.149.403-.09.164.06 1.045.493 1.224.582.179.09.299.135.343.209.045.075.045.433-.104.853zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.954-1.399A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.167c-1.637 0-3.155-.494-4.422-1.344l-.317-.213-2.937.828.845-2.859-.234-.339A8.136 8.136 0 013.833 12c0-4.502 3.665-8.167 8.167-8.167 4.503 0 8.167 3.665 8.167 8.167 0 4.503-3.664 8.167-8.167 8.167z" />
-  </svg>
-);
 
 interface ContactProps {
   onOpenResumeModal?: () => void;
@@ -77,7 +65,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
           </h2>
         </motion.div>
 
-        {/* Contact Content: Unified Channels Container with LinkedIn, Instagram, WhatsApp, and Gmail */}
+        {/* Contact Content: Unified Channels Container with LinkedIn, Instagram, and Gmail */}
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -114,7 +102,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
               <motion.a
                 whileHover={{ x: 6 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                href="https://instagram.com"
+                href="https://www.instagram.com/niptdadia/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between py-4 border-b border-[#BFDBFE]/60 dark:border-[#222] hover:border-[#0284C7] dark:hover:border-[#F472B6] transition-all"
@@ -129,26 +117,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
                 </div>
               </motion.a>
 
-              {/* Official WhatsApp */}
-              <motion.a
-                whileHover={{ x: 6 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                href="https://wa.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between py-4 border-b border-[#BFDBFE]/60 dark:border-[#222] hover:border-[#25D366] transition-all"
-              >
-                <div className="flex items-center gap-3.5">
-                  <WhatsAppIcon className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" />
-                  <span className="text-base sm:text-lg font-bold text-[#0F1E36] dark:text-[#F3F3F2]">WhatsApp</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#64748B] dark:text-[#AAA] group-hover:text-[#25D366]">
-                  <span>MESSAGE</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </motion.a>
-
-              {/* Gmail (Located inside the same container below WhatsApp, matching the exact same row design without displaying the literal email) */}
+              {/* Gmail */}
               <motion.a
                 whileHover={{ x: 6 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
@@ -189,37 +158,6 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
                   </div>
                 </div>
               </motion.a>
-
-              {/* Download PDF Portfolio Resume */}
-              <motion.div
-                whileHover={{ x: 6 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                onClick={onOpenResumeModal}
-                className="group flex items-center justify-between py-4 border-b border-[#BFDBFE]/60 dark:border-[#222] hover:border-[#0284C7] dark:hover:border-[#F472B6] transition-all cursor-pointer"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#E0F2FE] dark:bg-[#1E1E1E] flex items-center justify-center text-[#0284C7] dark:text-[#F472B6] group-hover:scale-110 transition-transform">
-                    <FileText className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-base sm:text-lg font-bold text-[#0F1E36] dark:text-[#F3F3F2] block leading-tight">
-                      Curriculum Vitae &amp; Portfolio PDF
-                    </span>
-                    <span className="text-[10px] font-mono text-[#64748B] dark:text-[#888]">
-                      Official ATS Resume &amp; Visual Full-Page Portfolio PDF
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#0284C7] dark:text-[#F472B6] font-bold">
-                  <span>DOWNLOAD CV</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="mt-6 pt-4 flex items-center gap-2 text-xs font-mono text-[#64748B] dark:text-[#777]">
-              <Sparkles className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#F472B6]" />
-              <span>Response time: Usually within 24 hours</span>
             </div>
           </motion.div>
         </div>
