@@ -95,7 +95,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResumeModal }) => {
               <motion.a
                 whileHover={{ x: 6 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ni-putu-dadia-yasuarini-a1a07828b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between py-4 border-b border-[#BFDBFE]/60 dark:border-[#222] hover:border-[#0284C7] dark:hover:border-[#F472B6] transition-all"

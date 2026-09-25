@@ -620,14 +620,14 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
                 <div>
                   <span className="text-[9px] font-mono uppercase text-[#64748B] dark:text-[#888]">Live URL</span>
                   <a
-                    href={project.liveUrl || 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app'}
+                    href={project.liveUrl || 'https://yasuarin-portofolio.vercel.app/'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold text-[#0284C7] dark:text-[#F472B6] hover:underline flex items-center gap-1"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <span className="truncate max-w-[180px] sm:max-w-[280px]">
-                      {project.liveUrl || 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app'}
+                      {project.liveUrl || 'https://yasuarin-portofolio.vercel.app/'}
                     </span>
                     <ExternalLink className="w-2.5 h-2.5 shrink-0" />
                   </a>
@@ -635,7 +635,7 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <a
-                  href={project.liveUrl || 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app'}
+                  href={project.liveUrl || 'https://yasuarin-portofolio.vercel.app/'}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
@@ -665,7 +665,7 @@ export const ProjectUIPreview: React.FC<ProjectUIPreviewProps> = ({
     'student-gpa-tracker': 'academic-ai.internal.local/forecast',
     teravince: 'https://teravince.app/evaluations',
     'dengue-awareness-project': 'community.cikarang.bekasi/dengue-awareness',
-    'web-portfolio': 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app'
+    'web-portfolio': 'https://yasuarin-portofolio.vercel.app'
   };
 
   const currentDomain = domainMap[project.id] || `app.local/${project.id}`;

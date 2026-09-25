@@ -11,9 +11,7 @@ import {
   CheckCircle2,
   ExternalLink,
   Copy,
-  Check,
-  FileText,
-  FolderOpen
+  Check
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -62,11 +60,6 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
   if (!certificate) return null;
 
   const targetUrl = certificate.certificateUrl || certificate.imageUrl || CERTIFICATES_DRIVE_URL;
-  const driveFileIdMatch = targetUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-  const driveFileId = driveFileIdMatch ? driveFileIdMatch[1] : null;
-  const drivePreviewUrl = driveFileId
-    ? `https://drive.google.com/file/d/${driveFileId}/preview`
-    : null;
 
   const handleOpenUrl = (e: React.MouseEvent, url: string) => {
     e.preventDefault();
@@ -189,68 +182,33 @@ export const CertificateLightbox: React.FC<CertificateLightboxProps> = ({
               </div>
             </div>
 
-            {/* Visual Certificate Document - Glimpse using original Drive URL */}
-            {certificate.imageUrl ? (
-              <div className="relative rounded-2xl overflow-hidden border border-neutral-200/90 dark:border-[#333] bg-white shadow-md">
-                <img
-                  src={certificate.imageUrl}
-                  alt={`${certificate.title} - ${certificate.issuer}`}
-                  className="w-full h-auto block select-none"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ) : drivePreviewUrl ? (
-              <div className="relative rounded-2xl overflow-hidden border border-neutral-200/90 dark:border-[#282828] bg-neutral-900 shadow-md">
-                {/* Header preview bar */}
-                <div className="px-4 py-2.5 bg-neutral-100 dark:bg-[#1C1C1C] border-b border-neutral-200 dark:border-[#2C2C2C] flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-2 text-[#475569] dark:text-[#AAA]">
-                    <FileText className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#F472B6]" />
-                    <span className="font-semibold text-[#0F1E36] dark:text-[#EEE]">Certificate Glimpse</span>
-                    <span className="text-[10px] text-[#64748B] dark:text-[#777] hidden sm:inline">Google Drive</span>
+            {/* Credential Details Card (Signatory, Recipient, Duration, ID) */}
+            {(certificate.signatory || certificate.recipient || certificate.hours || certificate.credentialId) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3.5 rounded-xl bg-neutral-50 dark:bg-[#1A1A1A] border border-neutral-200/70 dark:border-[#262626] text-xs font-mono">
+                {certificate.signatory && (
+                  <div>
+                    <span className="text-[10px] text-[#64748B] dark:text-[#777] uppercase block">Signatory</span>
+                    <span className="text-[#0F1E36] dark:text-[#EEE] font-medium">{certificate.signatory}</span>
                   </div>
-                  <a
-                    href={targetUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => handleOpenUrl(e, targetUrl)}
-                    className="inline-flex items-center gap-1 text-[11px] text-[#0284C7] dark:text-[#F472B6] hover:underline font-bold"
-                  >
-                    <span>Open original document</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-
-                {/* Google Drive Document Preview Frame */}
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-neutral-100 dark:bg-[#141414]">
-                  <iframe
-                    src={drivePreviewUrl}
-                    title={`${certificate.title} Preview`}
-                    className="w-full h-full border-0"
-                    allow="autoplay"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="relative rounded-2xl border border-neutral-200/90 dark:border-[#262626] bg-neutral-50 dark:bg-[#1A1A1A] p-5 sm:p-6 text-center">
-                <div className="w-10 h-10 mx-auto rounded-xl bg-[#0284C7]/10 dark:bg-[#F472B6]/15 flex items-center justify-center text-[#0284C7] dark:text-[#F472B6] mb-3">
-                  <FolderOpen className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-bold text-[#0F1E36] dark:text-[#F3F3F2] mb-1">
-                  Original Verification Document
-                </h4>
-                <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mb-3.5 max-w-sm mx-auto">
-                  View the official credential directly on the original Google Drive repository.
-                </p>
-                <a
-                  href={targetUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => handleOpenUrl(e, targetUrl)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0F1E36] dark:bg-[#F472B6] text-white dark:text-[#111] text-xs font-mono font-bold hover:opacity-90 transition-opacity"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Open in Google Drive</span>
-                </a>
+                )}
+                {certificate.recipient && (
+                  <div>
+                    <span className="text-[10px] text-[#64748B] dark:text-[#777] uppercase block">Recipient</span>
+                    <span className="text-[#0F1E36] dark:text-[#EEE] font-medium">{certificate.recipient}</span>
+                  </div>
+                )}
+                {certificate.hours && (
+                  <div>
+                    <span className="text-[10px] text-[#64748B] dark:text-[#777] uppercase block">Duration</span>
+                    <span className="text-[#0F1E36] dark:text-[#EEE] font-medium">{certificate.hours}</span>
+                  </div>
+                )}
+                {certificate.credentialId && (
+                  <div>
+                    <span className="text-[10px] text-[#64748B] dark:text-[#777] uppercase block">Credential ID</span>
+                    <span className="text-[#0F1E36] dark:text-[#EEE] font-medium">{certificate.credentialId}</span>
+                  </div>
+                )}
               </div>
             )}
 

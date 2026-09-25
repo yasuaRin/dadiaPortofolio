@@ -222,19 +222,6 @@ export const Certificates: React.FC = () => {
                         </span>
                       </div>
                     )}
-
-                    {/* Visual Preview Thumbnail if certificate image is available */}
-                    {cert.imageUrl && (
-                      <div className="mb-3 rounded-lg overflow-hidden border border-neutral-200/80 dark:border-[#2A2A2A] bg-white shadow-2xs aspect-[16/10] relative group/thumb">
-                        <img
-                          src={cert.imageUrl}
-                          alt={cert.title}
-                          className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors" />
-                      </div>
-                    )}
                   </div>
 
                   {/* Action Row */}

@@ -692,7 +692,7 @@ export const projectsData: Project[] = [
     team: 'Personal Project (Solo)',
     role: 'Solo Designer & Frontend Engineer',
     imageUrl: portfolioImg,
-    liveUrl: 'https://ais-pre-xw6nikmld7ojjq2xg7a2tg-465376357302.asia-southeast1.run.app',
+    liveUrl: 'https://yasuarin-portofolio.vercel.app/',
     githubUrl: 'https://github.com/yasuaRin/dadiaPortofolio.git',
     clientOrContext: 'Personal Digital Portfolio & Project Showcase',
     description: 'Interactive engineering portfolio highlighting systems design, interactive component previews, and measurable project outcomes.',
