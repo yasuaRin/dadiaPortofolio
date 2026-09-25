@@ -950,6 +950,3 @@ export const projectsData: Project[] = [
     ]
   }
 ];
-
-
-
