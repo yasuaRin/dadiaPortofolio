@@ -4,7 +4,7 @@ import payrollImg from '../assets/images/payroll.png';
 import sosproImg from '../assets/images/sospro.png';
 import gpaTrackerImg from '../assets/images/gpaTracker.png';
 import teravinceImg from '../assets/images/teravince.jpg';
-import portfolioImg from '../assets/images/portfolio.png';
+import portfolioImg from '../assets/images/portofolio.png';
 import {
   ExternalLink,
   Layers,
